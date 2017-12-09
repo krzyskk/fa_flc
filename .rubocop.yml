@@ -1,0 +1,23 @@
+AllCops:
+  Includes:
+    - config.ru
+    - '**/Gemfile'
+    - '**/Rakefile'
+  Excludes:
+    - db/**
+    - config/**
+    - script/**
+Documentation:
+  Enabled: false
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+Style/SymbolArray:
+  EnforcedStyle: brackets
+Metrics/LineLength:
+  Max: 160
+Metrics/MethodLength:
+  Max: 20
+Metrics/AbcSize:
+  Max: 20
+Metrics/BlockLength:
+  Max: 130

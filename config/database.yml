@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  tineout: 5000
+  user: krzysiek
+  password: '1234'
+
+development:
+  <<: *default
+  database: exercise_log_development
+
+test:
+  <<: *default
+  database: exercise_log_test
+
+production:
+  <<: *default
+  database: exercise_log_production

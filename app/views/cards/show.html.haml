@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Front:
+  = @card.front
+%p
+  %b Back:
+  = @card.back
+%p
+  %b Created:
+  = @card.created
+%p
+  %b Updated:
+  = @card.updated
+%p
+  %b Showed:
+  = @card.showed
+%p
+  %b Coorect:
+  = @card.coorect
+%p
+  %b Last showed:
+  = @card.last_showed
+
+= link_to 'Edit', edit_card_path(@card)
+\|
+= link_to 'Back', cards_path

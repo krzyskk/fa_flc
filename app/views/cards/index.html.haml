@@ -1,0 +1,34 @@
+= content_for :header do
+  Cards
+
+%table.table
+  %thead
+    %tr
+      %th Front
+      %th Back
+      %th Created
+      %th Updated
+      %th Views
+      %th Corect answers
+      %th Last showed
+      %th{colspan: "2"}
+
+
+  %tbody
+    - @cards.each do |card|
+      %tr
+        %td= card.front
+        %td= card.back
+        %td= card.created
+        %td= card.updated
+        %td= card.showed
+        %td= card.corect
+        %td= card.last_showed
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_card_path(card), :class => 'btn btn-default btn-xs'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), card_path(card), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+
+
+%br
+
+= link_to t('.new', :default => t("helpers.links.new")), new_card_path, class: 'btn btn-primary'

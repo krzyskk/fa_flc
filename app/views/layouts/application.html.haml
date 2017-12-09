@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Szybka nauka 
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .row
+      %nav.navbar.navbar-inverse.navbar-static-top
+        .container
+          .navbar-header
+            = link_to "<i class='fa fa-trophy' aria-hidden='true'></i> Szybka nauka".html_safe , root_path, class: "navbar-brand"
+          .navbar-nav
+            = link_to 'Cards', cards_path, class: "nav-item nav-link"
+            = link_to 'Start lesson', new_lesson_path, class: "nav-item nav-link"
+    .box
+      .header
+        %h1= yield :header
+      .app
+        .container
+          .main-panel
+            = yield :menu
+            .row
+              - flash.each do |key, value|
+                - h = {success: 'success', error: 'danger', notice: 'info'}
+                %div{:class => "alert alert-#{h[key.to_sym]}"}= value
+            = yield
+        .footer
+          .container
+            .row
