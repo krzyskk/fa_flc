@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208211654) do
+ActiveRecord::Schema.define(version: 20171215221947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,11 +18,9 @@ ActiveRecord::Schema.define(version: 20171208211654) do
   create_table "cards", force: :cascade do |t|
     t.text "front"
     t.text "back"
-    t.datetime "created"
-    t.datetime "updated"
     t.integer "showed"
     t.integer "corect"
-    t.datetime "last_showed"
+    t.datetime "last_showed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,11 +53,6 @@ ActiveRecord::Schema.define(version: 20171208211654) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.string "username"
-    t.text "description"
-    t.string "city"
-    t.string "sex"
-    t.date "birth_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

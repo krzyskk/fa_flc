@@ -1,11 +1,12 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Szybka nauka 
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+    %title= content_for?(:title) ? yield(:title) : 'Szybka nauka'
+    %meta{ name: "description", content: "#{content_for?(:description) ? yield(:description) : 'Props'}" }
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .row
       %nav.navbar.navbar-inverse.navbar-static-top
@@ -18,14 +19,13 @@
     .box
       .header
         %h1= yield :header
+        .row
+          - flash.each do |key, value|
+            - h = {success: 'success', error: 'danger', notice: 'info'}
+            %div{class: "alert alert-#{h[key.to_sym]}"}= value
       .app
         .container
-          .main-panel
-            = yield :menu
-            .row
-              - flash.each do |key, value|
-                - h = {success: 'success', error: 'danger', notice: 'info'}
-                %div{:class => "alert alert-#{h[key.to_sym]}"}= value
+          .panel.row
             = yield
         .footer
           .container

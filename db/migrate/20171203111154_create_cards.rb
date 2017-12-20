@@ -3,11 +3,9 @@ class CreateCards < ActiveRecord::Migration[5.1]
     create_table :cards do |t|
       t.text :front
       t.text :back
-      t.datetime :created
-      t.datetime :updated
       t.integer :showed
       t.integer :corect
-      t.datetime :last_showed
+      t.datetime :last_showed_at
       t.timestamps
     end
   end

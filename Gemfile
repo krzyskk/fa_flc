@@ -11,6 +11,7 @@ gem 'bootstrap-sass'
 gem 'coffee-rails'
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'draper'
 gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'jbuilder'
@@ -28,17 +29,21 @@ gem 'turbolinks'
 gem 'uglifier'
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'capybara'
   gem 'factory_bot'
   gem 'faker'
+  gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
 end
 
 group :development do
+  gem 'haml_lint', require: false
   gem 'letter_opener'
   gem 'listen'
+  gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen'
   gem 'web-console'

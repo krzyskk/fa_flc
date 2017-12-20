@@ -1,1 +1,9 @@
-%h1 New lesson
+= content_for :header do
+  Lesson
+
+
+
+  %tbody
+    - @lesson.questions.each do |question|
+      %tr
+        %td= question.card_id
