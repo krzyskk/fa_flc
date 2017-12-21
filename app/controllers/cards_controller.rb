@@ -18,12 +18,8 @@ class CardsController < ApplicationController
     @card.last_showed_at =  @card.created_at
     respond_to do |format|
       if @card.save
-
-          #flash[:success] = 'Card was successfully created.'
-          format.html { redirect_to cards_url }
+          format.html { redirect_to cards_url, notice: 'Card was successfully created.'  }
           format.js
-      else
-        #flash[:success] = 'Card was successfully created.'
       end
     end
   end
@@ -36,7 +32,7 @@ class CardsController < ApplicationController
     @card.destroy
     respond_to do |format|
       format.html { redirect_to cards_url, notice: 'Card was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js
     end
   end
 
