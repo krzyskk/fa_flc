@@ -4,7 +4,7 @@ class CreateCards < ActiveRecord::Migration[5.1]
       t.text :front
       t.text :back
       t.integer :showed
-      t.integer :corect
+      t.integer :correct
       t.datetime :last_showed_at
       t.timestamps
     end

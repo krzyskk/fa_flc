@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20171215221947) do
     t.text "front"
     t.text "back"
     t.integer "showed"
-    t.integer "corect"
+    t.integer "correct"
     t.datetime "last_showed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

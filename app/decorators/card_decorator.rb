@@ -1,6 +1,5 @@
 class CardDecorator < Draper::Decorator
   delegate_all
-  decorates_association :cards
 
   def front_truncated
     card.front.truncate_words(7)

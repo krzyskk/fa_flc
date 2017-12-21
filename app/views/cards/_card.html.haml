@@ -1,0 +1,12 @@
+%tr
+  %td= card.front_truncated
+  %td= card.back_truncated
+  %td= card.created_date
+  %td= card.updated_date
+  %td= card.showed
+  %td= card.correct
+  %td= card.last_showed_date
+  %td
+    = link_to t('.edit', default: t("helpers.links.edit")), edit_card_path(card), class: 'btn btn-default btn-xs'
+  %td
+    = link_to t('.destroy', default: t("helpers.links.destroy")), card_path(card), class: 'btn btn-xs btn-danger', method: :delete, remote: true, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }

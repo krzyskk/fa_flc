@@ -4,43 +4,32 @@ class CardsController < ApplicationController
   def index
     @q = Card.ransack(params[:q])
     @cards = @q.result.decorate
+    @card = Card.new
   end
 
   def show
     @card = Card.page(params[:page])
   end
 
-  def new
-    @card = Card.new
-  end
-
-  def edit
-  end
-
   def create
-    @card = Card.new(card_params)
-
+    @card = Card.create(card_params).decorate
+    @card.showed = 0
+    @card.correct = 0
+    @card.last_showed_at =  @card.created_at
     respond_to do |format|
       if @card.save
-        format.html { redirect_to @card, notice: 'Card was successfully created.' }
-        format.json { render :show, status: :created, location: @card }
+
+          #flash[:success] = 'Card was successfully created.'
+          format.html { redirect_to cards_url }
+          format.js
       else
-        format.html { render :new }
-        format.json { render json: @card.errors, status: :unprocessable_entity }
+        #flash[:success] = 'Card was successfully created.'
       end
     end
   end
 
   def update
-    respond_to do |format|
-      if @card.update(card_params)
-        format.html { redirect_to @card, notice: 'Card was successfully updated.' }
-        format.json { render :show, status: :ok, location: @card }
-      else
-        format.html { render :edit }
-        format.json { render json: @card.errors, status: :unprocessable_entity }
-      end
-    end
+
   end
 
   def destroy
@@ -58,6 +47,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:front, :back, :created, :updated, :showed, :coorect, :last_showed)
+    params.require(:card).permit(:front, :back, :showed, :correct, :last_showed_at)
   end
 end
