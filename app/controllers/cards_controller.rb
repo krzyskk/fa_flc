@@ -24,8 +24,15 @@ class CardsController < ApplicationController
     end
   end
 
-  def update
+  def edit
+  end
 
+  def update
+    @card.update_attributes!(card_params)
+    respond_to do |format|
+      format.html { redirect_to cards_url, notice: 'Card was successfully updated.' }
+      format.js
+    end
   end
 
   def destroy
@@ -39,7 +46,7 @@ class CardsController < ApplicationController
   private
 
   def set_card
-    @card = Card.find(params[:id])
+    @card = Card.find(params[:id]).decorate
   end
 
   def card_params

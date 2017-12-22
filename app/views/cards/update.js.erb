@@ -1,0 +1,3 @@
+$('#new').hide();
+$('#c<%= @card.id %>').remove();
+$('table tbody').prepend('<%= j render(@card) %>');
