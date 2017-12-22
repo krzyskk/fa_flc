@@ -1,3 +1,3 @@
 class Card < ApplicationRecord
-    #validates :front, :back, presence: true
+  validates :front, :back, presence: true
 end
