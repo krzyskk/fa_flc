@@ -31,7 +31,7 @@ class CardsController < ApplicationController
     @card.update_attributes!(card_params)
     respond_to do |format|
       format.html { redirect_to cards_url, notice: 'Card was successfully updated.' }
-      format.js
+      format.js 
     end
   end
 

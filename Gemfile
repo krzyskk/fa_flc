@@ -41,6 +41,7 @@ end
 
 group :development do
   gem 'haml_lint', require: false
+  gem 'jshint'
   gem 'letter_opener'
   gem 'listen'
   gem 'rubocop', require: false

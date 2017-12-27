@@ -2,10 +2,10 @@ class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :destroy]
 
   def new
-    @lesson = Lesson.new(lesson_params)
+    @lesson = Lesson.new
     @lesson.started_at = DateTime.now
-    cards_package = Card.where('corect < 9').limit(10)
     if @lesson.save
+      cards_package = Card.where('correct < 9').limit(10)
       cards_package.each do |card|
         @question = @lesson.questions.new
         @question.card_id = card.id
@@ -18,9 +18,14 @@ class LessonsController < ApplicationController
   end
 
   def show
-    number = rand(@lesson.questions.count)
-    card = @lesson.questions.find(number).question_id
-    @question = Card.find(card)
+    #srand
+    #number = rand(@lesson.questions.count)
+    #card = @lesson.questions.find(number).card_id
+    #@question = Card.find(card)
+  end
+
+  def question
+
   end
 
   def finish
@@ -34,7 +39,7 @@ class LessonsController < ApplicationController
   end
 
   def lesson_params
-    params.permit(:started_at, :wrong_answers, :correct_answers)
+    params.require(:lesson).permit(:started_at, :wrong_answers, :correct_answers)
   end
 
   def question_params

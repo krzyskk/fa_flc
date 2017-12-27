@@ -1,9 +1,13 @@
 = content_for :header do
   Lesson
 
+%p#previous-question qqq
+%p#your-answer qqq
+%p#correct-answer qqq
+%p#question qqq
+%p#number-of-questions qqq
+%p#number-of-correct qqq
 
 
-  %tbody
-    - @lesson.questions.each do |question|
-      %tr
-        %td= question.card_id
+%button#check-answer Question
+%input#answer{:type => "text"}
