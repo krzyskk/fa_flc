@@ -6,7 +6,8 @@ $color-black: #222
 $color-white: #eee
 $color-grey: #aaa
 $color-dark-grey: #ccc
-$color-red: #a22
+$color-green: #142
+$color-dark-green: #021
 
 //---------------
 //--Dimensions
@@ -14,13 +15,10 @@ $color-red: #a22
 $margin: 15px
 
 @import url('https://fonts.googleapis.com/css?family=Kanit:200|Montserrat:900')
-
 @import font-awesome
 @import "bootstrap-sprockets"
 @import "bootstrap"
 @import devise_bootstrap_views
-
-
 
 body
 	background: $color-black
@@ -29,6 +27,7 @@ p
 	color: $color-white
 
 table
+	width: 100%
 	color: $color-white
 
 .footer-image
@@ -41,39 +40,36 @@ table
 .row
 	margin: 0
 
-.col-footer
-	min-height: 150px
-
-.box
-	position: relative
-	width: 100%
-
 .navbar
 	margin: 0
+	padding: 6px
 	width: 100%
 	box-shadow: 0 2px 3px rgba(0,0,0,.3)
 
-
 .header
-	color: $color-white
+	padding: 30px
 	background-image: url(<%= asset_path 'header.png' %>)
 	background-size: cover
-	background-position: center
+	background-position: center top
 	background-repeat: no-repeat
 	width: 100%
 	height: 300px
+	h1
+		color: $color-dark-green
+		text-shadow: 3px 3px 5px $color-white
+		font-weight: bold
+		font-size: 48px
 
 .app
 	position: absolute
-	top: 250px
+	top: 300px
 	width: 100%
-
 
 .panel
 	width: 100%
 	position: relative
 	margin: 0
-	background: $color-red
+	background: $color-green
 	padding: $margin
 	padding-bottom: 100px
 	border-radius: $margin
@@ -82,5 +78,10 @@ table
 .main-panel
 	width: 100%
 
-.leftpanel
-	width: 150px
+form
+	.control-label
+		color: $color-white
+
+	textarea
+		width: 100%
+		resize: none

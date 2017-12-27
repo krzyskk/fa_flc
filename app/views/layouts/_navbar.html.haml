@@ -1,0 +1,10 @@
+.row
+  .nav.navbar.navbar-inverse.navbar-static-top
+    .container
+      .navbar-header
+        = link_to "<i class='fa fa-book' aria-hidden='true'></i> Szybka nauka".html_safe , root_path, class: "navbar-brand"
+      %ul.nav.navbar-nav.navbar-right
+        %li.nav-item
+          = link_to "<i class='fa fa-inbox' aria-hidden='true'></i> Cards".html_safe, cards_path, class: "nav-link"
+        %li.nav-item
+          = link_to "<i class='fa fa-play-circle' aria-hidden='true'></i> Start lesson".html_safe, new_lesson_path, class: "nav-link"

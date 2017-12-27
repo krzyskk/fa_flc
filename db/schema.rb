@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20171215221947) do
     t.datetime "started_at"
     t.integer "wrong_answers"
     t.integer "correct_answers"
+    t.integer "current_question"
+    t.integer "previous_question"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
