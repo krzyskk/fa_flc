@@ -4,9 +4,6 @@ class LessonsController < ApplicationController
   def new
     @lesson = Lesson.new
     @lesson.started_at = DateTime.now
-    @lesson.correct_answers = 0
-    @lesson.showed_questions = 0
-
     if @lesson.save
       answer = @lesson.answers.new
       answer.answer = " "

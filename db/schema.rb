@@ -29,8 +29,10 @@ ActiveRecord::Schema.define(version: 20180102122112) do
   create_table "cards", force: :cascade do |t|
     t.text "front"
     t.text "back"
-    t.integer "correct_answers"
-    t.integer "showed_questions"
+    t.integer "correct_answers", default: 0, null: false
+    t.integer "wrong_answers", default: 0, null: false
+    t.integer "near_answers", default: 0, null: false
+    t.integer "hint_answers", default: 0, null: false
     t.datetime "last_showed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,8 +40,8 @@ ActiveRecord::Schema.define(version: 20180102122112) do
 
   create_table "lessons", force: :cascade do |t|
     t.datetime "started_at"
-    t.integer "correct_answers"
-    t.integer "showed_questions"
+    t.integer "correct_answers", default: 0, null: false
+    t.integer "wrong_answers", default: 0, null: false
     t.integer "current_question"
     t.integer "previous_question"
     t.string "answer"

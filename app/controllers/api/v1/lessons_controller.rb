@@ -8,12 +8,15 @@ module Api
         if @lesson.answers[-2].answer == Card.find(@lesson.answers[-2].card_id).back
           @lesson.increment!(:correct_answers)
           @question.increment!(:correct_answers)
+        else
+          @lesson.increment!(:wrong_answers)
+          @question.increment!(:wrong_answers)
         end
         resp = {previous: Card.find(@lesson.answers[-2].card_id).front,
                 your: @lesson.answers[-2].answer,
                 correct: Card.find(@lesson.answers[-2].card_id).back,
                 question: @question.front,
-                number_of_questions: @lesson.showed_questions,
+                number_of_questions: @lesson.number_of_answers,
                 number_of_correct: @lesson.correct_answers}
         render json: resp
       end
@@ -29,8 +32,6 @@ module Api
         @answer.answer = ''
         @answer.card_id = @question.id
         @answer.save
-        @lesson.increment!(:showed_questions)
-        @question.increment!(:showed_questions)
       end
 
       def set_lesson
