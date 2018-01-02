@@ -3,8 +3,8 @@
   %td= card.back_truncated
   %td= card.created_date
   %td= card.updated_date
-  %td= card.showed
-  %td= card.correct
+  %td= card.showed_questions
+  %td= card.correct_answers
   %td= card.last_showed_date
   %td
     = link_to t('.edit', default: t("helpers.links.edit")), edit_card_path(card), remote: true, class: 'btn btn-default btn-xs'

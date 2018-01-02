@@ -4,8 +4,15 @@ class LessonsController < ApplicationController
   def new
     @lesson = Lesson.new
     @lesson.started_at = DateTime.now
+    @lesson.correct_answers = 0
+    @lesson.showed_questions = 0
+
     if @lesson.save
-      cards_package = Card.where('correct < 9').limit(10)
+      answer = @lesson.answers.new
+      answer.answer = " "
+      answer.card_id = 1
+      answer.save!
+      cards_package = Card.where('correct_answers < 15').limit(10)
       cards_package.each do |card|
         @question = @lesson.questions.new
         @question.card_id = card.id
@@ -15,17 +22,6 @@ class LessonsController < ApplicationController
     else
       redirect_to root_path, notice: 'Error'
     end
-  end
-
-  def show
-    #srand
-    #number = rand(@lesson.questions.count)
-    #card = @lesson.questions.find(number).card_id
-    #@question = Card.find(card)
-  end
-
-  def question
-
   end
 
   def finish

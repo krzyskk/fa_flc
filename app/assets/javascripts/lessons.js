@@ -10,8 +10,8 @@ $(document).ready(function(){
         $("#your-answer").html(result.your);
         $("#correct-answer").html(result.correct);
         $("#question").html(result.question);
-        $("#number-of-questions").html(result.number_of_questions);
-        $("#number-of-correct").html(result.number_of_correct);
+        $("#number-of-questions").html("<strong>Number of questions: </strong>" + result.number_of_questions);
+        $("#number-of-correct").html("<strong>Number of correct answers: </strong>" + result.number_of_correct);
      }});
   }
   $('#check-answer').click(checkAnswer);

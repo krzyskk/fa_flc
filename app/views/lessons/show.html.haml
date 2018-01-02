@@ -1,13 +1,40 @@
 = content_for :header do
   Lesson
 
-%p#previous-question qqq
-%p#your-answer qqq
-%p#correct-answer qqq
-%p#question qqq
-%p#number-of-questions qqq
-%p#number-of-correct qqq
+.panel-default
+  %p#number-of-questions qqq
+  %p#number-of-correct qqq
 
+%table#previous-questions.table
+  %tr
+    %th Question
+    %th Correct answer
+    %th Your answer
+    %th Status
+  %tr
+    %td#previous-question qqq
+    %td#correct-answer qqq
+    %td#your-answer qqq
+    %td Correct
+  %tr
+    %td asas
+    %td asas
+    %td asas
+    %td Wrong
+  %tr
+    %td asas
+    %td asas
+    %td asas
+    %td Wrong
 
-%button#check-answer Question
-%input#answer{:type => "text"}
+.alert.alert-info
+  #question.question
+    %h1
+      %ul
+        %li#question Pytanie 1
+        %li Pytanie 2
+#answer-box.alert.alert-warning
+  .input-group
+    %input#answer.form-control{type: "text", value: "Please type the answer"}/
+    %span.input-group-btn
+      %button.btn.btn-default#check-answer{type: "button"} Question

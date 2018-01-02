@@ -10,16 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171215221947) do
+ActiveRecord::Schema.define(version: 20180102122112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "answers", force: :cascade do |t|
+    t.bigint "lesson_id"
+    t.bigint "card_id"
+    t.string "answer"
+    t.boolean "correct"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_answers_on_card_id"
+    t.index ["lesson_id"], name: "index_answers_on_lesson_id"
+  end
+
   create_table "cards", force: :cascade do |t|
     t.text "front"
     t.text "back"
-    t.integer "showed"
-    t.integer "correct"
+    t.integer "correct_answers"
+    t.integer "showed_questions"
     t.datetime "last_showed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -27,10 +38,11 @@ ActiveRecord::Schema.define(version: 20171215221947) do
 
   create_table "lessons", force: :cascade do |t|
     t.datetime "started_at"
-    t.integer "wrong_answers"
     t.integer "correct_answers"
+    t.integer "showed_questions"
     t.integer "current_question"
     t.integer "previous_question"
+    t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -61,6 +73,8 @@ ActiveRecord::Schema.define(version: 20171215221947) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "cards"
+  add_foreign_key "answers", "lessons"
   add_foreign_key "questions", "cards"
   add_foreign_key "questions", "lessons"
 end
