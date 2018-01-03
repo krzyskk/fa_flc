@@ -8,6 +8,7 @@ end
 
 gem 'a9n'
 gem 'bootstrap-sass'
+gem 'carrierwave'
 gem 'coffee-rails'
 gem 'devise'
 gem 'devise-bootstrap-views'
@@ -17,6 +18,7 @@ gem 'haml-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'kaminari'
+gem "mini_magick"
 gem 'omniauth-google-oauth2'
 gem 'pg'
 gem 'puma'

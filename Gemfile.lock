@@ -47,7 +47,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
     ast (2.3.0)
-    autoprefixer-rails (7.2.3)
+    autoprefixer-rails (7.2.4)
       execjs
     bcrypt (3.1.11)
     better_errors (2.4.0)
@@ -62,13 +62,17 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.1.0)
-    capybara (2.16.1)
+    capybara (2.17.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
-      xpath (~> 2.0)
+      xpath (>= 2.0, < 4.0)
+    carrierwave (1.2.2)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.2)
@@ -83,7 +87,7 @@ GEM
     connection_pool (2.2.1)
     crass (1.0.3)
     debug_inspector (0.0.3)
-    devise (4.3.0)
+    devise (4.4.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 5.2)
@@ -102,8 +106,8 @@ GEM
     execjs (2.7.0)
     factory_bot (4.8.2)
       activesupport (>= 3.0.0)
-    faker (1.8.5)
-      i18n (~> 0.9.1)
+    faker (1.8.7)
+      i18n (>= 0.7)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
@@ -160,7 +164,7 @@ GEM
     kaminari-core (1.1.1)
     launchy (2.4.3)
       addressable (~> 2.3)
-    letter_opener (1.4.1)
+    letter_opener (1.5.0)
       launchy (~> 2.2)
     libv8 (3.16.14.19)
     listen (3.1.5)
@@ -173,13 +177,17 @@ GEM
     mail (2.7.0)
       mini_mime (>= 0.1.1)
     method_source (0.9.0)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
+    mini_magick (4.8.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
-    minitest (5.10.3)
+    minitest (5.11.1)
     multi_json (1.12.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    nio4r (2.1.0)
+    nio4r (2.2.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
     oauth2 (1.4.0)
@@ -188,7 +196,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
-    omniauth (1.7.1)
+    omniauth (1.8.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
     omniauth-google-oauth2 (0.5.2)
@@ -204,7 +212,7 @@ GEM
     parser (2.4.0.2)
       ast (~> 2.3)
     pg (0.21.0)
-    polyamorous (1.3.1)
+    polyamorous (1.3.2)
       activerecord (>= 3.0)
     powerpack (0.1.1)
     pry (0.11.3)
@@ -256,11 +264,12 @@ GEM
       ffi (>= 0.5.0, < 2)
     redis (4.0.1)
     ref (2.0.0)
-    request_store (1.3.2)
+    request_store (1.4.0)
+      rack (>= 1.4)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rspec-core (3.7.0)
+    rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -277,7 +286,7 @@ GEM
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.0)
-    rubocop (0.52.0)
+    rubocop (0.52.1)
       parallel (~> 1.10)
       parser (>= 2.4.0.2, < 3.0)
       powerpack (~> 0.1)
@@ -337,7 +346,7 @@ GEM
     turbolinks-source (5.0.3)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
-    uglifier (4.0.2)
+    uglifier (4.1.2)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.3.0)
     warden (1.2.7)
@@ -350,8 +359,8 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    xpath (2.1.0)
-      nokogiri (~> 1.3)
+    xpath (3.0.0)
+      nokogiri (~> 1.8)
 
 PLATFORMS
   ruby
@@ -362,6 +371,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   capybara
+  carrierwave
   coffee-rails
   devise
   devise-bootstrap-views
@@ -377,6 +387,7 @@ DEPENDENCIES
   kaminari
   letter_opener
   listen
+  mini_magick
   omniauth-google-oauth2
   pg
   pry-byebug

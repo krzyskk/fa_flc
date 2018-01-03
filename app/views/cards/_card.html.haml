@@ -6,6 +6,8 @@
   %td= card.correct_answers
   %td= card.correct_answers
   %td= card.last_showed_date
+  %td= image_tag card.front_image.thumb.url
+
   %td
     = link_to t('.edit', default: t("helpers.links.edit")), edit_card_path(card), remote: true, class: 'btn btn-default btn-xs'
   %td

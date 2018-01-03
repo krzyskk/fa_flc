@@ -1,4 +1,5 @@
 = simple_form_for @card, remote: true do |f|
   = f.input :front
   = f.input :back
+  = f.file_field :front_image
   = f.button :submit

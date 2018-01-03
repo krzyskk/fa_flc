@@ -13,8 +13,6 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.create(card_params).decorate
-    @card.showed = 0
-    @card.correct = 0
     @card.last_showed_at =  @card.created_at
     respond_to do |format|
       if @card.save
@@ -31,7 +29,7 @@ class CardsController < ApplicationController
     @card.update_attributes!(card_params)
     respond_to do |format|
       format.html { redirect_to cards_url, notice: 'Card was successfully updated.' }
-      format.js 
+      format.js
     end
   end
 
@@ -50,6 +48,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:front, :back, :showed, :correct, :last_showed_at)
+    params.require(:card).permit(:front, :back, :showed, :correct, :last_showed_at, :front_image)
   end
 end
