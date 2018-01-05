@@ -1,0 +1,16 @@
+= content_for :header do
+  Decks
+
+%table
+  %thead
+    %tr
+      %th{colspan: ""} Name
+  %tbody
+    = render(@decks)
+
+
+
+
+= link_to 'New Deck', new_deck_path
+
+= render 'import'

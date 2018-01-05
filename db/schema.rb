@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 20180102122112) do
     t.integer "hint_answers", default: 0, null: false
     t.string "front_image"
     t.datetime "last_showed_at"
+    t.bigint "deck_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deck_id"], name: "index_cards_on_deck_id"
+  end
+
+  create_table "decks", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,6 +86,7 @@ ActiveRecord::Schema.define(version: 20180102122112) do
 
   add_foreign_key "answers", "cards"
   add_foreign_key "answers", "lessons"
+  add_foreign_key "cards", "decks"
   add_foreign_key "questions", "cards"
   add_foreign_key "questions", "lessons"
 end

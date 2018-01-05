@@ -1,5 +1,5 @@
 %tr{id: "c#{card.id}"}
-  %td= card.front_truncated
+  %td= link_to card.front_truncated, edit_deck_card_path(card.deck, card), remote: true
   %td= card.back_truncated
   %td= card.created_date
   %td= card.updated_date
@@ -9,6 +9,4 @@
   %td= image_tag card.front_image.thumb.url
 
   %td
-    = link_to t('.edit', default: t("helpers.links.edit")), edit_card_path(card), remote: true, class: 'btn btn-default btn-xs'
-  %td
-    = link_to t('.destroy', default: t("helpers.links.destroy")), card_path(card), class: 'btn btn-xs btn-danger', remote: true, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }
+    = link_to 'Destroy', deck_card_path(card.deck, card), class: 'btn btn-xs btn-danger', method: :delete, remote: true, data: { confirm: 'Are you sure?'}

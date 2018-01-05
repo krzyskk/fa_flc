@@ -1,0 +1,3 @@
+%tr{id: "c#{deck.id}"}
+  %td= link_to deck.name, deck
+  %td= link_to 'Destroy', deck, class: 'btn btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?' }

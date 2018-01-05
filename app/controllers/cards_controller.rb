@@ -1,10 +1,9 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:show, :edit, :update, :destroy]
+  before_action :set_card, only: [:show, :edit, :import, :update, :destroy]
+  before_action :set_card_items, only: [:index, :create]
 
   def index
-    @q = Card.ransack(params[:q])
-    @cards = @q.result.decorate
-    @card = Card.new
+
   end
 
   def show
@@ -12,11 +11,11 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = Card.create(card_params).decorate
+    @card = @card_items.create(card_params).decorate
     @card.last_showed_at =  @card.created_at
     respond_to do |format|
       if @card.save
-          format.html { redirect_to cards_url, notice: 'Card was successfully created.'  }
+          format.html { redirect_to '/', notice: 'Card was successfully created.'  }
           format.js
       end
     end
@@ -28,7 +27,7 @@ class CardsController < ApplicationController
   def update
     @card.update_attributes!(card_params)
     respond_to do |format|
-      format.html { redirect_to cards_url, notice: 'Card was successfully updated.' }
+      format.html { redirect_to deck_cards_url, notice: 'Card was successfully updated.' }
       format.js
     end
   end
@@ -36,12 +35,23 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
     respond_to do |format|
-      format.html { redirect_to cards_url, notice: 'Card was successfully destroyed.' }
       format.js
+      format.html { redirect_to deck_cards_url, notice: 'Card was successfully destroyed.' }
+    end
+  end
+
+  def import
+    @cards.import(params[:file])
+    respond_to do |format|
+      format.html { redirect_to cards_url, notice: 'Card was successfully imported.' }
     end
   end
 
   private
+
+  def set_card_items
+    @card_items = Deck.find(params[:deck_id]).cards
+  end
 
   def set_card
     @card = Card.find(params[:id]).decorate

@@ -1,7 +1,7 @@
 = content_for :header do
-  Cards
+  =@deck.name + " - cards"
 
-= render 'form'
+= render partial: 'cards/form', locals: {card: @deck.cards.new}
 
 #new
 
