@@ -36,6 +36,7 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_bot'
   gem 'faker'
+  gem 'meta_request'
   gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'selenium-webdriver'

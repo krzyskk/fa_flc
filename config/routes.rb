@@ -7,10 +7,6 @@ Rails.application.routes.draw do
     end
   end
 	root 'decks#index'
+
   put 'api/v1/lessons/next_question', to: 'api/v1/lessons#next_question'
-
-
-
-
-
 end

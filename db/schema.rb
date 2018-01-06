@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20180102122112) do
 
   create_table "lessons", force: :cascade do |t|
     t.datetime "started_at"
+    t.bigint "deck_id"
     t.integer "correct_answers", default: 0, null: false
     t.integer "wrong_answers", default: 0, null: false
     t.integer "current_question"
@@ -56,6 +57,7 @@ ActiveRecord::Schema.define(version: 20180102122112) do
     t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["deck_id"], name: "index_lessons_on_deck_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -87,6 +89,7 @@ ActiveRecord::Schema.define(version: 20180102122112) do
   add_foreign_key "answers", "cards"
   add_foreign_key "answers", "lessons"
   add_foreign_key "cards", "decks"
+  add_foreign_key "lessons", "decks"
   add_foreign_key "questions", "cards"
   add_foreign_key "questions", "lessons"
 end
