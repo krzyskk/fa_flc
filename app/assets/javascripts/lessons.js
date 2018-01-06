@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
   function checkAnswer() {
     var answer = $("#answer").val();
     $.ajax({ url: "/api/v1/lessons/next_question/",
@@ -13,6 +12,8 @@ $(document).ready(function(){
         $("#number-of-questions").html("<strong>Number of questions: </strong>" + result.number_of_questions);
         $("#number-of-correct").html("<strong>Number of correct answers: </strong>" + result.number_of_correct);
      }});
+     $("#answer").val("");
   }
+  checkAnswer();
   $('#check-answer').click(checkAnswer);
 });

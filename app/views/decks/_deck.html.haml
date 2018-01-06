@@ -1,5 +1,6 @@
 %tr{id: "c#{deck.id}"}
   %td= link_to deck.name, deck
-  %td= link_to "<i class='fa fa-play-circle' aria-hidden='true'></i> Start lesson".html_safe, new_lesson_path(deck), class: 'btn btn-xs'
+  %td= deck.number_of_cards
+  %td= link_to "<i class='fa fa-play-circle' aria-hidden='true'></i> Start lesson".html_safe, new_lesson_path(deck), class: 'btn btn-xs btn-success'
 
   %td= link_to 'Destroy', deck, class: 'btn btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
