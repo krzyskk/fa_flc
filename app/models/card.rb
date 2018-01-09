@@ -10,6 +10,17 @@ class Card < ApplicationRecord
     correct_answers + wrong_answers + near_answers + hint_answers
   end
 
+  def self.to_csv
+    attributes = %w{front back correct_answers wrong_answers near_answers hint_answer}
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+      all.each do |card|
+        csv << card.attributes.values_at(*attributes)
+      end
+    end
+  end
+
   def self.import(file)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)

@@ -2,14 +2,6 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :import, :update, :destroy]
   before_action :set_card_items, only: [:index, :create]
 
-  def index
-
-  end
-
-  def show
-    @card = Card.page(params[:page])
-  end
-
   def create
     @card = @card_items.create(card_params).decorate
     @card.last_showed_at =  @card.created_at

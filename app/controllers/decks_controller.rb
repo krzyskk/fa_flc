@@ -9,7 +9,12 @@ class DecksController < ApplicationController
     @q = @deck.cards.ransack(params[:q])
     @cards = @q.result.decorate
     @card = @deck.cards.new
-    render 'cards/index'
+
+    respond_to do |format|
+      format.html { render 'cards/index' }
+      format.csv { send_data @deck.cards.to_csv, filename: "#{@deck.name}_#{Date.today}.csv" }
+    end
+
   end
 
   def new

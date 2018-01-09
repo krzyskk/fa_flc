@@ -19,3 +19,5 @@
 
   %tbody
     = render(@cards)
+
+= link_to "Export CSV", deck_path(@deck, format: "csv"), class: 'btn btn-primary'
