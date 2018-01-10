@@ -27,3 +27,5 @@
 /node_modules
 
 configuration.yml
+
+/lib/seeds

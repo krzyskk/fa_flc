@@ -7,7 +7,6 @@ class CreateCards < ActiveRecord::Migration[5.1]
       t.integer :wrong_answers, default: 0, null: false
       t.integer :near_answers, default: 0, null: false
       t.integer :hint_answers, default: 0, null: false
-      t.string :front_image
       t.datetime :last_showed_at
       t.belongs_to :deck, foreign_key: true
       t.timestamps

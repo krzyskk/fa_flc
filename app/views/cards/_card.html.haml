@@ -6,7 +6,5 @@
   %td= card.wrong_answers
   %td= card.correct_answers
   %td= card.last_showed_date
-  %td= image_tag card.front_image.thumb.url
-
   %td
     = link_to 'Destroy', deck_card_path(card.deck, card), class: 'btn btn-xs btn-danger', method: :delete, remote: true, data: { confirm: 'Are you sure?'}

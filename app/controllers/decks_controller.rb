@@ -8,13 +8,10 @@ class DecksController < ApplicationController
   def show
     @q = @deck.cards.ransack(params[:q])
     @cards = @q.result.decorate
-    @card = @deck.cards.new
-
     respond_to do |format|
       format.html { render 'cards/index' }
       format.csv { send_data @deck.cards.to_csv, filename: "#{@deck.name}_#{Date.today}.csv" }
     end
-
   end
 
   def new
@@ -35,8 +32,6 @@ class DecksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /decks/1
-  # PATCH/PUT /decks/1.json
   def update
     respond_to do |format|
       if @deck.update(deck_params)
@@ -49,8 +44,6 @@ class DecksController < ApplicationController
     end
   end
 
-  # DELETE /decks/1
-  # DELETE /decks/1.json
   def destroy
     @deck.destroy
     respond_to do |format|
@@ -58,6 +51,8 @@ class DecksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

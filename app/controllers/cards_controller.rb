@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:show, :edit, :import, :update, :destroy]
+  before_action :set_card, only: [:show, :edit, :update, :destroy]
   before_action :set_card_items, only: [:index, :create]
 
   def create
@@ -15,6 +15,7 @@ class CardsController < ApplicationController
 
   def edit
   end
+
 
   def update
     @card.update_attributes!(card_params)
@@ -32,12 +33,6 @@ class CardsController < ApplicationController
     end
   end
 
-  def import
-    @cards.import(params[:file])
-    respond_to do |format|
-      format.html { redirect_to cards_url, notice: 'Card was successfully imported.' }
-    end
-  end
 
   private
 
