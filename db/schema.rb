@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20180102122112) do
     t.bigint "lesson_id"
     t.bigint "card_id"
     t.string "answer"
-    t.boolean "correct"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_answers_on_card_id"
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20180102122112) do
     t.integer "wrong_answers", default: 0, null: false
     t.integer "near_answers", default: 0, null: false
     t.integer "hint_answers", default: 0, null: false
-    t.string "front_image"
     t.datetime "last_showed_at"
     t.bigint "deck_id"
     t.datetime "created_at", null: false

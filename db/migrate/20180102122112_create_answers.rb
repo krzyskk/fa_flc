@@ -4,7 +4,7 @@ class CreateAnswers < ActiveRecord::Migration[5.1]
       t.belongs_to :lesson, foreign_key: true
       t.belongs_to :card, foreign_key: true
       t.string :answer
-      t.boolean :correct
+      t.string :status
       t.timestamps
     end
   end

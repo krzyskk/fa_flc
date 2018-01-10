@@ -18,6 +18,7 @@ $(document).ready(function(){
         $("#correct-answer").html(result.correct);
         speak(result.correct);
         $("#question").html(result.question);
+        $("#status").html(result.status);
         $("#number-of-questions").html("<strong>Number of questions: </strong>" + result.number_of_questions);
         $("#number-of-correct").html("<strong>Number of correct answers: </strong>" + result.number_of_correct);
      }});
