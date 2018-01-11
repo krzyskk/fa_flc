@@ -1,4 +1,5 @@
 class LessonsController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @deck = Deck.find(params[:format])

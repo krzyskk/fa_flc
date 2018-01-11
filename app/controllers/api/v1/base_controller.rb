@@ -6,7 +6,7 @@ module Api
       private
 
       def check_login
-        #render( json: {Error: 'access denied'}, status: 401 ) unless current_user
+        render( json: {Error: 'access denied'}, status: 401 ) unless current_user
       end
     end
   end

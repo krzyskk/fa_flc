@@ -1,8 +1,9 @@
 class DecksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_deck, only: [:show, :edit, :update, :destroy]
 
   def index
-    @decks = Deck.all
+    @decks = current_user.decks.all
   end
 
   def show
@@ -15,11 +16,11 @@ class DecksController < ApplicationController
   end
 
   def new
-    @deck = Deck.new
+    @deck = current_user.decks.new
   end
 
   def create
-    @deck = Deck.new(deck_params)
+    @deck = current_use.decks.new(deck_params)
 
     respond_to do |format|
       if @deck.save

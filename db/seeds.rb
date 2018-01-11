@@ -1,4 +1,11 @@
-deck = Deck.new
+user = User.new
+user.email = 'user@example.com'
+user.password = 'password'
+user.password_confirmation = 'password'
+user.save!
+
+
+deck = user.decks.new
 deck.name = "imported from file" + Faker::Lorem.word
 deck.save!
 

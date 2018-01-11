@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(version: 20180102122112) do
 
   create_table "decks", force: :cascade do |t|
     t.string "name"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_decks_on_user_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -79,6 +81,8 @@ ActiveRecord::Schema.define(version: 20180102122112) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.integer "number_of_lesson_questions"
+    t.integer "number_of_lesson_correct"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -88,6 +92,7 @@ ActiveRecord::Schema.define(version: 20180102122112) do
   add_foreign_key "answers", "cards"
   add_foreign_key "answers", "lessons"
   add_foreign_key "cards", "decks"
+  add_foreign_key "decks", "users"
   add_foreign_key "lessons", "decks"
   add_foreign_key "questions", "cards"
   add_foreign_key "questions", "lessons"
