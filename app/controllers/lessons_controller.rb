@@ -21,4 +21,8 @@ class LessonsController < ApplicationController
       redirect_to root_path, notice: 'Error'
     end
   end
+
+  def end
+
+  end
 end

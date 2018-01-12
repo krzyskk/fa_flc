@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users
   resources :lessons
   resources :decks do
     resources :cards
@@ -11,4 +12,7 @@ Rails.application.routes.draw do
 	root 'decks#index'
 
   put 'api/v1/lessons/next_question', to: 'api/v1/lessons#next_question'
+  get '/settings', to: 'users#show'
+
+
 end

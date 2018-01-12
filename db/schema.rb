@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20180102122112) do
     t.integer "current_question"
     t.integer "previous_question"
     t.string "answer"
+    t.boolean "finished", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deck_id"], name: "index_lessons_on_deck_id"

@@ -8,6 +8,7 @@ class CreateLessons < ActiveRecord::Migration[5.1]
       t.integer :current_question
       t.integer :previous_question
       t.string :answer
+      t.boolean :finished, default: false
       t.timestamps
     end
   end
