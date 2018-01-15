@@ -53,10 +53,6 @@ ActiveRecord::Schema.define(version: 20180102122112) do
     t.bigint "deck_id"
     t.integer "correct_answers", default: 0, null: false
     t.integer "wrong_answers", default: 0, null: false
-    t.integer "current_question"
-    t.integer "previous_question"
-    t.string "answer"
-    t.boolean "finished", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deck_id"], name: "index_lessons_on_deck_id"
@@ -82,8 +78,6 @@ ActiveRecord::Schema.define(version: 20180102122112) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.integer "number_of_lesson_questions"
-    t.integer "number_of_lesson_correct"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

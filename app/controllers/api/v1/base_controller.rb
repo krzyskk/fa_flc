@@ -3,14 +3,6 @@ module Api
     class BaseController < ActionController::API
       before_action :check_login
 
-      def current_lesson
-        if Lesson.last.finished == false
-          Lesson.last
-        else
-          Lesson.new
-        end
-      end
-
       private
 
       def check_login

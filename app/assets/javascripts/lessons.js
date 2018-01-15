@@ -26,7 +26,6 @@ $(document).ready(function(){
   }
 
   checkAnswer();
-  $('#check-answer').click(checkAnswer);
   $("#answer").keydown( "keydown", function( event ) {
 	  if (event.which == 13) {
 	  	checkAnswer();
