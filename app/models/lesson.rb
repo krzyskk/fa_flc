@@ -6,4 +6,13 @@ class Lesson < ApplicationRecord
   def number_of_answers
     correct_answers + wrong_answers
   end
+
+  def last_answers
+    answers.offset(1).last(3)
+  end
+
+  def last_answer
+    answers.offset(1).last
+  end
+
 end

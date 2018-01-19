@@ -1,0 +1,12 @@
+function speak(phrase){
+  var msg = new SpeechSynthesisUtterance();
+  msg.text = phrase;
+  msg.lang = 'en-GB';
+  window.speechSynthesis.speak(msg);
+}
+
+$('#progress-box').html('<%= j render 'progress' %>');
+$('#question-box').html('<%= j render 'question' %>');
+$('#previous-questions tbody').append('<%= j render(@lesson.last_answer) %>');
+$('#previous-questions tbody tr').first().remove();
+speak('<%= @lesson.last_answer.correct_answer %>');

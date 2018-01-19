@@ -8,12 +8,12 @@ default: &default
 
 development:
   <<: *default
-  database: exercise_log_development
+  database: fast_flashcards_development
 
 test:
   <<: *default
-  database: exercise_log_test
+  database: fast_flashcards_test
 
 production:
   <<: *default
-  database: exercise_log_production
+  database: fast_flashcards_production
