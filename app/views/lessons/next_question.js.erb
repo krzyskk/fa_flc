@@ -9,4 +9,5 @@ $('#progress-box').html('<%= j render 'progress' %>');
 $('#question-box').html('<%= j render 'question' %>');
 $('#previous-questions tbody').append('<%= j render(@lesson.last_answer) %>');
 $('#previous-questions tbody tr').first().remove();
+$('#answer').first().val('');
 speak('<%= @lesson.last_answer.correct_answer %>');

@@ -1,7 +1,7 @@
 class Card < ApplicationRecord
   validates :front, :back, presence: true
-  has_many :questions
-  has_many :answers
+  has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
   belongs_to :deck
 
   def number_of_answers

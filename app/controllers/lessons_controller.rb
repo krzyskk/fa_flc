@@ -7,9 +7,9 @@ class LessonsController < ApplicationController
     @lesson.started_at = DateTime.now
     if @lesson.save
       4.times do
-        create_answer(1)
+        create_answer(@deck.cards_package.first.id)
       end
-       cards_package = @deck.cards.where('correct_answers < 15').limit(10)
+       cards_package = @deck.cards_package
        cards_package.each do |card|
          @question = @lesson.questions.new
          @question.card_id = card.id
@@ -56,7 +56,6 @@ class LessonsController < ApplicationController
 
   def create_answer(card)
     answer = @lesson.answers.new
-    answer.answer = " "
     answer.card_id = card
     answer.save!
     return answer

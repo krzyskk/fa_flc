@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20180102122112) do
   create_table "answers", force: :cascade do |t|
     t.bigint "lesson_id"
     t.bigint "card_id"
-    t.string "answer"
-    t.string "status"
+    t.string "answer", default: "", null: false
+    t.string "status", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_answers_on_card_id"
@@ -29,11 +29,13 @@ ActiveRecord::Schema.define(version: 20180102122112) do
   create_table "cards", force: :cascade do |t|
     t.text "front"
     t.text "back"
+    t.boolean "active", default: true
     t.integer "correct_answers", default: 0, null: false
     t.integer "wrong_answers", default: 0, null: false
     t.integer "near_answers", default: 0, null: false
     t.integer "hint_answers", default: 0, null: false
     t.datetime "last_showed_at"
+    t.datetime "marked_as_memorized"
     t.bigint "deck_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
