@@ -20,7 +20,7 @@ class DecksController < ApplicationController
   end
 
   def create
-    @deck = current_use.decks.new(deck_params)
+    @deck = current_user.decks.new(deck_params)
 
     respond_to do |format|
       if @deck.save
