@@ -1,0 +1,27 @@
+<style>
+
+#scissors div {
+    position: relative;
+    border-top: 1px dashed black;
+    margin-top: -3px;
+}
+</style>
+
+<html>
+  <head>
+    <meta charset='utf-8' />
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<div class='document'>
+<br>
+<% @deck.cards_package.each do |card| %>
+ <blockquote>
+     <p align="center"><%= card.front %></p><br><br><hr>
+     <br><br><footer align="center"><cite><%= card.back %></cite></footer><br><br>
+   <div id="scissors">
+     <div></div>
+   </div> <br><br>
+ </blockquote>
+ <% end %>
+</div>
+</html>

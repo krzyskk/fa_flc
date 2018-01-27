@@ -12,6 +12,13 @@ class DecksController < ApplicationController
     respond_to do |format|
       format.html { render 'cards/index' }
       format.csv { send_data @deck.cards.to_csv, filename: "#{@deck.name}_#{Date.today}.csv" }
+      format.pdf do
+          render :pdf => "#{@deck.name}",
+                 :template => 'decks/show.pdf.erb',
+                 :footer => {
+                    :center => "FastFlashcards - #{@deck.name}",
+                 }
+      end
     end
   end
 
