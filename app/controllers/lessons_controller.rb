@@ -4,7 +4,6 @@ class LessonsController < ApplicationController
   def new
     @deck = Deck.find(params[:format])
     @lesson = @deck.lessons.new
-    @lesson.started_at = DateTime.now
     if @lesson.save
       4.times do
         create_answer(@deck.cards_package.first.id)
@@ -31,23 +30,20 @@ class LessonsController < ApplicationController
     @last_answer = @lesson.answers.last
     @last_answer.answer = params[:answer]
     @last_answer.save!
-    @last_card = Card.find(@last_answer.card_id)
 
-    if @last_answer.answer == @last_card.back
-      @lesson.increment!(:correct_answers)
-      @last_card.increment!(:correct_answers)
-      @last_answer.status = 'correct'
+    if @last_answer.status == 'correct'
+      increment_counters(:correct_answers)
       srand
       number = rand(@lesson.questions.count)
       card = @lesson.questions[number].card_id
+    elsif @last_answer.status == 'empty'
+      increment_counters(:empty_answers)
+      card =  @last_answer.card_id
     else
-      @lesson.increment!(:wrong_answers)
-      @last_card.increment!(:wrong_answers)
-      @last_answer.status = 'wrong'
-      card =  @last_card.id
+      increment_counters(:wrong_answers)
+      card =  @last_answer.card_id
     end
 
-    @last_answer.save!
     @answer = create_answer(card)
 
   end
@@ -59,6 +55,11 @@ class LessonsController < ApplicationController
     answer.card_id = card
     answer.save!
     return answer
+  end
+
+  def increment_counters(counter)
+    @lesson.increment!(counter)
+    Card.find(@last_answer.card_id).increment!(counter)
   end
 
 end
