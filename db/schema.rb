@@ -59,15 +59,6 @@ ActiveRecord::Schema.define(version: 20180102122112) do
     t.index ["deck_id"], name: "index_lessons_on_deck_id"
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.bigint "lesson_id"
-    t.bigint "card_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["card_id"], name: "index_questions_on_card_id"
-    t.index ["lesson_id"], name: "index_questions_on_lesson_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -90,6 +81,4 @@ ActiveRecord::Schema.define(version: 20180102122112) do
   add_foreign_key "cards", "decks"
   add_foreign_key "decks", "users"
   add_foreign_key "lessons", "decks"
-  add_foreign_key "questions", "cards"
-  add_foreign_key "questions", "lessons"
 end

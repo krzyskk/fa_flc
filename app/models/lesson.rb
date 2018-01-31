@@ -1,6 +1,5 @@
 class Lesson < ApplicationRecord
   belongs_to :deck
-  has_many :questions
   has_many :answers
 
   def number_of_answers
@@ -13,6 +12,14 @@ class Lesson < ApplicationRecord
 
   def last_answer
     answers.offset(1).last
+  end
+
+  def next_card_id
+    if answers.last.status == 'correct'
+      srand
+      number = rand(deck.cards_package.count)
+      return deck.cards_package[number].id
+    end
   end
 
 end
