@@ -10,4 +10,14 @@ class Answer < ApplicationRecord
     Card.find(card.id).back
   end
 
+  def status
+    if  answer == Card.find(card.id).back
+      return 'correct'
+    elsif answer == ''
+      return 'empty'
+    else
+      return 'wrong'
+    end
+  end
+
 end

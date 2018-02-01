@@ -6,8 +6,7 @@ class CreateCards < ActiveRecord::Migration[5.1]
       t.boolean :active, default: true
       t.integer :correct_answers, default: 0, null: false
       t.integer :wrong_answers, default: 0, null: false
-      t.integer :near_answers, default: 0, null: false
-      t.integer :hint_answers, default: 0, null: false
+      t.integer :empty_answers, default: 0, null: false
       t.datetime :last_showed_at
       t.datetime :marked_as_memorized
       t.belongs_to :deck, foreign_key: true

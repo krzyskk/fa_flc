@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20180102122112) do
     t.bigint "lesson_id"
     t.bigint "card_id"
     t.string "answer", default: "", null: false
-    t.string "status", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_answers_on_card_id"
@@ -32,8 +31,7 @@ ActiveRecord::Schema.define(version: 20180102122112) do
     t.boolean "active", default: true
     t.integer "correct_answers", default: 0, null: false
     t.integer "wrong_answers", default: 0, null: false
-    t.integer "near_answers", default: 0, null: false
-    t.integer "hint_answers", default: 0, null: false
+    t.integer "empty_answers", default: 0, null: false
     t.datetime "last_showed_at"
     t.datetime "marked_as_memorized"
     t.bigint "deck_id"
@@ -51,22 +49,14 @@ ActiveRecord::Schema.define(version: 20180102122112) do
   end
 
   create_table "lessons", force: :cascade do |t|
-    t.datetime "started_at"
     t.bigint "deck_id"
     t.integer "correct_answers", default: 0, null: false
     t.integer "wrong_answers", default: 0, null: false
+    t.integer "empty_answers", default: 0, null: false
+    t.integer "marked_as_memorized", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deck_id"], name: "index_lessons_on_deck_id"
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.bigint "lesson_id"
-    t.bigint "card_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["card_id"], name: "index_questions_on_card_id"
-    t.index ["lesson_id"], name: "index_questions_on_lesson_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,6 +81,4 @@ ActiveRecord::Schema.define(version: 20180102122112) do
   add_foreign_key "cards", "decks"
   add_foreign_key "decks", "users"
   add_foreign_key "lessons", "decks"
-  add_foreign_key "questions", "cards"
-  add_foreign_key "questions", "lessons"
 end
