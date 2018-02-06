@@ -7,8 +7,6 @@ capybara-*.html
 /coverage/
 /spec/tmp
 
-/lib/seeds
-
 *.orig
 rerun.txt
 pickle-email-*.html
