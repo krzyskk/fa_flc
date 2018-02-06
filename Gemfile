@@ -37,6 +37,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
+  gem 'sqlite3'
 end
 
 group :development do

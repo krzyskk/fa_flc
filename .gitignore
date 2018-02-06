@@ -3,7 +3,6 @@ capybara-*.html
 .rspec
 /log
 /tmp
-/config/database.yml
 /public/system
 /coverage/
 /spec/tmp
