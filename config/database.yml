@@ -6,12 +6,12 @@ default: &default
 development:
   <<: *default
   adapter: sqlite3
-  database: fast_flashcards_development
+  database: db/fast_flashcards_development.sqlite3
 
 test:
   <<: *default
   adapter: sqlite3
-  database: fast_flashcards_test
+  database: db/fast_flashcards_test.sqlite3
 
 production:
   <<: *default
