@@ -2,6 +2,8 @@ class Answer < ApplicationRecord
   belongs_to :lesson
   belongs_to :card
 
+  before_update :set_status, :update_card_counters
+
   def question
     Card.find(card.id).front
   end
@@ -10,14 +12,20 @@ class Answer < ApplicationRecord
     Card.find(card.id).back
   end
 
-  def status
-    if  answer == Card.find(card.id).back
-      return 'correct'
+  private
+
+  def set_status
+    if answer == self.correct_answer
+      self.status = 'correct'
     elsif answer == ''
-      return 'empty'
+      self.status = 'empty'
     else
-      return 'wrong'
+      self.status = 'wrong'
     end
+  end
+
+  def update_card_counters
+    Card.find(card.id).increment!((self.status + '_answers').to_sym) unless status == ''
   end
 
 end
