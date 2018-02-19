@@ -1,2 +1,3 @@
 $('#edit').remove();
 $('#c<%= @card.id %>').replaceWith('<%= j render(@card) %>');
+$('#a<%= @card.id %>').replaceWith("<%= j render partial: 'answers/answer', locals: {answer: @card.answers.last} %>");
