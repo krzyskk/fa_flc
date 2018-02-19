@@ -31,8 +31,6 @@ class Lesson < ApplicationRecord
     else
       return self.last_answer.card_id
     end
-    next_card
-    binding.pry
   end
 
   private

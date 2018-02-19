@@ -26,6 +26,7 @@ class Answer < ApplicationRecord
 
   def update_card_counters
     Card.find(card.id).increment!((self.status + '_answers').to_sym) unless status == ''
+    Card.find(card.id).set_memorized
   end
 
 end

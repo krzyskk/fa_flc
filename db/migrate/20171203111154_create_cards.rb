@@ -4,6 +4,7 @@ class CreateCards < ActiveRecord::Migration[5.1]
       t.text :front
       t.text :back
       t.boolean :active, default: true
+      t.boolean :memorized, default: false
       t.integer :correct_answers, default: 0, null: false
       t.integer :wrong_answers, default: 0, null: false
       t.integer :empty_answers, default: 0, null: false

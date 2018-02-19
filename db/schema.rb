@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20180102122112) do
     t.text "front"
     t.text "back"
     t.boolean "active", default: true
+    t.boolean "memorized", default: false
     t.integer "correct_answers", default: 0, null: false
     t.integer "wrong_answers", default: 0, null: false
     t.integer "empty_answers", default: 0, null: false
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 20180102122112) do
 
   create_table "lessons", force: :cascade do |t|
     t.integer "deck_id"
+    t.integer "memorized", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deck_id"], name: "index_lessons_on_deck_id"

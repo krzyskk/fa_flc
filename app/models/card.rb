@@ -3,12 +3,19 @@ class Card < ApplicationRecord
   has_many :answers, dependent: :destroy
   belongs_to :deck
 
-  def number_of_answers
-    correct_answers + wrong_answers + near_answers + hint_answers
+  def set_memorized
+    if answers.where(status: 'correct').count >= 3
+      self.memorized = true
+      self.marked_as_memorized = Date.today
+      Lesson.last.increment!('memorized')
+    else
+      self.memorized = false
+    end
+    self.save!
   end
 
   def self.to_csv
-    attributes = %w{front back correct_answers wrong_answers near_answers hint_answer}
+    attributes = %w{front back correct_answers wrong_answers empty_answers}
 
     CSV.generate(headers: true) do |csv|
       csv << attributes

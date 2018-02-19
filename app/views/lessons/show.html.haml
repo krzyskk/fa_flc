@@ -20,6 +20,6 @@
 #answer-box.alert.alert-warning
   = form_tag next_question_path, method: :put, remote: true do
     .input-group
-      = text_field_tag 'answer', nil, class: 'form-control'
+      = text_field_tag 'answer', nil, class: 'form-control', autocomplete: 'off'
       %span.input-group-btn
         = button_tag 'Next', type: 'submit', class: 'btn btn-success'
