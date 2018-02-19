@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180102122112) do
+ActiveRecord::Schema.define(version: 20180219222917) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "lesson_id"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 20180102122112) do
     t.integer "deck_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "last_correct_answer"
+    t.datetime "last_wrong_answer"
     t.index ["deck_id"], name: "index_cards_on_deck_id"
   end
 

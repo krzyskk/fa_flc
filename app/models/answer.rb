@@ -5,11 +5,11 @@ class Answer < ApplicationRecord
   before_update :set_status, :update_card_counters
 
   def question
-    Card.find(card.id).front
+    card.front
   end
 
   def correct_answer
-    Card.find(card.id).back
+    card.back
   end
 
   private
@@ -25,8 +25,9 @@ class Answer < ApplicationRecord
   end
 
   def update_card_counters
-    Card.find(card.id).increment!((self.status + '_answers').to_sym) unless status == ''
-    Card.find(card.id).set_memorized
+    card.increment!((self.status + '_answers').to_sym) unless status == ''
+    card.update_attribute(('last_' + self.status + '_answer'), Date.today) unless status == '' || 'empty'
+    card.set_memorized
   end
 
 end
