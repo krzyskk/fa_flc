@@ -15,7 +15,7 @@ class Answer < ApplicationRecord
   private
 
   def set_status
-    if answer == self.correct_answer
+    if answer == correct_answer
       self.status = 'correct'
     elsif answer == ''
       self.status = 'empty'
@@ -25,9 +25,8 @@ class Answer < ApplicationRecord
   end
 
   def update_card_counters
-    card.increment!((self.status + '_answers').to_sym) unless status == ''
-    card.update_attribute(('last_' + self.status + '_answer'), Date.today) unless status == '' || 'empty'
+    card.increment!((status + '_answers').to_sym) unless status == ''
+    card.update_attribute(('last_' + status + '_answer'), Date.today) unless status == '' || 'empty'
     card.set_memorized
   end
-
 end

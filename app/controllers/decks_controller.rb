@@ -13,11 +13,7 @@ class DecksController < ApplicationController
       format.html { render 'cards/index' }
       format.csv { send_data @deck.cards.to_csv, filename: "#{@deck.name}_#{Date.today}.csv" }
       format.pdf do
-          render :pdf => "#{@deck.name}",
-                 :template => 'decks/show.pdf.erb',
-                 :footer => {
-                    :center => "FastFlashcards - #{@deck.name}",
-                 }
+        render pdf: @deck.name,  template: 'decks/show.pdf.erb', footer: {center: 'FastFlashcards - ' + @deck.name}
       end
     end
   end
@@ -28,44 +24,33 @@ class DecksController < ApplicationController
 
   def create
     @deck = current_user.decks.new(deck_params)
-
-    respond_to do |format|
-      if @deck.save
-        format.html { redirect_to @deck, notice: 'Deck was successfully created.' }
-        format.json { render :show, status: :created, location: @deck }
-      else
-        format.html { render :new }
-        format.json { render json: @deck.errors, status: :unprocessable_entity }
-      end
+    if @deck.save
+      redirect_to @deck, notice: 'Deck was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @deck.update(deck_params)
-        format.html { redirect_to @deck, notice: 'Deck was successfully updated.' }
-        format.json { render :show, status: :ok, location: @deck }
-      else
-        format.html { render :edit }
-        format.json { render json: @deck.errors, status: :unprocessable_entity }
-      end
+    if @deck.update(deck_params)
+      redirect_to @deck, notice: 'Deck was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @deck.destroy
-    respond_to do |format|
-      format.html { redirect_to decks_url, notice: 'Deck was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to decks_url, notice: 'Deck was successfully destroyed.'
   end
 
   private
-    def set_deck
-      @deck = Deck.find(params[:id])
-    end
 
-    def deck_params
-      params.require(:deck).permit(:name)
-    end
+  def set_deck
+    @deck = Deck.find(params[:id])
+  end
+
+  def deck_params
+    params.require(:deck).permit(:name)
+  end
 end

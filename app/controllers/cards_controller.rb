@@ -5,18 +5,17 @@ class CardsController < ApplicationController
 
   def create
     @card = @card_items.create(card_params).decorate
-    @card.last_showed_at =  @card.created_at
+    @card.last_showed_at = @card.created_at
     respond_to do |format|
       if @card.save
-          format.html { redirect_to '/', notice: 'Card was successfully created.'  }
-          format.js
+        format.html { redirect_to '/', notice: 'Card was successfully created.' }
+        format.js
       end
     end
   end
 
   def edit
   end
-
 
   def update
     @card.update_attributes!(card_params)
@@ -29,11 +28,10 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
     respond_to do |format|
-      format.js
       format.html { redirect_to deck_cards_url, notice: 'Card was successfully destroyed.' }
+      format.js
     end
   end
-
 
   private
 

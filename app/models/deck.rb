@@ -10,5 +10,4 @@ class Deck < ApplicationRecord
   def cards_package
     cards.all.where(active: true).where(memorized: false).order(last_correct_answer: :desc).limit(10)
   end
-
 end

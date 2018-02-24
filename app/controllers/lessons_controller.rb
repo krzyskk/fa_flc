@@ -16,5 +16,4 @@ class LessonsController < ApplicationController
     @lesson.answers.last.update(answer: params[:answer])
     @lesson.answers.create(card_id: @lesson.next_card_id)
   end
-
 end

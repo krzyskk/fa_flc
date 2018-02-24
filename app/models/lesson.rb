@@ -24,12 +24,12 @@ class Lesson < ApplicationRecord
   end
 
   def next_card_id
-    if self.last_answer.status == 'correct'
+    if last_answer.status == 'correct'
       srand
       number = rand(deck.cards_package.count)
-      return self.deck.cards_package[number].id
+      deck.cards_package[number].id
     else
-      return self.last_answer.card_id
+      last_answer.card_id
     end
   end
 
@@ -37,7 +37,7 @@ class Lesson < ApplicationRecord
 
   def init_answers
     4.times do
-      self.answers.create(card_id: Card.where(deck_id: deck_id).first.id)
+      answers.create(card_id: Card.where(deck_id: deck_id).first.id)
     end
   end
 end
