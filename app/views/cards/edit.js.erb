@@ -1,2 +1,3 @@
-$('<tr id="edit"><td colspan="3"><%= j render('form', card: @card) %></tr></td>').insertAfter('#c<%= @card.id %>');
-$('<tr id="edit"><td colspan="3"><%= j render('form', card: @card) %></tr></td>').insertAfter('#a<%= @card.id %>');
+$('#edit').remove();
+$('<tr id="edit"><td colspan="8"><%= j render('form', card: @card) %></td></tr>').insertAfter('#c<%= @card.id %>');
+$('<tr id="edit"><td colspan="8"><%= j render('form', card: @card) %></td></tr>').insertAfter('#a<%= @card.id %>');
