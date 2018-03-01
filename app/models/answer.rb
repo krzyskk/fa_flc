@@ -25,8 +25,9 @@ class Answer < ApplicationRecord
   end
 
   def update_card_counters
+    card.update_attribute('last_showed_at', DateTime.now)
     card.increment!((status + '_answers').to_sym) unless status == ''
-    card.update_attribute(('last_' + status + '_answer'), Date.today) unless status == '' || 'empty'
+    card.update_attribute(('last_' + status + '_answer'), DateTime.now) unless status == '' || 'empty'
     card.set_memorized
   end
 end

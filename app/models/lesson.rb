@@ -23,15 +23,20 @@ class Lesson < ApplicationRecord
     answers.offset(1).last
   end
 
+  def cards_package
+    deck.cards.all.where(active: true).where(memorized: false).order(last_correct_answer: :asc).limit(10)
+  end
+
   def next_card_id
     if last_answer.status == 'correct'
       srand
-      number = rand(deck.cards_package.count)
-      deck.cards_package[number].id
+      number = rand(cards_package.count / 2)
+      cards_package.order(last_correct_answer: :asc)[number].id
     else
       last_answer.card_id
     end
   end
+
 
   private
 

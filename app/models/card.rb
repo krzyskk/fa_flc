@@ -3,13 +3,21 @@ class Card < ApplicationRecord
   has_many :answers, dependent: :destroy
   belongs_to :deck
 
+  before_create :set_dates
+
+  def set_dates
+    self.last_showed_at = DateTime.now
+    self.last_correct_answer = DateTime.now
+    self.last_wrong_answer = DateTime.now
+  end
+
   def set_memorized
     if answers.where(status: 'correct').count >= 3
       self.memorized = true
-      self.marked_as_memorized = Date.today
+      self.marked_as_memorized = DateTime.now
       Lesson.last.increment!('memorized')
     else
-      self.memorized = false
+      memorized = false
     end
     self.save!
   end

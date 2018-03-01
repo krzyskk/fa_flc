@@ -5,7 +5,6 @@ class CardsController < ApplicationController
 
   def create
     @card = @card_items.create(card_params).decorate
-    @card.last_showed_at = @card.created_at
     respond_to do |format|
       if @card.save
         format.html { redirect_to '/', notice: 'Card was successfully created.' }
