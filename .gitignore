@@ -8,6 +8,9 @@ capybara-*.html
 /spec/tmp
 /db/*.sqlite3
 
+/config/configuration.yml
+
+
 *.orig
 rerun.txt
 pickle-email-*.html

@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    a9n (0.5.5)
     actioncable (5.1.4)
       actionpack (= 5.1.4)
       nio4r (~> 2.0)
@@ -346,6 +347,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  a9n
   better_errors
   binding_of_caller
   bootstrap-sass
