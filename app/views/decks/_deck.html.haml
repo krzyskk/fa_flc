@@ -1,6 +1,10 @@
-%tr{id: "c#{deck.id}"}
-  %td= link_to deck.name, deck
-  %td= deck.number_of_cards
-  %td= link_to "<i class='fa fa-play-circle' aria-hidden='true'></i> Start lesson".html_safe, new_lesson_path(deck), class: 'btn btn-xs btn-success'
-
-  %td= link_to 'Destroy', deck, class: 'btn btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
+%li{id: "c#{deck.id}"}
+  .description
+    = link_to deck.name, deck, class: 'deck-name'
+    %p= deck.description
+  .info
+    = icon('fas', 'tags' ,deck.number_of_cards)
+  .buttons
+    = link_to "<i class='far fa-play-circle'></i> Start lesson".html_safe, new_lesson_path(deck), class: 'btn btn-xs btn-success'
+    = link_to "<i class='far fa-edit'></i>  Edit decription".html_safe , edit_deck_path(deck), class: 'btn btn-xs btn-primary'
+    = link_to "<i class='fas fa-trash'></i>  Remove deck".html_safe , deck, class: 'btn btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?' }

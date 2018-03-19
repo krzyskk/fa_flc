@@ -33,7 +33,7 @@ class DecksController < ApplicationController
 
   def update
     if @deck.update(deck_params)
-      redirect_to @deck, notice: 'Deck was successfully updated.'
+      redirect_to decks_url, notice: 'Deck was successfully updated.'
     else
       render :edit
     end
@@ -51,6 +51,6 @@ class DecksController < ApplicationController
   end
 
   def deck_params
-    params.require(:deck).permit(:name)
+    params.require(:deck).permit(:name, :description)
   end
 end

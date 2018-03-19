@@ -11,10 +11,11 @@ gem 'coffee-rails'
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'draper'
-gem 'font-awesome-rails'
+gem 'font-awesome-sass'
 gem 'haml-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
+gem 'material_icons'
 gem 'omniauth-google-oauth2'
 gem 'pg'
 gem 'puma'
@@ -50,5 +51,3 @@ group :development do
   gem 'spring-watcher-listen'
   gem 'web-console'
 end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

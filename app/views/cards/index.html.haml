@@ -5,20 +5,19 @@
 
 #new
 
-%table.table
-  %thead
-    %tr
-      %th= sort_link(@q, :front)
-      %th= sort_link(@q, :back)
-      %th= sort_link(@q, :created_at)
-      %th= sort_link(@q, :updated_at)
-      %th= sort_link(@q, :views)
-      %th= sort_link(@q, :correct)
-      %th= sort_link(@q, :last_showed_at)
-      %th{colspan: "3"}
+%p=  @deck.description
 
-  %tbody
-    = render(@cards)
+.table
+  .table-row.table-header
+    .table-item= sort_link(@q, :front)
+    .table-item= sort_link(@q, :back)
+    .table-item= sort_link(@q, :created_at)
+    .table-item= sort_link(@q, :updated_at)
+    .table-item= sort_link(@q, :views)
+    .table-item= sort_link(@q, :correct)
+    .table-item= sort_link(@q, :last_showed_at)
+
+  = render(@cards)
 
 = link_to "Export CSV", deck_path(@deck, format: "csv"), class: 'btn btn-primary'
 = link_to "Create PDF document", deck_path(@deck, format: "pdf"), class: 'btn btn-primary'

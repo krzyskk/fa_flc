@@ -1,12 +1,7 @@
 = content_for :header do
   Decks
 
-%table.table
-  %thead
-    %tr
-      %th Name
-      %th{colspan: "3"} Number of cards
-  %tbody
-    = render(@decks)
+%ul.decks
+  = render(@decks)
 
-= link_to 'New Deck', new_deck_path, class: 'btn btn-primary'
+= link_to "<i class='fas fa-plus-circle'></i> New Deck".html_safe, new_deck_path, class: 'btn btn-primary'

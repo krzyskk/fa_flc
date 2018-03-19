@@ -1,25 +1,16 @@
 //---------------
-//--Colors
-
-$color-blue: #2eb9ce
-$color-black: #222
-$color-white: #eee
-$color-grey: #aaa
-$color-dark-grey: #ccc
-$color-green: #142
-$color-dark-green: #021
-
-//---------------
 //--Dimensions
 
 $margin: 15px
 
 @import url('https://fonts.googleapis.com/css?family=Kanit:200|Montserrat:900')
-@import font-awesome
+@import "font-awesome-sprockets"
+@import "font-awesome"
 @import "bootstrap-sprockets"
 @import "bootstrap"
 @import devise_bootstrap_views
 @import "/\*"
+
 
 body
 	background: $color-black
@@ -27,13 +18,37 @@ body
 p
 	color: $color-white
 
-table
+
+
+.decks
 	width: 100%
 	color: $color-white
-	th
-		background: darken($color-green, 2%)
-	tr:nth-of-type(odd)
+	padding: 0
+	margin: 0
+	list-style: none
+	li
+		padding: 15px
+		margin: 0 0 15px 0
+		box-shadow: 0 2px 3px rgba(0,0,0,.1)
+		border-left: 5px solid $color-blue
+		border-radius: 5px
 		background: lighten($color-green, 3%)
+		display: flex
+		flex-wrap: wrap
+		justify-content: space-between
+		&:nth-of-type(odd)
+			background: lighten($color-green, 5%)
+		&:hover
+			background: lighten($color-green, 7%)
+
+.description
+	display: block
+	width: 50%
+
+.info
+	display: block
+.buttons
+	overflow: initial
 
 .row
 	margin: 0
@@ -98,3 +113,48 @@ form
 	textarea
 		width: 100%
 		resize: none
+
+.deck-name
+	display: block
+	font-weight: bold
+	font-size: 1.5em
+	color: $color-blue
+	&:hover
+		text-decoration: none
+		color: lighten($color-blue, 25%)
+
+
+
+
+//------------------------
+//table
+
+.table
+	display: flex
+	flex-flow: column nowrap
+	justify-content: space-between
+	width: 100%
+	color: $color-white
+
+	&-header
+		display: none
+		font-weight: 1.5em
+		background: darken($color-green, 3%)
+
+	&-row
+		width: 100%
+		border-left: 5px solid $color-blue
+		display: flex
+		flex-flow: row nowrap
+		justify-content: space-between
+		padding: $margin
+		margin-bottom: $margin*0.3
+
+		&:nth-of-type(even)
+			background: lighten($color-green, 3%)
+		&:nth-of-type(odd)
+			background: lighten($color-green, 5%)
+
+	&-item
+		flex-grow: 1
+		width: 12%

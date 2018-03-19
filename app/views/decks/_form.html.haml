@@ -4,5 +4,9 @@
   .form-inputs
     = f.input :name
 
+  .form-inputs
+    = f.input :description
+
   .form-actions
-    = f.button :submit
+    = f.button :submit , class: 'btn btn-primary'
+    = link_to "<i class='fas fa-trash'></i>  Cancel".html_safe, decks_path, class: 'btn btn-danger'
