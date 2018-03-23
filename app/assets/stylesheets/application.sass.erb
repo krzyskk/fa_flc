@@ -13,16 +13,14 @@ $margin: 15px
 
 
 body
-	background: $color-black
+	background: $color-primary-0
 
 p
-	color: $color-white
-
-
+	color: $color-primary-3
 
 .decks
 	width: 100%
-	color: $color-white
+	color: $color-primary-2
 	padding: 0
 	margin: 0
 	list-style: none
@@ -30,16 +28,16 @@ p
 		padding: 15px
 		margin: 0 0 15px 0
 		box-shadow: 0 2px 3px rgba(0,0,0,.1)
-		border-left: 5px solid $color-blue
+		border-left: 5px solid $color-primary-2
 		border-radius: 5px
-		background: lighten($color-green, 3%)
+		background: lighten($color-primary-2, 3%)
 		display: flex
 		flex-wrap: wrap
 		justify-content: space-between
 		&:nth-of-type(odd)
-			background: lighten($color-green, 5%)
+			background: lighten($color-primary-2, 5%)
 		&:hover
-			background: lighten($color-green, 7%)
+			background: lighten($color-primary-2, 7%)
 
 .description
 	display: block
@@ -47,6 +45,7 @@ p
 
 .info
 	display: block
+
 .buttons
 	overflow: initial
 
@@ -63,9 +62,9 @@ p
 		margin: 0
 		font-family: 'Questrial', sans-serif
 		font-size: 32px
-		color: $color-grey
+		color: $color-secondary-1-2
 		strong
-			color: $color-white
+			color: $color-secondary-2-2
 
 .header
 	padding: 30px
@@ -76,8 +75,8 @@ p
 	width: 100%
 	height: 300px
 	h1
-		color: $color-dark-green
-		text-shadow: 3px 3px 5px $color-white
+		color: $color-secondary-2-1
+		text-shadow: 3px 3px 5px $color-secondary-2-3
 		font-weight: bold
 		font-size: 48px
 
@@ -90,7 +89,8 @@ p
 	width: 100%
 	position: relative
 	margin: 0
-	background: $color-green
+	border: none
+	background: linear-gradient(90deg, $color-primary-1, $color-primary-3, lighten($color-primary-0, 2%))
 	padding: $margin
 	border-radius: $margin
 
@@ -108,7 +108,7 @@ p
 
 form
 	.control-label
-		color: $color-white
+		color: $color-primary-2
 
 	textarea
 		width: 100%
@@ -118,10 +118,10 @@ form
 	display: block
 	font-weight: bold
 	font-size: 1.5em
-	color: $color-blue
+	color: $color-primary-2
 	&:hover
 		text-decoration: none
-		color: lighten($color-blue, 25%)
+		color: lighten($color-primary-2, 25%)
 
 
 
@@ -134,16 +134,16 @@ form
 	flex-flow: column nowrap
 	justify-content: space-between
 	width: 100%
-	color: $color-white
+	color: $color-primary-2
 
 	&-header
 		display: none
 		font-weight: 1.5em
-		background: darken($color-green, 3%)
+		background: darken($color-primary-2, 3%)
 
 	&-row
 		width: 100%
-		border-left: 5px solid $color-blue
+		border-left: 5px solid $color-primary-2
 		display: flex
 		flex-flow: row nowrap
 		justify-content: space-between
@@ -151,9 +151,9 @@ form
 		margin-bottom: $margin*0.3
 
 		&:nth-of-type(even)
-			background: lighten($color-green, 3%)
+			background: lighten($color-primary-2, 3%)
 		&:nth-of-type(odd)
-			background: lighten($color-green, 5%)
+			background: lighten($color-primary-2, 5%)
 
 	&-item
 		flex-grow: 1
