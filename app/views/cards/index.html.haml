@@ -7,8 +7,8 @@
 
 %p=  @deck.description
 
-.table
-  .table-row.table-header
+%ul.table
+  %li.table-header
     .table-item= sort_link(@q, :front)
     .table-item= sort_link(@q, :back)
     .table-item= sort_link(@q, :created_at)

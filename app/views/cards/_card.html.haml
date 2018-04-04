@@ -1,4 +1,4 @@
-.table-row{id: "c#{card.id}"}
+%li.table-row{id: "c#{card.id}"}
   .table-item= link_to card.front_truncated, edit_deck_card_path(card.deck, card), remote: true
   .table-item= card.back_truncated
   .table-item= card.created_date
