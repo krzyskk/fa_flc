@@ -1,3 +1,16 @@
-$('#edit').remove();
-$('<tr id="edit"><td colspan="8"><%= j render('form', card: @card) %></td></tr>').insertAfter('#c<%= @card.id %>');
+$('#edit').slideUp( 500, function() {
+  $('#edit').remove();
+  showEdit();
+});
+
+if ($('#edit').length == 0) {
+  showEdit();
+};
+
+function showEdit(){
+  $('#c<%= @card.id %>').after('<li id="edit" class="table-edit"><%= j render('form', card: @card) %></li>');
+  $('#edit').hide();
+  $('#edit').slideDown( 1000);
+}
+
 $('<tr id="edit"><td colspan="8"><%= j render('form', card: @card) %></td></tr>').insertAfter('#a<%= @card.id %>');
