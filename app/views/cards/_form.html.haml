@@ -1,5 +1,4 @@
 = simple_form_for([card.deck, card], remote: true) do |f|
-  .row
-    .col-lg-5= f.input :front
-    .col-lg-5= f.input :back
-    .col-lg-2= f.button :submit
+  =f.input :front
+  =f.input :back
+  =f.button :submit, class: 'btn btn-primary btn-sm'

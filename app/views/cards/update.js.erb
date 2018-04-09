@@ -1,3 +1,5 @@
-$('#edit').remove();
 $('#c<%= @card.id %>').replaceWith('<%= j render(@card) %>');
+$('#edit').slideUp( 500, function() {
+  $('#edit').remove();
+});
 $('#a<%= @card.id %>').replaceWith("<%= j render partial: 'answers/answer', locals: {answer: @card.answers.last} %>");
