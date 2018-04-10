@@ -8,6 +8,10 @@ capybara-*.html
 /spec/tmp
 /db/*.sqlite3
 
+/config/secrets.yml
+/config/configuration.yml
+
+
 *.orig
 rerun.txt
 pickle-email-*.html
@@ -15,8 +19,6 @@ pickle-email-*.html
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
 
-# Only include if you have production secrets in this file, which is no longer a Rails default
-# config/secrets.yml
 
 # dotenv
 # TODO Comment out this rule if environment variables can be committed
