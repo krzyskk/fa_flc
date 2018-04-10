@@ -1,6 +1,9 @@
 $('#edit').slideUp( 500, function() {
+  attr = $('#edit').attr("card");
   $('#edit').remove();
-  showEdit();
+  if (attr != '<%= @card.id %>') {
+    showEdit();
+  }
 });
 
 if ($('#edit').length == 0) {
@@ -10,7 +13,6 @@ if ($('#edit').length == 0) {
 function showEdit(){
   $('#c<%= @card.id %>').after('<li id="edit" class="table-edit"><%= j render('form', card: @card) %></li>');
   $('#edit').hide();
-  $('#edit').slideDown( 1000);
+  $('#edit').attr("card",'<%= @card.id %>');
+  $('#edit').slideDown(1000);
 }
-
-$('<tr id="edit"><td colspan="8"><%= j render('form', card: @card) %></td></tr>').insertAfter('#a<%= @card.id %>');

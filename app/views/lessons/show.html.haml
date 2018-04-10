@@ -1,17 +1,16 @@
 = content_for :header do
   = @lesson.deck.name + ' - lesson'
 
-#progress-box
+.progress-box
   = render 'progress'
 
-%table#previous-questions.table
-  %thead
-    %tr
-      %th Question
-      %th Correct answer
-      %th Your answer
-      %th Status
-  %tbody
+%ul.table
+  %li.table-header
+    .table-item Question
+    .table-item Correct answer
+    .table-item Your answer
+    .table-item Status
+  #previous-questions
     = render partial: 'answers/answer', collection: @lesson.last_answers
 
 #question-box

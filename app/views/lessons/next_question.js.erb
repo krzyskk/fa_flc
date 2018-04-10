@@ -7,6 +7,6 @@ function speak(phrase){
 
 $('#progress-box').html('<%= j render 'progress' %>');
 $('#question-box').html('<%= j render 'question' %>');
-$('#previous-questions tbody').html('<%= j render(@lesson.last_answers) %>');
+$('#previous-questions').html('<%= j render(@lesson.last_answers) %>');
 $('#answer').first().val('');
 speak('<%= @lesson.last_answer.correct_answer %>');
