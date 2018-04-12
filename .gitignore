@@ -8,7 +8,10 @@ capybara-*.html
 /spec/tmp
 /db/*.sqlite3
 
+<<<<<<< HEAD
 /config/secrets.yml
+=======
+>>>>>>> oauth
 /config/configuration.yml
 
 
