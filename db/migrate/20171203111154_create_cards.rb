@@ -8,6 +8,7 @@ class CreateCards < ActiveRecord::Migration[5.1]
       t.integer :correct_answers, null: false, default: 0
       t.integer :wrong_answers, null: false, default: 0
       t.integer :empty_answers, null: false, default: 0
+      t.integer :word_class, null: false, default: 0
       t.datetime :last_showed_at
       t.datetime :marked_as_memorized
       t.datetime :last_correct_answer

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_13_215153) do
+ActiveRecord::Schema.define(version: 2018_01_02_122112) do
 
   create_table "answers", force: :cascade do |t|
     t.integer "lesson_id"
@@ -24,29 +24,30 @@ ActiveRecord::Schema.define(version: 2018_03_13_215153) do
   end
 
   create_table "cards", force: :cascade do |t|
-    t.text "front"
-    t.text "back"
-    t.boolean "active", default: true
-    t.boolean "memorized", default: false
+    t.text "front", default: "", null: false
+    t.text "back", default: "", null: false
+    t.boolean "active", default: true, null: false
+    t.boolean "memorized", default: false, null: false
     t.integer "correct_answers", default: 0, null: false
     t.integer "wrong_answers", default: 0, null: false
     t.integer "empty_answers", default: 0, null: false
+    t.integer "word_class", default: 0, null: false
     t.datetime "last_showed_at"
     t.datetime "marked_as_memorized"
+    t.datetime "last_correct_answer"
+    t.datetime "last_wrong_answer"
     t.integer "deck_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "last_correct_answer"
-    t.datetime "last_wrong_answer"
     t.index ["deck_id"], name: "index_cards_on_deck_id"
   end
 
   create_table "decks", force: :cascade do |t|
-    t.string "name"
+    t.string "name", default: "", null: false
+    t.string "description", default: "", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "description"
     t.index ["user_id"], name: "index_decks_on_user_id"
   end
 

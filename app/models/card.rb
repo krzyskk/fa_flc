@@ -1,10 +1,14 @@
 class Card < ApplicationRecord
   validates :front, :back, presence: true, format: /[a-zA-Z]{2,}/
+  validates :word_class, presence: true
 
   has_many :answers, dependent: :destroy
   belongs_to :deck
 
   before_create :set_dates
+
+  enum word_class: { verb: 0, noun: 1 }
+
 
   def set_dates
     self.last_showed_at = DateTime.now
