@@ -7,7 +7,7 @@ class CardsController < ApplicationController
     @card = @card_items.create(card_params).decorate
     respond_to do |format|
       if @card.save
-        format.html { redirect_to '/', notice: 'Card was successfully created.' }
+        format.html { redirect_to deck_cards_url, notice: 'Card was successfully created.' }
         format.js
       end
     end
@@ -19,8 +19,8 @@ class CardsController < ApplicationController
   def update
     @card.update_attributes!(card_params)
     respond_to do |format|
-      format.html { redirect_to deck_cards_url, notice: 'Card was successfully updated.' }
       format.js
+      format.html { redirect_to deck_cards_url, notice: 'Card was successfully updated.' }
     end
   end
 

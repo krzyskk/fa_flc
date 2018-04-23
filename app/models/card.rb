@@ -1,5 +1,6 @@
 class Card < ApplicationRecord
-  validates :front, :back, presence: true
+  validates :front, :back, presence: true, format: /[a-zA-Z]{2,}/
+
   has_many :answers, dependent: :destroy
   belongs_to :deck
 
