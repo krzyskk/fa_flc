@@ -8,13 +8,6 @@ capybara-*.html
 /spec/tmp
 /db/*.sqlite3
 
-<<<<<<< HEAD
-/config/secrets.yml
-=======
->>>>>>> oauth
-/config/configuration.yml
-
-
 *.orig
 rerun.txt
 pickle-email-*.html
@@ -47,3 +40,6 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
