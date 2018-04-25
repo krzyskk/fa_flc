@@ -1,13 +1,14 @@
 class Card < ApplicationRecord
-  validates :front, :back, presence: true, format: /[a-zA-Z]{2,}/
-  validates :word_class, presence: true
+  enum word_class: { verb: 0, noun: 1, adjective: 2, adverb: 3, preposition: 4, pronoun: 5, conjunction: 6, interjection: 7, phrasal_verb: 8}
 
+  validates :front, :back, presence: true, format: /[a-zA-Z]{2,}/
+  validates :word_class, presence: true, inclusion: { in: word_classes.keys }
+  
   has_many :answers, dependent: :destroy
   belongs_to :deck
 
   before_create :set_dates
 
-  enum word_class: { verb: 0, noun: 1 }
 
 
   def set_dates

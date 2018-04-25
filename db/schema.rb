@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2018_01_02_122112) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deck_id"], name: "index_cards_on_deck_id"
+    t.index ["front", "back", "word_class"], name: "index_cards_on_front_and_back_and_word_class", unique: true
   end
 
   create_table "decks", force: :cascade do |t|

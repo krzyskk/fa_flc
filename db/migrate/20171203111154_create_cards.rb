@@ -16,5 +16,6 @@ class CreateCards < ActiveRecord::Migration[5.1]
       t.belongs_to :deck, foreign_key: true
       t.timestamps
     end
+    add_index :cards, [:front, :back, :word_class], unique: true
   end
 end

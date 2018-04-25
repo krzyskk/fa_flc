@@ -4,6 +4,6 @@
   .form-inputs
     = f.input :back
   .form-inputs
-    = f.select :word_class, Card.word_classes
+    = f.select :word_class, collection: Card.word_classes.map {|k, v| [k, k]}
   .form-actions
     = f.button :submit, class: 'btn btn-primary btn-sm'
