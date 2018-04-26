@@ -1,8 +1,8 @@
 class CreateCards < ActiveRecord::Migration[5.1]
   def change
     create_table :cards do |t|
-      t.text :front, null: false, default: ''
-      t.text :back, null: false, default: ''
+      t.string :front, null: false, default: ''
+      t.string :back, null: false, default: ''
       t.boolean :active, null: false, default: true
       t.boolean :memorized, null: false, default: false
       t.integer :correct_answers, null: false, default: 0

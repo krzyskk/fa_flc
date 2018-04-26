@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2018_01_02_122112) do
   end
 
   create_table "cards", force: :cascade do |t|
-    t.text "front", default: "", null: false
-    t.text "back", default: "", null: false
+    t.string "front", default: "", null: false
+    t.string "back", default: "", null: false
     t.boolean "active", default: true, null: false
     t.boolean "memorized", default: false, null: false
     t.integer "correct_answers", default: 0, null: false
