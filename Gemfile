@@ -28,19 +28,18 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
 group :development, :test do
-  gem 'better_errors'
   gem 'binding_of_caller'
   gem 'capybara'
   gem 'factory_bot'
   gem 'faker'
   gem 'meta_request'
   gem 'pry-byebug'
-  gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'sqlite3'
 end
 
 group :development do
+  gem 'better_errors'
   gem 'haml_lint', require: false
   gem 'jshint'
   gem 'letter_opener'
