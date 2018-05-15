@@ -4,8 +4,8 @@
 .progress-box
   = render 'progress'
 
-%ul.table
-  %li.table-header
+ul.table
+  li.table-header
     .table-item Question
     .table-item Correct answer
     .table-item Your answer
@@ -20,5 +20,5 @@
   = form_tag next_question_path, method: :put, remote: true do
     .input-group
       = text_field_tag 'answer', nil, class: 'form-control', autocomplete: 'off'
-      %span.input-group-btn
+      span.input-group-btn
         = button_tag 'Next', type: 'submit', class: 'btn btn-success'

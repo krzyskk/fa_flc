@@ -12,7 +12,6 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'draper'
 gem 'font-awesome-sass'
-gem 'haml-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'omniauth-google-oauth2'
@@ -21,6 +20,7 @@ gem 'puma'
 gem 'rails'
 gem 'ransack'
 gem 'sass-rails'
+gem 'slim'
 gem 'simple_form'
 gem 'turbolinks'
 gem 'uglifier'
@@ -40,7 +40,6 @@ end
 
 group :development do
   gem 'better_errors'
-  gem 'haml_lint', require: false
   gem 'jshint'
   gem 'letter_opener'
   gem 'listen'

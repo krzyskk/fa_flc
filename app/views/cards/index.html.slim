@@ -4,8 +4,8 @@
 = content_for :description do
   =@deck.description
 
-%ul.table
-  %li.table-header
+ul.table
+  li.table-header
     .table-item= sort_link(@q, :front)
     .table-item= sort_link(@q, :back)
     .table-item= sort_link(@q, :created_at)
@@ -16,7 +16,7 @@
 
   = render(@cards)
 
-.new-card= render partial: 'cards/form', locals: {card: @deck.cards.new}
+.new-card= render partial: 'cards/form', locals: { card: @deck.cards.new }
 
 .button-container
   = link_to "Export CSV", deck_path(@deck, format: "csv"), class: 'btn btn-primary'

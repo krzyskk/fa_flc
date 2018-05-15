@@ -1,7 +1,7 @@
-= content_for :header do
-  Decks
+- content_for :header do
+  | Decks
 
-%ul.table
+ul.table
   = render(@decks)
 .button-container
   = link_to "<i class='fas fa-plus-circle'></i> New Deck".html_safe, new_deck_path, class: 'btn btn-primary'
