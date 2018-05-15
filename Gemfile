@@ -24,8 +24,6 @@ gem 'slim'
 gem 'simple_form'
 gem 'turbolinks'
 gem 'uglifier'
-gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   gem 'binding_of_caller'
