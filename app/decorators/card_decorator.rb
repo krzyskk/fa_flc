@@ -1,4 +1,4 @@
-class CardDecorator < Draper::Decorator
+class CardDecorator < ApplicationDecorator
   delegate_all
 
   def front_truncated
