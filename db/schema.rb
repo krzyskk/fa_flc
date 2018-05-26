@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_01_02_122112) do
+ActiveRecord::Schema.define(version: 2018_05_26_135327) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.integer "lesson_id"
-    t.integer "card_id"
+    t.bigint "lesson_id"
+    t.bigint "card_id"
     t.string "answer", default: "", null: false
     t.string "status", default: "", null: false
     t.datetime "created_at", null: false
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 2018_01_02_122112) do
     t.datetime "marked_as_memorized"
     t.datetime "last_correct_answer"
     t.datetime "last_wrong_answer"
-    t.integer "deck_id"
+    t.bigint "deck_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deck_id"], name: "index_cards_on_deck_id"
@@ -46,17 +49,20 @@ ActiveRecord::Schema.define(version: 2018_01_02_122112) do
   create_table "decks", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "description", default: "", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_decks_on_user_id"
   end
 
   create_table "lessons", force: :cascade do |t|
-    t.integer "deck_id"
+    t.bigint "deck_id"
     t.integer "memorized", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "correct", default: 0
+    t.integer "wrong", default: 0
+    t.integer "empty", default: 0
     t.index ["deck_id"], name: "index_lessons_on_deck_id"
   end
 
@@ -77,4 +83,9 @@ ActiveRecord::Schema.define(version: 2018_01_02_122112) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "cards"
+  add_foreign_key "answers", "lessons"
+  add_foreign_key "cards", "decks"
+  add_foreign_key "decks", "users"
+  add_foreign_key "lessons", "decks"
 end

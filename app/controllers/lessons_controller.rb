@@ -1,6 +1,8 @@
 class LessonsController < ApplicationController
   before_action :authenticate_user!
 
+  decorates_assigned :cards
+
   def new
     @deck = Deck.find(params[:format])
     @lesson = @deck.lessons.create

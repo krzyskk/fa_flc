@@ -3,13 +3,11 @@ class Card < ApplicationRecord
 
   validates :front, :back, presence: true, format: /[a-zA-Z]{2,}/
   validates :word_class, presence: true, inclusion: { in: word_classes.keys }
-  
+
   has_many :answers, dependent: :destroy
   belongs_to :deck
 
   before_create :set_dates
-
-
 
   def set_dates
     self.last_showed_at = DateTime.now
@@ -19,8 +17,8 @@ class Card < ApplicationRecord
 
   def set_memorized
     if answers.where(status: 'correct').count >= 3
-      self.memorized = true
-      self.marked_as_memorized = DateTime.now
+      memorized = true
+      marked_as_memorized = DateTime.now
       Lesson.last.increment!('memorized')
     else
       memorized = false
@@ -29,7 +27,7 @@ class Card < ApplicationRecord
   end
 
   def self.to_csv
-    attributes = %w{front back correct_answers wrong_answers empty_answers}
+    attributes = %w[front back correct_answers wrong_answers empty_answers]
 
     CSV.generate(headers: true) do |csv|
       csv << attributes

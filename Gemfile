@@ -20,8 +20,8 @@ gem 'puma'
 gem 'rails'
 gem 'ransack'
 gem 'sass-rails'
-gem 'slim'
 gem 'simple_form'
+gem 'slim'
 gem 'turbolinks'
 gem 'uglifier'
 
@@ -29,16 +29,14 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'capybara'
   gem 'factory_bot'
-  gem 'faker'
   gem 'meta_request'
   gem 'pry-byebug'
   gem 'selenium-webdriver'
-  gem 'sqlite3'
 end
 
 group :development do
   gem 'better_errors'
-  gem 'jshint'
+  gem 'faker'
   gem 'letter_opener'
   gem 'listen'
   gem 'rubocop', require: false

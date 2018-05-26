@@ -1,30 +1,18 @@
 class Lesson < ApplicationRecord
   belongs_to :deck
-  has_many :answers
+  has_many :answers, dependent: :destroy, after_add: :update_counters
   after_create :init_answers
 
-  def correct_answers
-    answers.where(status: 'correct').count
-  end
-
-  def wrong_answers
-    answers.where(status: 'wrong').count
-  end
-
-  def empty_answers
-    answers.where(status: 'empty').count
-  end
-
   def last_answers
-    answers.offset(1).last(3)
+    answers.last(4).first 3
   end
 
   def last_answer
-    answers.offset(1).last
+    answers.last(2).first
   end
 
   def cards_package
-    deck.cards.all.where(active: true).where(memorized: false).order(last_correct_answer: :asc).limit(10)
+    deck.cards.where(active: true).where(memorized: false).order(last_correct_answer: :asc).limit(10)
   end
 
   def next_card_id
@@ -37,8 +25,13 @@ class Lesson < ApplicationRecord
     end
   end
 
-
   private
+
+  def update_counters(_answer)
+    update_attribute(:correct, answers.where(status: 'correct').count)
+    update_attribute(:wrong, answers.where(status: 'wrong').count)
+    update_attribute(:empty, answers.where(status: 'empty').count)
+  end
 
   def init_answers
     4.times do

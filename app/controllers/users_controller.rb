@@ -12,5 +12,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:number_of_lesson_questions, :number_of_lesson_correct)
   end
-
 end

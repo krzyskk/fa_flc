@@ -2,13 +2,16 @@ class DecksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_deck, only: [:show, :edit, :update, :destroy]
 
+  decorates_assigned :card
+  decorates_assigned :cards
+
   def index
     @decks = current_user.decks.all
   end
 
   def show
     @q = @deck.cards.ransack(params[:q])
-    @cards = @q.result.decorate
+    @cards = @q.result
     respond_to do |format|
       format.html { render 'cards/index' }
       format.csv { send_data @deck.cards.to_csv, filename: "#{@deck.name}_#{Date.today}.csv" }

@@ -5,13 +5,13 @@ default: &default
 
 development:
   <<: *default
-  adapter: sqlite3
-  database: db/fast_flashcards_development.sqlite3
+  adapter: postgresql
+  database: fast_flashcards_development
 
 test:
   <<: *default
-  adapter: sqlite3
-  database: db/fast_flashcards_test.sqlite3
+  adapter: postgresql
+  database: fast_flashcards_test
 
 production:
   <<: *default

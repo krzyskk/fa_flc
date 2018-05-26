@@ -8,5 +8,4 @@ class Deck < ApplicationRecord
   def number_of_cards
     cards.count
   end
-
 end

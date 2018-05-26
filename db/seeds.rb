@@ -1,14 +1,12 @@
-user = User.new
-user.email = 'user@example.com'
+user = User.find_or_create_by(email: 'user@example.com')
 user.password = 'password'
 user.password_confirmation = 'password'
 user.save!
 
-
 deck = user.decks.new
 deck.name = "imported from file" + Faker::Lorem.word
+deck.description = Faker::Lorem.sentence
 deck.save!
-
 
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'import.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')

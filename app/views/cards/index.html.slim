@@ -1,8 +1,8 @@
 = content_for :header do
-  =@deck.name + " - cards"
+  = @deck.name + " - cards"
 
 = content_for :description do
-  =@deck.description
+  = @deck.description
 
 ul.table
   li.table-header
@@ -14,7 +14,7 @@ ul.table
     .table-item= sort_link(@q, :correct)
     .table-item= sort_link(@q, :last_showed_at)
 
-  = render(@cards)
+  = render(cards)
 
 .new-card= render partial: 'cards/form', locals: { card: @deck.cards.new }
 
