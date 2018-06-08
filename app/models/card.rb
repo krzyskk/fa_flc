@@ -17,13 +17,11 @@ class Card < ApplicationRecord
 
   def set_memorized
     if answers.where(status: 'correct').count >= 3
-      memorized = true
-      marked_as_memorized = DateTime.now
+      self.memorized = true
+      self.marked_as_memorized = DateTime.now
+      self.save!
       Lesson.last.increment!('memorized')
-    else
-      memorized = false
     end
-    self.save!
   end
 
   def self.to_csv

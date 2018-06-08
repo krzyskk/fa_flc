@@ -11,15 +11,12 @@ class Lesson < ApplicationRecord
     answers.last(2).first
   end
 
-  def cards_package
-    deck.cards.where(active: true).where(memorized: false).order(last_correct_answer: :asc).limit(10)
-  end
-
   def next_card_id
+    cards_package = deck.cards.where(active: true).where(memorized: false).order(last_correct_answer: :asc).limit(10)
     if last_answer.status == 'correct'
       srand
-      number = rand(cards_package.count / 2)
-      cards_package.order(last_correct_answer: :asc)[number].id
+      number = rand(cards_package.count)
+      cards_package[number].id
     else
       last_answer.card_id
     end
