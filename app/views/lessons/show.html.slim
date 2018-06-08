@@ -16,7 +16,7 @@ ul.table
 #question-box
   =render 'question'
 
-#answer-box.alert.alert-warning
+#answer-box.box
   = form_tag next_question_path, method: :put, remote: true do
     .input-group
       = text_field_tag 'answer', nil, class: 'form-control', autocomplete: 'off'

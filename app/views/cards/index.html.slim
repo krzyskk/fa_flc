@@ -1,5 +1,5 @@
 = content_for :header do
-  = @deck.name + " - cards"
+  = "#{@deck.name} - #{@deck.number_of_cards} cards"
 
 = content_for :description do
   = @deck.description
