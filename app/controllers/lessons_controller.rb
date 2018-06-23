@@ -4,17 +4,17 @@ class LessonsController < ApplicationController
   decorates_assigned :cards
 
   def new
-    begin
+    # begin
       @deck = Deck.find(params[:format])
       @lesson = @deck.lessons.create
       4.times do
-        @lesson.answers.create(card_id: Card.where(deck_id: deck_id).first.id)
+        @lesson.answers.create(card_id: @deck.cards.first.id)
       end
       redirect_to @lesson
-    rescue
-      flash[:notice] = 'Unable to create lesson'
-      redirect_to root_path
-    end
+    # rescue
+      # flash[:notice] = 'Unable to create lesson'
+      # redirect_to root_path
+    # end
   end
 
   def show
