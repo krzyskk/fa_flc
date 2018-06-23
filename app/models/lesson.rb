@@ -1,7 +1,6 @@
 class Lesson < ApplicationRecord
   belongs_to :deck
   has_many :answers, dependent: :destroy, after_add: :update_counters
-  after_create :init_answers
 
   def last_answers
     answers.last(4).first 3
@@ -28,11 +27,5 @@ class Lesson < ApplicationRecord
     update_attribute(:correct, answers.where(status: 'correct').count)
     update_attribute(:wrong, answers.where(status: 'wrong').count)
     update_attribute(:empty, answers.where(status: 'empty').count)
-  end
-
-  def init_answers
-    4.times do
-      answers.create(card_id: Card.where(deck_id: deck_id).first.id)
-    end
   end
 end

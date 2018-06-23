@@ -7,4 +7,4 @@
       .row
         - flash.each do |key, value|
           - h = {success: 'success', error: 'danger', notice: 'info'}
-          div class: "alert alert-#{h[key.to_sym]}" = value
+          div class="alert alert-#{h[key.to_sym]}" = value
