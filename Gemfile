@@ -11,6 +11,7 @@ gem 'coffee-rails'
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'draper'
+gem 'faker'
 gem 'font-awesome-sass'
 gem 'jbuilder'
 gem 'jquery-rails'
@@ -36,7 +37,6 @@ end
 
 group :development do
   gem 'better_errors'
-  gem 'faker'
   gem 'letter_opener'
   gem 'listen'
   gem 'rubocop', require: false
