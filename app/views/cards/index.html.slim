@@ -8,10 +8,8 @@ ul.table
   li.table-header
     .table-item= sort_link(@q, :front)
     .table-item= sort_link(@q, :back)
+    .table-item= sort_link(@q, :word_class)
     .table-item= sort_link(@q, :created_at)
-    .table-item= sort_link(@q, :updated_at)
-    .table-item= sort_link(@q, :views)
-    .table-item= sort_link(@q, :correct)
     .table-item= sort_link(@q, :last_showed_at)
 
   = render(cards)

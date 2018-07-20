@@ -1,9 +1,6 @@
 li.table-row id="c#{card.id}"
   .table-item= link_to card.front_truncated, edit_deck_card_path(card.deck, card), remote: true
   .table-item= card.back_truncated
-  .table-item= card.created_date
+  .table-item= card.word_class
   .table-item= card.updated_date
-  .table-item= card.wrong_answers
-  .table-item= card.correct_answers
   .table-item= card.last_showed_date
-  .table-item= link_to 'Destroy', deck_card_path(card.deck, card), class: 'btn btn-xs btn-danger', method: :delete, remote: true, data: { confirm: 'Are you sure?'}

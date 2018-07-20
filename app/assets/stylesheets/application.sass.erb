@@ -179,16 +179,19 @@ form
 	li
 		box-shadow: 0 2px 3px rgba(0,0,0,.1)
 		width: 100%
-		display: flex
-		flex-flow: row nowrap
+
 		justify-content: space-between
 		padding: $item-margin
 
 	&-header
+		display: flex
+		flex-flow: row nowrap
 		font-weight: 1.5em
 		background: $color-background
 
 	&-row
+		display: flex
+		flex-flow: row nowrap
 		border-left: 5px solid $color-text
 		margin-top: $margin*0.3
 		&:nth-of-type(even)
@@ -205,3 +208,6 @@ form
 	&-edit
 		margin: 0
 		background: lighten($color-primary-2, 15%)
+		.card-details
+			display: flex
+			list-style: none
