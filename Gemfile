@@ -27,21 +27,19 @@ gem 'slim'
 gem 'turbolinks'
 gem 'uglifier'
 
-group :development, :test do
-  gem 'binding_of_caller'
-  gem 'capybara'
-  gem 'factory_bot'
-  gem 'meta_request'
-  gem 'pry-byebug'
-  gem 'selenium-webdriver'
-end
-
 group :development do
   gem 'better_errors'
   gem 'letter_opener'
   gem 'listen'
+  gem 'pry-byebug'
   gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen'
   gem 'web-console'
+end
+
+group :test do
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 3.6'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git'
 end

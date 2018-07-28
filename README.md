@@ -8,4 +8,4 @@ You can find this app at: https://fastflashcards.herokuapp.com/
 
 - Type in Your terminal `git clone https://github.com/krzyskk/FastFlashcards.git`
 - Run `bundle install` within your app directory
-- Run `rake db:setup` to setup database, it will also fill database with prepared seeds
+- Run `rails db:setup` to setup database, it will also fill database with prepared seeds
