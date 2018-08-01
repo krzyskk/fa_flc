@@ -12,6 +12,7 @@ if ($('#edit').length == 0) {
 
 function showEdit(){
   $('#c<%= @card.id %>').after('<li id="edit" class="table-edit"><%= j render('card_details', card: card) %></li>');
+  $('#a<%= @card.id %>').after('<li id="edit" class="table-edit"><%= j render('card_details', card: card) %></li>');
   $('#edit').hide();
   $('#edit').attr("card",'<%= @card.id %>');
   $('#edit').slideDown(1000);

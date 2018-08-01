@@ -4,7 +4,6 @@
       h1= yield :header
       h3= yield :description
 
-      .row
-        - flash.each do |key, value|
-          - h = {success: 'success', error: 'danger', notice: 'info'}
-          div class="alert alert-#{h[key.to_sym]}" = value
+      - flash.each do |key, value|
+        - h = {success: 'success', error: 'danger', notice: 'info', alert: 'info'}
+        div class="alert alert-#{h[key.to_sym]}" = value

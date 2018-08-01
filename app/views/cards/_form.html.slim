@@ -1,10 +1,11 @@
 = simple_form_for([card.deck, card], remote: true) do |f|
-  .form-inputs
-    = f.input :front
-  .form-inputs
-    = f.input :back
-  .form-controll
-    = f.input :word_class do
-      = f.select(:word_class, Card.word_classes.map {|k, v| [k, k]}, {}, { class: "form-control" })
-  .form-actions
-    = f.button :submit, class: 'btn btn-primary btn-sm'
+  .row
+    .col-md-3.form-inputs
+      = f.input :front
+    .col-md-3.form-inputs
+      = f.input :back
+    .col-md-3.form-controll
+      = f.input :word_class do
+        = f.select(:word_class, Card.word_classes.map {|k, v| [k, k]}, {}, { class: "form-control" })
+    .col-md-3.form-actions
+      = f.button :submit, class: 'btn btn-primary btn-sm'
