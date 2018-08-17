@@ -2,22 +2,22 @@ class CardDecorator < ApplicationDecorator
   delegate_all
 
   def front_truncated
-    card.front.truncate_words(7)
+    object.front.truncate_words(7)
   end
 
   def back_truncated
-    card.back.truncate_words(7)
+    object.back.truncate_words(7)
   end
 
   def created_date
-    card.created_at.strftime('%d %b')
+    object.created_at.strftime('%d %b')
   end
 
   def updated_date
-    card.updated_at.strftime('%d %b')
+    object.updated_at.strftime('%d %b')
   end
 
   def last_showed_date
-    card.last_showed_at.strftime('%d %b %H:%M')
+    object.last_showed_at.strftime('%d %b %H:%M')
   end
 end
