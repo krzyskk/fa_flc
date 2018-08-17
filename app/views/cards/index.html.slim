@@ -18,3 +18,9 @@ ul.table
 
 .button-container
   = link_to "Export CSV", deck_path(@deck, format: "csv"), class: 'btn btn-primary'
+
+=form_tag import_deck_cards_path(@deck), multipart: true do
+  .button-container
+    = file_field_tag :file
+  .button-container
+    = button_tag 'Upload CSV', class: 'btn btn-primary btn-sm'

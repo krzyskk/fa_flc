@@ -35,6 +35,11 @@ class CardsController < ApplicationController
     end
   end
 
+  def import
+    Card.import(params[:file], params[:deck_id])
+    redirect_to deck_cards_url, notice: 'Cards Added Seccessfully'
+  end
+
   private
 
   def set_card_items

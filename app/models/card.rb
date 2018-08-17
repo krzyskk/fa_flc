@@ -24,6 +24,16 @@ class Card < ApplicationRecord
     end
   end
 
+  def self.import(file, deck)
+    CSV.foreach(file.path, headers: true) do |row|
+      begin
+        Deck.find(deck).cards.create! row.to_hash
+      rescue Exception => e
+        return "Error: #{e}"
+      end
+    end
+  end
+
   def self.to_csv
     attributes = %w[front back correct_answers wrong_answers empty_answers]
 
