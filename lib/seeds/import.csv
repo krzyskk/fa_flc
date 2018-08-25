@@ -1,61 +1,61 @@
-front,back
-"się, sam",myself
-ciężarówka,truck
-boks,boxing
-automatycznie ,automatically
-strzała,arrow
-dzieci,children
-efekt,effect
-adoptować,adopt
-chłopiec,boy
-dolar,dollar
-dostęp,access
-"dość, dosyć, sprawiedliwie",fairly
-doświadczenie,experience
-"dział, oddział",department
-"oddziaływać, wpływać na coś, dotyczyć",affect
-szachy,chess
-umiejętność,ability
-małpa,monkey
-chaos ,chaos
-doceniać,appreciate
-sprawdzić ,check out
-potężny,powerful
-"pojęcie, idea",concept
-najwyższy (s…),supreme
-wahać się ,hestitate
-prawidłowo,properly
-w międzyczasie,meanwhile
-zadowolony,glad
-termos,thermos
-kilof,pickaxe
-czekan,ice axe
-raki (turystyczne),crampons
-doniczka,flowerpot
-parapet,windowsill
-karnisz,curtain rod
-zasłona,curtain
-kolumna,column
-rzecznik,spokesman
-niesamowity,amazing
-niesamowite,awesome
-sklandaliczny,egregious
-prawdziwy,genuine
-zatyczka długopisu,pen cap
-okładka ,cover
-wybitny,outstanding
-przemówienie,speech
-owacja,ovation
-"wycofać się, odstąpić",withdraw
-dowód,evidence
-dogma,dogmat
-zaprzeczać,deny
-sprawiedliwość,justice
-dekada,dekade
-wzrost,growth
-phase,faza
-cierpko,harshly
-"bat, bicz",whip
-umowa,agreement
-wstępny,preliminary
-ostateczny,ultimate
+front,back,word_class
+"się, sam",myself,verb
+ciężarówka,truck,verb
+boks,boxing,verb
+automatycznie ,automatically,verb
+strzała,arrow,verb
+dzieci,children,verb
+efekt,effect,verb
+adoptować,adopt,verb
+chłopiec,boy,verb
+dolar,dollar,verb
+dostęp,access,verb
+"dość, dosyć, sprawiedliwie",fairly,verb
+doświadczenie,experience,verb
+"dział, oddział",department,verb
+"oddziaływać, wpływać na coś, dotyczyć",affect,verb
+szachy,chess,verb
+umiejętność,ability,verb
+małpa,monkey,verb
+chaos ,chaos,verb
+doceniać,appreciate,verb
+sprawdzić ,check out,verb
+potężny,powerful,verb
+"pojęcie, idea",concept,verb
+najwyższy (s…),supreme,verb
+wahać się ,hestitate,verb
+prawidłowo,properly,verb
+w międzyczasie,meanwhile,verb
+zadowolony,glad,verb
+termos,thermos,verb
+kilof,pickaxe,verb
+czekan,ice axe,verb
+raki (turystyczne),crampons,verb
+doniczka,flowerpot,verb
+parapet,windowsill,verb
+karnisz,curtain rod,verb
+zasłona,curtain,verb
+kolumna,column,verb
+rzecznik,spokesman,verb
+niesamowity,amazing,verb
+niesamowite,awesome,verb
+sklandaliczny,egregious,verb
+prawdziwy,genuine,verb
+zatyczka długopisu,pen cap,verb
+okładka ,cover,verb
+wybitny,outstanding,verb
+przemówienie,speech,verb
+owacja,ovation,verb
+"wycofać się, odstąpić",withdraw,verb
+dowód,evidence,verb
+dogma,dogmat,verb
+zaprzeczać,deny,verb
+sprawiedliwość,justice,verb
+dekada,dekade,verb
+wzrost,growth,verb
+phase,faza,verb
+cierpko,harshly,verb
+"bat, bicz",whip,verb
+umowa,agreement,verb
+wstępny,preliminary,verb
+ostateczny,ultimate,verb

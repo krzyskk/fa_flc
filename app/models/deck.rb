@@ -1,6 +1,6 @@
 class Deck < ApplicationRecord
   has_many :cards, dependent: :destroy
-  has_many :lessons
+  has_many :lessons, dependent: :destroy
   belongs_to :user
 
   validates :name, :description, presence: true, format: /\w{2,}/

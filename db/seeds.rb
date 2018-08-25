@@ -1,7 +1,6 @@
-user = User.find_or_create_by(email: 'user@example.com')
-user.password = 'password'
-user.password_confirmation = 'password'
-user.save!
+user = User.find_or_create_by(email: 'user@example.com') do |u|
+  u.password = "password"
+end
 
 deck = user.decks.new
 deck.name = "imported from file" + Faker::Lorem.word
@@ -11,12 +10,13 @@ deck.save!
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'import.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
-  card = deck.cards.new
-  card.front = row['front']
-  card.back = row['back']
-  card.created_at = Date.today
-  card.updated_at = Date.today
-  card.last_showed_at = Date.today
-  card.save!
+  deck.cards.create!(
+    front: row['front'],
+    back: row['back'],
+    word_class: row['word_class'],
+    created_at: Date.today,
+    updated_at: Date.today,
+    last_showed_at: Date.today
+  )
   print '.'
 end
