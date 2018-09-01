@@ -1,28 +1,77 @@
-AllCops:
-  Exclude:
-    - 'vendor/**/*'
-    - 'db/**'
-    - 'config/**'
-    - 'script/**'
-    - 'spec/**/*'
-    - 'bin/**/*'
-
-Documentation:
+AlignParameters:
   Enabled: false
-Style/EmptyMethod:
-  EnforcedStyle: expanded
-Style/SymbolArray:
-  EnforcedStyle: brackets
-Style/FormatStringToken:
-  EnforcedStyle: unannotated
-Style/DateTime:
+ClassLength:
+  CountComments: false
+  Max: 200
+Style/Documentation:
   Enabled: false
 Metrics/LineLength:
-  Max: 160
-Metrics/MethodLength:
-  Max: 20
+  Max: 100
+MethodLength:
+  CountComments: false
+  Max: 15
+  Exclude:
+    - 'spec/**/*'
 Metrics/AbcSize:
-  Max: 20
+  Max: 25
+  Exclude:
+    - 'spec/**/*'
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'deployment/**/*'
+Style/MixinUsage:
+  Exclude:
+    - 'lib/result.rb'
 Metrics/BlockLength:
-  Max: 130
-
+  Exclude:
+    - 'spec/**/*'
+    - 'lib/tasks/**/*'
+    - 'app/api/**/*'
+Metrics/ParameterLists:
+  Max: 7
+  Exclude:
+    - 'spec/features/**/*'
+AllCops:
+  TargetRubyVersion: 2.5.1
+  Exclude:
+    - 'bin/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'Gemfile'
+    - 'Guardfile'
+    - 'Capfile'
+    - 'Rakefile'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+Style/Lambda:
+  EnforcedStyle: literal
+Layout/DotPosition:
+  EnforcedStyle: leading
+  Enabled: true
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+  SupportedStyles:
+    - aligned
+    - indented
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - 'spec/**/*'
+Style/Lambda:
+  EnforcedStyle: literal
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/FormatStringToken:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/DateTime:
+  Enabled: false
