@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: lessons
+#
+#  id         :bigint(8)        not null, primary key
+#  deck_id    :bigint(8)
+#  memorized  :integer          default(0), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  correct    :integer          default(0)
+#  wrong      :integer          default(0)
+#  empty      :integer          default(0)
+#
+
 class Lesson < ApplicationRecord
   belongs_to :deck
   has_many :answers, dependent: :destroy, after_add: :update_counters
