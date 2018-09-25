@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '2.4.2'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
@@ -11,11 +10,13 @@ gem 'coffee-rails'
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'draper'
+gem 'faraday', '~> 0.15.2'
 gem 'faker'
 gem 'font-awesome-sass'
 gem 'i18n'
 gem 'jbuilder'
 gem 'jquery-rails'
+gem 'oj', '~> 3.3', '>= 3.3.9'
 gem 'omniauth-google-oauth2'
 gem 'pg'
 gem 'puma'
