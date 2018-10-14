@@ -4,6 +4,8 @@ li.table-row id="c#{deck.id}"
     p= deck.description
   .info
     = icon('fas', 'tags' ,deck.number_of_cards)
+  .info
+    = icon('fas', 'award' ,deck.number_of_memorized)
   .buttons
     = link_to "<i class='far fa-play-circle'></i> Start lesson".html_safe, learn_path(deck), class: 'btn btn-xs btn-success'
     = link_to "<i class='far fa-edit'></i>  Edit decription".html_safe , edit_deck_path(deck), class: 'btn btn-xs btn-primary'

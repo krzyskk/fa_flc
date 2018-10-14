@@ -20,4 +20,8 @@ class Deck < ApplicationRecord
   def number_of_cards
     cards.count
   end
+
+  def number_of_memorized
+    cards.where(memorized: true).count
+  end
 end

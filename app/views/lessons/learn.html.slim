@@ -17,7 +17,7 @@ ul.table
   =render 'question'
 
 #answer-box.box
-  = form_tag next_question_path, method: :put, remote: true do
+  = form_tag next_question_path(@lesson.deck), method: :put, remote: true do
     .input-group
       = text_field_tag 'answer', nil, class: 'form-control', autocomplete: 'off'
       span.input-group-btn

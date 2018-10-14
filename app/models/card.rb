@@ -42,7 +42,7 @@ class Card < ApplicationRecord
       self.memorized = true
       self.marked_as_memorized = DateTime.now
       self.save!
-      Lesson.last.increment!('memorized')
+      deck.lessons.first.increment!('memorized')
     end
   end
 

@@ -4,16 +4,30 @@ class LessonsController < ApplicationController
   decorates_assigned :cards
 
   def learn
-    @deck = Deck.find(params[:deck_id])
-    @lesson = @deck.lessons.find_or_create_by!(id: 1)
+    @lesson = lesson || deck.lessons.create!
     4.times do
-      @lesson.answers.create(card_id: @deck.cards.first.id)
+      @lesson.answers.create!(card_id: deck.cards.first.id)
     end
+    @lesson.memorized = 0
+    @lesson.correct = 0
+    @lesson.wrong = 0
+    @lesson.empty = 0
+    @lesson.save!
   end
 
   def next_question
-    @lesson = Lesson.find(1)
+    @lesson = lesson
     @lesson.answers.last.update(answer: params[:answer])
     @lesson.answers.create(card_id: @lesson.next_card_id)
+  end
+
+  private
+
+  def deck
+    Deck.find(params[:deck_id])
+  end 
+
+  def lesson
+    deck.lessons.first
   end
 end
