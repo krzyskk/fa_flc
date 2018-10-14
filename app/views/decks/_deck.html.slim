@@ -5,6 +5,6 @@ li.table-row id="c#{deck.id}"
   .info
     = icon('fas', 'tags' ,deck.number_of_cards)
   .buttons
-    = link_to "<i class='far fa-play-circle'></i> Start lesson".html_safe, new_lesson_path(deck), class: 'btn btn-xs btn-success'
+    = link_to "<i class='far fa-play-circle'></i> Start lesson".html_safe, learn_path(deck), class: 'btn btn-xs btn-success'
     = link_to "<i class='far fa-edit'></i>  Edit decription".html_safe , edit_deck_path(deck), class: 'btn btn-xs btn-primary'
     = link_to "<i class='fas fa-trash'></i>  Remove deck".html_safe , deck, class: 'btn btn-xs btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
