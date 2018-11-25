@@ -16,12 +16,4 @@ class Deck < ApplicationRecord
   belongs_to :user
 
   validates :name, :description, presence: true, format: /\w{2,}/
-
-  def number_of_cards
-    cards.count
-  end
-
-  def number_of_memorized
-    cards.where(memorized: true).count
-  end
 end

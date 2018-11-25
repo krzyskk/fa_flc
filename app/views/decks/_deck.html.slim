@@ -3,9 +3,9 @@ li.table-row id="c#{deck.id}"
     = link_to deck.name, deck, class: 'deck-name'
     p= deck.description
   .info
-    = icon('fas', 'tags' ,deck.number_of_cards)
+    = icon('fas', 'tags', @number_of_cards[deck.id] || 0)
   .info
-    = icon('fas', 'award' ,deck.number_of_memorized)
+    = icon('fas', 'award', @number_of_memorized[deck.id] || 0)
   .buttons
     = link_to "<i class='far fa-play-circle'></i> Start lesson".html_safe, learn_path(deck), class: 'btn btn-xs btn-success'
     = link_to "<i class='far fa-edit'></i>  Edit decription".html_safe , edit_deck_path(deck), class: 'btn btn-xs btn-primary'
