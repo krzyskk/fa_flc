@@ -8,10 +8,6 @@ class LessonsController < ApplicationController
     4.times do
       @lesson.answers.create!(card_id: deck.cards.first.id)
     end
-    @lesson.memorized = 0
-    @lesson.correct = 0
-    @lesson.wrong = 0
-    @lesson.empty = 0
     @lesson.save!
   end
 
