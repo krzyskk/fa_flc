@@ -3,13 +3,21 @@
 # Table name: lessons
 #
 #  id         :bigint(8)        not null, primary key
-#  deck_id    :bigint(8)
+#  correct    :integer          default(0)
+#  empty      :integer          default(0)
 #  memorized  :integer          default(0), not null
+#  wrong      :integer          default(0)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  correct    :integer          default(0)
-#  wrong      :integer          default(0)
-#  empty      :integer          default(0)
+#  deck_id    :bigint(8)
+#
+# Indexes
+#
+#  index_lessons_on_deck_id  (deck_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (deck_id => decks.id)
 #
 
 class Lesson < ApplicationRecord

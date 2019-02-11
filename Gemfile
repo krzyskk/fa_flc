@@ -41,7 +41,14 @@ group :development do
 end
 
 group :test do
-  gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3.6'
-  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git'
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
+  gem 'database_cleaner'
+  gem 'rubocop-rspec'
+  gem 'fuubar'
+end
+
+group :development, :test do
+  gem 'factory_bot_rails'
 end
