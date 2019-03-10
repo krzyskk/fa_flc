@@ -27,13 +27,11 @@ gem 'turbolinks'
 gem 'uglifier'
 
 group :development do
-  gem 'annotate'
   gem 'better_errors'
   gem "binding_of_caller"
   gem 'letter_opener'
   gem 'listen'
   gem 'pry-byebug'
-  gem 'rails-erd'
   gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen'
