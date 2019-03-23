@@ -23,6 +23,7 @@ gem 'ransack'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'slim'
+gem "slim-rails"
 gem 'turbolinks'
 gem 'uglifier'
 
