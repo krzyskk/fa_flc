@@ -21,11 +21,9 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
-        format.json { render :show, status: :created, location: @note }
+        format.html { redirect_to action: "index", notice: 'Note was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -34,10 +32,8 @@ class NotesController < ApplicationController
     respond_to do |format|
       if @note.update(note_params)
         format.html { redirect_to @note, notice: 'Note was successfully updated.' }
-        format.json { render :show, status: :ok, location: @note }
       else
         format.html { render :edit }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -46,7 +42,6 @@ class NotesController < ApplicationController
     @note.destroy
     respond_to do |format|
       format.html { redirect_to notes_url, notice: 'Note was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
