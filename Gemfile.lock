@@ -65,7 +65,7 @@ GEM
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
     builder (3.2.3)
-    byebug (11.0.0)
+    byebug (11.0.1)
     coderay (1.1.2)
     concurrent-ruby (1.1.4)
     crass (1.0.4)
@@ -171,6 +171,8 @@ GEM
     pry-byebug (3.7.0)
       byebug (~> 11.0)
       pry (~> 0.10)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     psych (3.1.0)
     public_suffix (3.0.3)
     puma (3.12.0)
@@ -341,6 +343,7 @@ DEPENDENCIES
   omniauth-google-oauth2 (~> 0.5.3)
   pg
   pry-byebug
+  pry-rails
   puma
   rails
   rails-controller-testing
@@ -360,4 +363,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.16.6
+   1.17.3

@@ -33,6 +33,7 @@ group :development do
   gem 'letter_opener'
   gem 'listen'
   gem 'pry-byebug'
+  gem 'pry-rails'
   gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen'

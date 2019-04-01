@@ -1,22 +1,12 @@
-= form_for @note do |f|
-  - if @note.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@note.errors.count, "error")} prohibited this note from being saved:"
-      ul
-        - @note.errors.full_messages.each do |message|
-          li = message
+= simple_form_for @note do |f|
+  .field
+    = f.input :title
+  .field
+    = f.input :question
+  .field
+    = f.input :short_answer
+  .field
+    = f.input :content
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :question
-    = f.text_field :question
-  .field
-    = f.label :short_answer
-    = f.text_field :short_answer
-  .field
-    = f.label :content
-    = f.text_area :content
-
-  .actions = f.submit
+  .actions 
+    = f.button :submit , class: 'btn btn-primary'

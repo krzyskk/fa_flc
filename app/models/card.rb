@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Card < ApplicationRecord
-  enum word_class: { verb: 0, noun: 1, adjective: 2, adverb: 3, preposition: 4, pronoun: 5, conjunction: 6, interjection: 7, phrasal_verb: 8, noun_pl: 9}
+  enum word_class: { verb: 0, noun: 1, adjective: 2, adverb: 3, preposition: 4, pronoun: 5, conjunction: 6, interjection: 7, phrasal_verb: 8, noun_pl: 9, sentence: 10}
 
   validates :front, :back, presence: true, format: /[a-zA-Z]{2,}/
   validates :word_class, presence: true, inclusion: { in: word_classes.keys }
