@@ -7,5 +7,7 @@
     .col-md-3.form-controll
       = f.input :word_class do
         = f.select(:word_class, Card.word_classes.map {|k, v| [k, k]}, {}, { class: "form-control" })
+    .col-md-3.form-inputs
+      = f.input :active
     .col-md-3.form-actions
       = f.button :submit, class: 'btn btn-primary btn-sm'

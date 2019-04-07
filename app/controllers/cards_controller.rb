@@ -46,6 +46,7 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:front, :back, :showed, :correct, :last_showed_at, :front_image, :word_class)
+    params.require(:card).permit(:front, :back, :showed, :correct, :last_showed_at,
+      :front_image, :word_class, :active)
   end
 end
