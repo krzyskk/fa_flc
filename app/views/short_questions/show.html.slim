@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Question:
+  = @short_question.question
+p
+  strong Answer:
+  = @short_question.answer
+p
+  strong Note:
+  = @short_question.note
+
+=> link_to 'Edit', edit_short_question_path(@short_question)
+'|
+=< link_to 'Back', short_questions_path

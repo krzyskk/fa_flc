@@ -7,6 +7,15 @@
     = f.input :short_answer
   .field
     = f.input :content
+  .field
+    = f.input :familiarity
+  .field
+    = f.input :completation
+
+  .nested-fields
+    = f.simple_fields_for :short_questions do |s|
+      = render 'contacts/contact_fields', f: s
+    .col-12.text-center.mt-3 = link_to_add_fields t(:add_another), f, :contacts, {partial_name: 'contacts/contact_fields'}
 
   .actions 
     = f.button :submit , class: 'btn btn-primary'
