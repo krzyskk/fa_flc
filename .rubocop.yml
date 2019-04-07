@@ -66,8 +66,6 @@ Style/TrailingCommaInHashLiteral:
   EnforcedStyleForMultiline: comma
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
-Style/FrozenStringLiteralComment:
-  Enabled: false
 Style/FormatStringToken:
   Enabled: false
 Style/ClassAndModuleChildren:
