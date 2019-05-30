@@ -1,12 +1,12 @@
 class CardDecorator < ApplicationDecorator
-  delegate_all
+  delegate :id, :deck, :word_class
 
   def front_truncated
-    object.front.truncate_words(7)
+    object.front.truncate_words(7).truncate(50)
   end
 
   def back_truncated
-    object.back.truncate_words(7)
+    object.back.truncate_words(7).truncate(50)
   end
 
   def created_date
