@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :cards
+      resources :days
+      resources :habits
+      resources :notes
+      resources :answers
+      resources :decks
+      resources :lessons
+      resources :results
+
+      root to: "habits#index"
+    end
+  resources :days
+  resources :habits
   resources :notes
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :decks do
