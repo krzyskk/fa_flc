@@ -22,6 +22,7 @@ gem 'puma'
 gem 'rails'
 gem 'ransack'
 gem 'sass-rails'
+gem 'strava-ruby-client'
 gem 'simple_form'
 gem 'slim'
 gem "slim-rails"

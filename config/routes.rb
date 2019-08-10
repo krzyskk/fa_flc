@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  resources :activities
   namespace :admin do
+      resources :activities
+
       resources :cards
       resources :days
       resources :habits
