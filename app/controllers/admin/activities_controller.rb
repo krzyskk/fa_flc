@@ -1,21 +1,17 @@
 module Admin
   class ActivitiesController < Admin::ApplicationController
-    # To customize the behavior of this controller,
-    # you can overwrite any of the RESTful actions. For example:
-    #
-    # def index
-    #   super
-    #   @resources = Activity.
-    #     page(params[:page]).
-    #     per(10)
-    # end
 
-    # Define a custom finder by overriding the `find_resource` method:
-    # def find_resource(param)
-    #   Activity.find_by!(slug: param)
-    # end
+    def index
+      super
 
-    # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
-    # for more information
+      client = Strava::OAuth::Client.new(
+        client_id: '37929',
+        client_secret: '550bf87572d03cb0b7eb83fd42fe9ce2a4d703af'
+      )      
+      activities = client.athlete_activities.first
+      @resources = activities
+    end
+
+
   end
 end
