@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_08_10_123846) do
 
   create_table "days", force: :cascade do |t|
     t.datetime "date"
+    t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -105,6 +106,7 @@ ActiveRecord::Schema.define(version: 2019_08_10_123846) do
   create_table "results", force: :cascade do |t|
     t.integer "day_id"
     t.integer "habit_id"
+    t.integer "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:google_oauth2]
 
   has_many :decks
+  has_many :habits
 
   def self.from_omniauth(access_token)
     data = access_token.info
