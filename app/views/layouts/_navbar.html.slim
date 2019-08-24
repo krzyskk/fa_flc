@@ -11,9 +11,7 @@
               li.nav-item
                 = link_to "<i class='fa fa-inbox'></i> Decks".html_safe, decks_path, class: "nav-link"
             li.nav-item
-              = link_to "<i class='fa fa-sticky-note'></i> Notes".html_safe, notes_path, class: "nav-link"
-            li.nav-item
-              = link_to "<i class='fa fa-sticky-note'></i> Habits".html_safe, habits_path, class: "nav-link"
+              = link_to "<i class='fa fa-sticky-note'></i> Habits".html_safe, days_path, class: "nav-link"
             li.nav-item
               = link_to "<i class='fa fa-user'></i> Log out".html_safe, destroy_user_session_path, method: :delete, class: "nav-link"
           - else

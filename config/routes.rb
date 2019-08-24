@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :activities
   namespace :admin do
       resources :activities
 
@@ -14,9 +13,7 @@ Rails.application.routes.draw do
 
       root to: "habits#index"
     end
-  resources :days
-  resources :habits
-  resources :notes
+  resources :days, only: [:index, :new]
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :decks do
     resources :cards
