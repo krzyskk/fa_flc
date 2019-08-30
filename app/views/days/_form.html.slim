@@ -1,9 +1,7 @@
-= form_for @day do |f|
-  - if @day.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@day.errors.count, "error")} prohibited this day from being saved:"
-      ul
-        - @day.errors.full_messages.each do |message|
-          li = message
+= simple_form_for(@new_day) do |f|
+  - @new_day.results.each do |result|
+    = f.fields_for(:results) do |s|
+      = s.input :result do
+        = s.select(:result, Result.results.map {|k, v| [k, k]}, {}, { class: "form-control" })
 
-  .actions = f.submit
+  = f.button :submit , class: 'btn btn-primary'
