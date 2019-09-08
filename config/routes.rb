@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
       root to: "habits#index"
     end
-  resources :days, only: [:index, :new]
+  resources :days
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :decks do
     resources :cards

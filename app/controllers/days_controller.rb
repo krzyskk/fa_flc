@@ -3,30 +3,22 @@ class DaysController < ApplicationController
 
   def index
     @days = Day.all
-    @new_day = Day.new
+    @day = Day.new
     Habit.where(active: true).each do |habit|
-      @new_day.results.build(habit: habit)
+      @day.results.build(habit: habit)
     end 
   end
 
   def create
     @day = Day.new(day_params)
-
-    respond_to do |format|
-      if @day.save
-        format.html { redirect_to @day, notice: 'Day was successfully created.' }
-      else
-        format.html { render :new }
-      end
-    end
+    @day.save
+    redirect_to action: :index, notice: 'Day was successfully created.' 
   end
 
   def update
     respond_to do |format|
       if @day.update(day_params)
-        format.html { redirect_to @day, notice: 'Day was successfully updated.' }
-      else
-        format.html { render :edit }
+        format.html { redirect_to @days, notice: 'Day was successfully updated.' }
       end
     end
   end
@@ -44,6 +36,6 @@ class DaysController < ApplicationController
     end
 
     def day_params
-      params.require(:day).permit(:date)
+      params.require(:day).permit(:date, results_attributes: [:success])
     end
 end

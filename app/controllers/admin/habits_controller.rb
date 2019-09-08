@@ -8,7 +8,6 @@ module Admin
 
     def create
       super
-      binding.pry
     end
   end
 end

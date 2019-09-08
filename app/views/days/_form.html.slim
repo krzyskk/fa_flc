@@ -1,7 +1,9 @@
-= simple_form_for(@new_day) do |f|
-  - @new_day.results.each do |result|
+= simple_form_for(@day) do |f|
+  - @day.results.each do |result|
     = f.fields_for(:results) do |s|
       = s.input :result do
-        = s.select(:result, Result.results.map {|k, v| [k, k]}, {}, { class: "form-control" })
+        / = s.select(:result, Result.results.map {|k, v| [k, k]}, {}, { class: "form-control" })
+        = s.input(:success, as: :boolean)
+
 
   = f.button :submit , class: 'btn btn-primary'
