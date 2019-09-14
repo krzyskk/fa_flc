@@ -13,8 +13,8 @@ class Lesson < ApplicationRecord
   end
 
   def next_card_id
-    cards_package = deck.cards.where(active: true).where(memorized: false)
-      .order(last_correct_answer: :asc).limit(10)
+    cards_package = deck.cards.where(active: true, memorized: false)
+      .order(last_showed_at: :asc).limit(10)
     if last_answer.status == 'correct'
       srand
       number = rand(cards_package.count)

@@ -118,6 +118,11 @@ ActiveRecord::Schema.define(version: 2019_06_10_190550) do
     t.index ["note_id"], name: "index_short_questions_on_note_id"
   end
 
+  create_table "timers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
