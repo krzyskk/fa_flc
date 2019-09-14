@@ -1,16 +1,11 @@
-h1 Listing days
+h1 Days
+- @days.each do |day|
+  .day  
+    .item = day.day_name
+    .item = day.note
+    .item = day.main_task
+    .item = day.resolution
+    .item = link_to "Edit", edit_day_path(day)
 
-table
-  thead
-    tr
-      th
-
-  tbody
-    - @days.each do |day|
-      tr
-        = "test"
-br
-
-= link_to 'New Day', new_day_path
-
-= render partial: 'form'
+    
+    

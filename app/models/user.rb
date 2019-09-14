@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :decks
   has_many :habits
+  has_many :days 
 
   def self.from_omniauth(access_token)
     data = access_token.info

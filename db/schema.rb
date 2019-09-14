@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_07_200905) do
+ActiveRecord::Schema.define(version: 2019_06_10_190550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "activities", force: :cascade do |t|
-    t.string "name"
-    t.string "distance"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "answers", force: :cascade do |t|
     t.bigint "lesson_id"
@@ -56,8 +49,12 @@ ActiveRecord::Schema.define(version: 2019_09_07_200905) do
   create_table "days", force: :cascade do |t|
     t.datetime "date"
     t.text "note"
+    t.string "resolution"
+    t.string "main_task"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_days_on_user_id"
   end
 
   create_table "decks", force: :cascade do |t|
@@ -107,9 +104,9 @@ ActiveRecord::Schema.define(version: 2019_09_07_200905) do
     t.integer "day_id"
     t.integer "habit_id"
     t.integer "result"
+    t.boolean "success"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "success"
   end
 
   create_table "short_questions", force: :cascade do |t|
@@ -141,6 +138,7 @@ ActiveRecord::Schema.define(version: 2019_09_07_200905) do
   add_foreign_key "answers", "cards"
   add_foreign_key "answers", "lessons"
   add_foreign_key "cards", "decks"
+  add_foreign_key "days", "users"
   add_foreign_key "decks", "users"
   add_foreign_key "habits", "users"
   add_foreign_key "lessons", "decks"

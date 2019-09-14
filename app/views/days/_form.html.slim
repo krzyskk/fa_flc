@@ -1,4 +1,7 @@
 = simple_form_for(@day) do |f|
+  = f.input :note
+  = f.input :main_task
+  = f.input :resolution
   - @day.results.each do |result|
     = f.fields_for(:results) do |s|
       = s.input :result do

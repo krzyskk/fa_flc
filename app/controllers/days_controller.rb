@@ -2,11 +2,18 @@ class DaysController < ApplicationController
   before_action :set_day, only: [:show, :edit, :update, :destroy]
 
   def index
-    @days = Day.all
+    DaysCreator.new(current_user).call
+    @days = current_user.days.all
     @day = Day.new
     Habit.where(active: true).each do |habit|
       @day.results.build(habit: habit)
     end 
+  end
+
+  def edit
+    # Habit.where(active: true).each do |habit|
+    #   @day.results.build(habit: habit)
+    # end
   end
 
   def create
@@ -16,10 +23,9 @@ class DaysController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @day.update(day_params)
-        format.html { redirect_to @days, notice: 'Day was successfully updated.' }
-      end
+    binding.pry
+    if @day.update(day_params)
+      redirect_to action: :index, notice: 'Day was successfully updated.' 
     end
   end
 
@@ -36,6 +42,6 @@ class DaysController < ApplicationController
     end
 
     def day_params
-      params.require(:day).permit(:date, results_attributes: [:success])
+      params.require(:day).permit(:note, :main_task, :user_id, :resolution, results_attributes: [:success])
     end
 end
