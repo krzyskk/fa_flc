@@ -7,6 +7,8 @@ class HabitsController < ApplicationController
     @habits = Habit.all
   end
 
+
+
   # GET /habits/1
   # GET /habits/1.json
   def show

@@ -5,17 +5,21 @@ class DaysController < ApplicationController
     DaysCreator.new(current_user).call
     @days = current_user.days.all
     @day = Day.new
-    Habit.where(active: true).each do |habit|
-      @day.results.build(habit: habit)
-    end 
+    @habits = current_user.habits.active
+
+  end
+
+  def toggle_result
+    result = Result.find_by(day: params[id], habit: params[:habit_id])
+    result.update_attribute(succes: !result.succes)
   end
 
   def edit
+
     # Habit.where(active: true).each do |habit|
     #   @day.results.build(habit: habit)
     # end
   end
-
   def create
     @day = Day.new(day_params)
     @day.save

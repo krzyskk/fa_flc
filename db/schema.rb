@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2019_06_10_190550) do
     t.integer "day_id"
     t.integer "habit_id"
     t.integer "result"
-    t.boolean "success"
+    t.boolean "success", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -116,11 +116,6 @@ ActiveRecord::Schema.define(version: 2019_06_10_190550) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["note_id"], name: "index_short_questions_on_note_id"
-  end
-
-  create_table "timers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

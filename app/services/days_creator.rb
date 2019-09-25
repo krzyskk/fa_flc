@@ -16,8 +16,11 @@ class DaysCreator
   private
 
   def generate_missing_days(start_date, end_date)
-    (start_date..end_date).each do |day|
-      Day.find_or_create_by(user: user, date: day.beginning_of_day)
+    (start_date..end_date).each do |day_date|
+      day = Day.find_or_create_by(user: user, date: day_date.beginning_of_day)
+      user.habits.active.each do |habit|
+        Result.find_or_create_by(day: day, habit: habit)
+      end
     end
   end
 end

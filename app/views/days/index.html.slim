@@ -1,11 +1,23 @@
-h1 Days
-- @days.each do |day|
-  .day  
-    .item = day.day_name
-    .item = day.note
-    .item = day.main_task
-    .item = day.resolution
-    .item = link_to "Edit", edit_day_path(day)
+table.days
+  tr
+    th name
+    - @habits.each do |habit|
+      th.result-header.fixed_column = habit.name
+    th = '***'
+ 
 
+  - @days.each do |day|
+    tr class="wd_#{day.date.wday}" 
+      td = day.day_name
+
+      - day.results.each do |result|
+        td.fixed-column
+          = link_to toggle_result_path(result.id), method: :post do
+            span.result
+
+          
+/ 
     
+
+    / , class: (@liked_by_me[comment.id] ?  'like-btn liked' : 'like-btn'), remote: true, method: :post, id: "comment_like_#{comment.id}"
     

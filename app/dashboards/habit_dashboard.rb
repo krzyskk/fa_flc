@@ -53,6 +53,7 @@ class HabitDashboard < Administrate::BaseDashboard
     :description,
     :active,
     :repeat_type,
+    :user_id,
     :repeat_pattern,
   ].freeze
 
