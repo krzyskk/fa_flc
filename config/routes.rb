@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tasks
   namespace :admin do
       resources :activities
 

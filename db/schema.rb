@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_190550) do
+ActiveRecord::Schema.define(version: 2019_11_02_214346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,21 @@ ActiveRecord::Schema.define(version: 2019_06_10_190550) do
     t.index ["note_id"], name: "index_short_questions_on_note_id"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "color"
+    t.integer "priority"
+    t.boolean "done"
+    t.bigint "day_id"
+    t.datetime "finished_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_id"], name: "index_tasks_on_day_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -143,4 +158,5 @@ ActiveRecord::Schema.define(version: 2019_06_10_190550) do
   add_foreign_key "habits", "users"
   add_foreign_key "lessons", "decks"
   add_foreign_key "short_questions", "notes"
+  add_foreign_key "tasks", "days"
 end
