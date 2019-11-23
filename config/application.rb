@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 module FastFlashcards
   class Application < Rails::Application
     config.load_defaults 5.1 
-    config.assets.initialize_on_precompile = false
+    # config.assets.initialize_on_precompile = false
     config.generators do |g|
       g.helper           false
       g.javascripts      false
