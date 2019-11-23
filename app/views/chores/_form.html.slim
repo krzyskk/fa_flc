@@ -1,0 +1,3 @@
+= simple_form_for([chore.day, chore], remote: true, html: { class: "form-inline" }) do |f|
+  = f.input :name, input_html: { class: 'form-control-sm' }
+  = f.button :submit , class: 'btn btn-primary btn-sm'

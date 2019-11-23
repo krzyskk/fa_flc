@@ -1,5 +1,6 @@
 class Day < ApplicationRecord
   has_many :results
+  has_many :chores
   belongs_to :user
   accepts_nested_attributes_for :results
 

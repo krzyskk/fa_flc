@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  resources :chores, only: [:index, :destroy]
   resources :tasks
   namespace :admin do
       resources :activities
-
       resources :cards
       resources :days
       resources :habits
@@ -11,7 +11,6 @@ Rails.application.routes.draw do
       resources :decks
       resources :lessons
       resources :results
-
       root to: "habits#index"
     end
   resources :results, only: [] do
@@ -20,8 +19,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :days
-
+  resources :days do 
+    # member do 
+    resources :chores, only: [:create]
+    # end 
+  end
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :decks do

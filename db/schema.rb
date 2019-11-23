@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_02_214346) do
+ActiveRecord::Schema.define(version: 2019_11_23_170125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 2019_11_02_214346) do
     t.datetime "updated_at", null: false
     t.index ["deck_id"], name: "index_cards_on_deck_id"
     t.index ["front", "back", "word_class"], name: "index_cards_on_front_and_back_and_word_class", unique: true
+  end
+
+  create_table "chores", force: :cascade do |t|
+    t.string "name"
+    t.string "type"
+    t.bigint "day_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_id"], name: "index_chores_on_day_id"
   end
 
   create_table "days", force: :cascade do |t|
@@ -153,6 +162,7 @@ ActiveRecord::Schema.define(version: 2019_11_02_214346) do
   add_foreign_key "answers", "cards"
   add_foreign_key "answers", "lessons"
   add_foreign_key "cards", "decks"
+  add_foreign_key "chores", "days"
   add_foreign_key "days", "users"
   add_foreign_key "decks", "users"
   add_foreign_key "habits", "users"

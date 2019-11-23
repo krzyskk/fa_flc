@@ -1,0 +1,10 @@
+table.chores
+  - @days.each do |day|
+    tr
+      td = day.day_name
+      td
+        div class="chore_list_#{day.day_name.parameterize.underscore}"
+          - day.chores.each do |chore|
+            = render(chore)
+      td
+        .new-chore = render partial: 'chores/form', locals: { chore: day.chores.new }
