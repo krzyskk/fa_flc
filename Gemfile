@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
-  "https://github.com/#{repo_name}.git"
-end
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+ruby '2.7.0'
+
+gem 'rails'
 
 gem 'administrate'
-gem 'bootstrap'
 gem 'devise'
 gem 'draper'
 gem 'faraday'
@@ -14,20 +14,17 @@ gem 'faker'
 gem 'font-awesome-sass'
 gem 'i18n'
 gem 'jbuilder'
-gem 'jquery-rails'
 gem 'json', '~> 2.1'
 gem 'omniauth-google-oauth2', '~> 0.5.3'
 gem 'pg'
 gem 'puma'
-gem 'rails'
 gem 'ransack'
-gem 'sass-rails'
-gem 'strava-ruby-client'
 gem 'simple_form'
 gem 'slim'
 gem "slim-rails"
 gem 'turbolinks'
 gem 'uglifier'
+gem 'webpacker'
 
 group :development do
   gem 'better_errors'

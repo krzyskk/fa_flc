@@ -4,8 +4,8 @@ html
     title = content_for?(:title) ? yield(:title) : 'Fast Flashcards'
     meta name='viewport' content='width=device-width, initial-scale=1.0'
     meta name='description' content="#{content_for?(:description) ? yield(:description) : 'Props'}"
-    = stylesheet_link_tag 'application', media: 'all'
-    = javascript_include_tag 'application'
+    = stylesheet_pack_tag 'styles', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = csrf_meta_tags
   body
     = render 'layouts/navbar'
