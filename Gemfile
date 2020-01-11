@@ -14,8 +14,8 @@ gem 'faker'
 gem 'font-awesome-sass'
 gem 'i18n'
 gem 'jbuilder'
-gem 'json', '~> 2.1'
-gem 'omniauth-google-oauth2', '~> 0.5.3'
+gem 'json'
+gem 'omniauth-google-oauth2'
 gem 'pg'
 gem 'puma'
 gem 'ransack'
@@ -40,7 +40,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 3.6'
+  gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'rails-controller-testing'
   gem 'database_cleaner'
