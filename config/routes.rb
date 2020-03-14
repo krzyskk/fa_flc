@@ -1,18 +1,6 @@
 Rails.application.routes.draw do
   resources :chores, only: [:index, :destroy]
   resources :tasks
-  namespace :admin do
-      resources :activities
-      resources :cards
-      resources :days
-      resources :habits
-      resources :notes
-      resources :answers
-      resources :decks
-      resources :lessons
-      resources :results
-      root to: "habits#index"
-    end
   resources :results, only: [] do
     member do 
       post 'toggle'

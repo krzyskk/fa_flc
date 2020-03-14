@@ -6,7 +6,6 @@ ruby '2.7.0'
 
 gem 'rails', '~> 6.0'
 
-gem 'administrate'
 gem 'devise'
 gem 'draper'
 gem 'faraday'
