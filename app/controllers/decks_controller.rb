@@ -2,9 +2,6 @@ class DecksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_deck, only: [:show, :edit, :update, :destroy]
 
-  decorates_assigned :card
-  decorates_assigned :cards
-
   def index
     @decks = current_user.decks.all
     @number_of_memorized = @decks.joins(:cards).where(cards: { memorized: true} ).group(:deck_id).count

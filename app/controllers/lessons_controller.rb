@@ -1,8 +1,6 @@
 class LessonsController < ApplicationController
   before_action :authenticate_user!
 
-  decorates_assigned :cards
-
   def learn
     @lesson = lesson || deck.lessons.create!
     4.times do

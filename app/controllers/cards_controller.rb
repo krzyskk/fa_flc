@@ -3,9 +3,6 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
   before_action :set_card_items, only: [:index, :create]
 
-  decorates_assigned :card
-  decorates_assigned :cards
-
   def create
     @card = @card_items.create(card_params)
     respond_to do |format|

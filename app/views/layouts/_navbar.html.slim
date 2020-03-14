@@ -1,25 +1,18 @@
   nav.navbar.navbar-dark.bg-dark.navbar-expand-md
-    .container
-      .navbar-header
-        = link_to "<h1>Fast<strong>Flashcards</strong></h1>".html_safe , root_path, class: "navbar-brand"
-      button.navbar-toggler aria-controls="navbarNav" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNav" data-toggle="collapse" type="button"
-        span.navbar-toggler-icon
-      #navbarNav.collapse.navbar-collapse
-        ul.navbar-nav.ml-md-auto
-          - if user_signed_in?
-            - unless [params[:controller], params[:action]] == ["decks", "index"]
-              li.nav-item
-                = link_to "<i class='fa fa-inbox'></i> Decks".html_safe, decks_path, class: "nav-link"
+    .navbar-header
+      = link_to "Fast<strong>Flashcards</strong>".html_safe , root_path, class: "navbar-brand py-0"
+    button.navbar-toggler aria-controls="navbarNav" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarNav" data-toggle="collapse" type="button"
+      span.navbar-toggler-icon
+    #navbarNav.collapse.navbar-collapse
+      ul.navbar-nav.ml-md-auto
+        - if user_signed_in?
+          - unless [params[:controller], params[:action]] == ["decks", "index"]
             li.nav-item
-              = link_to "<i class='fa fa-sticky-note'></i> Habits".html_safe, days_path, class: "nav-link"
-            li.nav-item
-              = link_to "<i class='fa fa-sticky-note'></i> Tasks".html_safe, tasks_path, class: "nav-link"
-            li.nav-item
-              = link_to "<i class='fa fa-sticky-note'></i> Chores".html_safe, chores_path, class: "nav-link"
-            li.nav-item
-              = link_to "<i class='fa fa-user'></i> Log out".html_safe, destroy_user_session_path, method: :delete, class: "nav-link"
-          - else
-            li.nav-item
-              = link_to "<i class='fa fa-user'></i> Login".html_safe, new_user_session_path
-            li.nav-item
-              = link_to "<i class='fa fa-user'></i> Register".html_safe, new_user_registration_path
+              = link_to "<i class='fa fa-inbox'></i> Decks".html_safe, decks_path, class: "nav-link"
+          li.nav-item
+            = link_to "<i class='fa fa-user'></i> Log out".html_safe, destroy_user_session_path, method: :delete, class: "nav-link"
+        - else
+          li.nav-item
+            = link_to "<i class='fa fa-user'></i> Login".html_safe, new_user_session_path
+          li.nav-item
+            = link_to "<i class='fa fa-user'></i> Register".html_safe, new_user_registration_path

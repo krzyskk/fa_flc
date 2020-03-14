@@ -1,18 +1,4 @@
 Rails.application.routes.draw do
-  resources :chores, only: [:index, :destroy]
-  resources :tasks
-  resources :results, only: [] do
-    member do 
-      post 'toggle'
-    end
-  end
-
-  resources :days do 
-    # member do 
-    resources :chores, only: [:create]
-    # end 
-  end
-
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :decks do
     resources :cards

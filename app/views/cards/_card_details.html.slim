@@ -1,7 +1,0 @@
-=render 'form'
-.row
-  .col-md-2= t('.updated_date', date: @card.updated_date)
-  .col-md-2= t('.wrong_answers', number: @card.wrong_answers)
-  .col-md-2= t('.correct_answers', number: @card.correct_answers)
-  .col-md-3= t('.showed_date', date: @card.last_showed_date)
-  .col-md-3= link_to 'Destroy', deck_card_path(@card.deck, @card), class: 'btn btn-xs btn-danger', method: :delete, remote: true, data: { confirm: 'Are you sure?'}

@@ -7,8 +7,6 @@ ruby '2.7.0'
 gem 'rails', '~> 6.0'
 
 gem 'devise'
-gem 'draper'
-gem 'faraday'
 gem 'faker'
 gem 'font-awesome-sass'
 gem 'i18n'
