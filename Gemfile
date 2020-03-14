@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
 
-gem 'rails'
+gem 'rails', '~> 6.0'
 
 gem 'administrate'
 gem 'devise'
@@ -40,14 +40,15 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
-  gem 'shoulda-matchers'
-  gem 'rails-controller-testing'
   gem 'database_cleaner'
-  gem 'rubocop-rspec'
+  gem 'factory_bot_rails'
   gem 'fuubar'
+  gem 'rspec-rails'
+  gem 'rails-controller-testing'
+  gem 'rubocop-rspec'
+  gem 'shoulda-matchers'
 end
 
 group :development, :test do
-  gem 'factory_bot_rails'
+  gem 'bullet'
 end
