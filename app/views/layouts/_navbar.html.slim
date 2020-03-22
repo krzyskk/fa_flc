@@ -10,9 +10,5 @@
             li.nav-item
               = link_to "<i class='fa fa-inbox'></i> Decks".html_safe, decks_path, class: "nav-link"
           li.nav-item
-            = link_to "<i class='fa fa-user'></i> Log out".html_safe, destroy_user_session_path, method: :delete, class: "nav-link"
-        - else
-          li.nav-item
-            = link_to "<i class='fa fa-user'></i> Login".html_safe, new_user_session_path
-          li.nav-item
-            = link_to "<i class='fa fa-user'></i> Register".html_safe, new_user_registration_path
+            = link_to "<i class='fa fa-user'></i> Log out".html_safe, destroy_user_session_path, method: :get, class: "nav-link"
+

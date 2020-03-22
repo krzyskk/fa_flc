@@ -3,8 +3,9 @@ class LessonsController < ApplicationController
 
   def learn
     @lesson = lesson || deck.lessons.create!
+    card_id = deck.cards.first.id || deck.cards.create!(front:"sample", back:"sample").id
     4.times do
-      @lesson.answers.create!(card_id: deck.cards.first.id)
+      @lesson.answers.create!(card_id: card_id)
     end
     @lesson.save!
   end
