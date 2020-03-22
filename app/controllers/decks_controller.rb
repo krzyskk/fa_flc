@@ -8,15 +8,6 @@ class DecksController < ApplicationController
     @number_of_cards = @decks.joins(:cards).group(:deck_id).count
   end
 
-  def show
-    @q = @deck.cards.ransack(params[:q])
-    @cards = @q.result
-    respond_to do |format|
-      format.html { render 'cards/index' }
-      format.csv { send_data @deck.cards.to_csv, filename: "#{@deck.name}_#{Date.today}.csv" }
-    end
-  end
-
   def new
     @deck = current_user.decks.new
   end
@@ -24,7 +15,7 @@ class DecksController < ApplicationController
   def create
     @deck = current_user.decks.new(deck_params)
     if @deck.save
-      redirect_to @deck, notice: 'Deck was successfully created.'
+      redirect_to decks_url, notice: 'Deck was successfully created.'
     else
       render :new
     end
