@@ -1,12 +1,13 @@
-.box.progress-item
-  | Number of correct answers:
-  strong= @lesson.correct.to_s
-.box.progress-item
-  | Number of empty answers:
-  strong= @lesson.empty.to_s
-.box.progress-item
-  | Number of wrong answers:
-  strong= @lesson.wrong.to_s
-.box.progress-item
-  | Memorized:
-  strong= @lesson.memorized.to_s
+.d-flex.justify-content-between.mt-3
+  .alert.alert-dark
+    = "Correct answers: "
+    strong= @lesson.correct
+  .alert.alert-dark
+    = "Empty answers: "
+    strong= @lesson.empty
+  .alert.alert-dark
+    = "Wrong answers: "
+    strong= @lesson.wrong
+  .alert.alert-dark
+    = "Memorized: "
+    strong= @lesson.memorized

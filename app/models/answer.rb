@@ -14,6 +14,17 @@ class Answer < ApplicationRecord
     card.back
   end
 
+  def ststus_view_class
+    case status
+    when 'wrong'
+      "list-group-item list-group-item-danger"
+    when 'correct'
+      "list-group-item list-group-item-success"
+    else
+      "list-group-item list-group-item-secondary"
+    end
+  end
+
   private
 
   def set_status
