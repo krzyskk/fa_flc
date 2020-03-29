@@ -1,4 +1,5 @@
-= render 'progress'
+#progress-box
+  = render 'progress'
 
 ul.list-group
   li.list-group-item
@@ -7,10 +8,12 @@ ul.list-group
       .col-4 Correct answer
       .col-4 Your answer
   
-  = render partial: 'answer', collection: @lesson.last_answers
+  #previous-questions
+    = render(partial: 'answer', collection: @lesson.last_answers)
 
   li.list-group-item.list-group-item-dark
-    =render 'question'
+    #question-box
+      = render 'question'
 
   li.list-group-item
     = form_tag next_question_path(@lesson.deck), method: :put, remote: true do

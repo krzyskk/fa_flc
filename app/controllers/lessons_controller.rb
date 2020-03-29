@@ -1,5 +1,7 @@
 class LessonsController < ApplicationController
   before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token, only: :next_question
+
 
   def learn
     @lesson = lesson || deck.lessons.create!
@@ -14,6 +16,9 @@ class LessonsController < ApplicationController
     @lesson = lesson
     @lesson.answers.last.update(answer: params[:answer])
     @lesson.answers.create(card_id: @lesson.next_card_id)
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
