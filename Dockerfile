@@ -1,6 +1,5 @@
 # Dockerfile.production
 FROM ruby:2.7
-MAINTAINER maintainer@example.com
 
 ARG USER_ID
 ARG GROUP_ID
