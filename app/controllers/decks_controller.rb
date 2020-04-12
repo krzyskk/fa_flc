@@ -2,12 +2,12 @@
 
 class DecksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_deck, only: [:show, :edit, :update, :destroy]
+  before_action :set_deck, only: %i[show edit update destroy]
 
   def index
     @decks = current_user.decks.all
     @number_of_memorized = @decks.joins(:cards)
-      .where(cards: { memorized: true}).group(:deck_id).count
+                                 .where(cards: { memorized: true }).group(:deck_id).count
     @number_of_cards = @decks.joins(:cards).group(:deck_id).count
   end
 
@@ -44,6 +44,6 @@ class DecksController < ApplicationController
   end
 
   def deck_params
-    params.require(:deck).permit(:name, :description)
+    params.require(:deck).permit(:name, :description, :spreadsheet_name)
   end
 end

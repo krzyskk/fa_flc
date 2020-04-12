@@ -44,7 +44,6 @@ AllCops:
     - 'Rakefile'
     - 'vendor/**/*'
     - 'node_modules/**/*'
-    - 'spec/**/*'
 Style/Lambda:
   EnforcedStyle: literal
 Layout/DotPosition:

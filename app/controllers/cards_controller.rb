@@ -2,8 +2,8 @@
 
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_card, only: %i[show edit update destroy]
-  before_action :set_card_items, only: %i[index create]
+  before_action :set_card, only: %i[edit update destroy]
+  before_action :set_card_items, only: :create
 
   def create
     @card = @card_items.create(card_params)
@@ -46,6 +46,6 @@ class CardsController < ApplicationController
 
   def card_params
     params.require(:card).permit(:front, :back, :showed, :correct, :last_showed_at,
-      :front_image, :word_class, :active)
+                                 :front_image, :word_class, :active)
   end
 end

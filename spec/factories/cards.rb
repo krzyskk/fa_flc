@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :card do
-    active { true } 
+    active { true }
     back { 'Back' }
     correct_answers { 0 }
     empty_answers { 0 }

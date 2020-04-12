@@ -6,4 +6,8 @@ class Deck < ApplicationRecord
   belongs_to :user
 
   validates :name, :description, presence: true, format: /\w{2,}/
+
+  def sample_words
+    cards.first(15).pluck(:front).join(', ')
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Card, type: :model do
@@ -14,15 +16,14 @@ RSpec.describe Card, type: :model do
     it { should validate_presence_of(:back) }
     it { should validate_presence_of(:word_class) }
 
-    it "front shouldn't be shorter than 2 chars" do
-      card = Card.new(front: "aa")
+    it 'front shouldn\'t be shorter than 2 chars' do
+      card = Card.new(front: 'aa')
       expect(card).to be_invalid
     end
 
-    it "back shouldn't be shorter than 2 chars" do
-      card = Card.new(back: "aa")
+    it 'back shouldn\'t be shorter than 2 chars' do
+      card = Card.new(back: 'aa')
       expect(card).to be_invalid
     end
   end
 end
-

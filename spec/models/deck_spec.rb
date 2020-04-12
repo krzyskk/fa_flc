@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Deck, type: :model do
-  subject { build(:deck) }
+  let!(:deck) { create(:deck) }
+  subject { deck }
 
   it 'has a working factory' do
     create :deck
@@ -18,5 +21,12 @@ RSpec.describe Deck, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:description) }
+  end
+
+  describe '#sample_words' do
+    let(:front) { 'Front' }
+    let!(:card) { create(:card, deck: deck, front: front) }
+
+    it { expect(subject.sample_words).to match(front) }
   end
 end

@@ -1,9 +1,14 @@
 .card.mt-3
   .card-body
-    .card-title.h5 = deck.description
-    .card-text.mb-2.d-flex
-      .mr-2 = icon('fas', 'tags' , @number_of_cards[deck.id] || 0)
-      .mr-2 = icon('fas', 'award', @number_of_memorized[deck.id] || 0)
+    .card-title.h4 = deck.name
+    .card-text
+      .mb-2.d-flex
+        .mr-2 = icon('fas', 'tags' , @number_of_cards[deck.id] || 0)
+        .mr-2 = icon('fas', 'award', @number_of_memorized[deck.id] || 0)
+      h6 = deck.description 
+      h6 = deck.spreadsheet_name 
+      p = deck.sample_words
+
     .d-flex.justify-content-between.align-items-end
         = link_to "<i class='far fa-play-circle'></i> Start lesson".html_safe, learn_path(deck), class: 'btn btn-lg btn-success mr-auto'
         = link_to "<i class='fas fa-trash'></i>".html_safe , deck, class: 'btn btn-sm btn-outline-danger mx-2', method: :delete, data: { confirm: 'Are you sure?' }

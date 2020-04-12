@@ -22,7 +22,7 @@ gem 'puma'
 gem 'ransack'
 gem 'simple_form'
 gem 'slim'
-gem "slim-rails"
+gem 'slim-rails'
 gem 'turbolinks'
 gem 'uglifier'
 gem 'webpacker'
