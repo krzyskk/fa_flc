@@ -14,7 +14,7 @@ class Lesson < ApplicationRecord
 
   def next_card_id
     cards_package = deck.cards.where(active: true, memorized: false)
-      .order(last_showed_at: :asc).limit(10)
+                        .order(last_showed_at: :asc).limit(10)
     if last_answer.status == 'correct'
       srand
       number = rand(cards_package.count)

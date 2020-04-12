@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 class DecksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_deck, only: [:show, :edit, :update, :destroy]
 
   def index
     @decks = current_user.decks.all
-    @number_of_memorized = @decks.joins(:cards).where(cards: { memorized: true} ).group(:deck_id).count
+    @number_of_memorized = @decks.joins(:cards)
+      .where(cards: { memorized: true}).group(:deck_id).count
     @number_of_cards = @decks.joins(:cards).group(:deck_id).count
   end
 

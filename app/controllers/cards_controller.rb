@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_card, only: [:show, :edit, :update, :destroy]
-  before_action :set_card_items, only: [:index, :create]
+  before_action :set_card, only: %i[show edit update destroy]
+  before_action :set_card_items, only: %i[index create]
 
   def create
     @card = @card_items.create(card_params)

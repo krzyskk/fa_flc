@@ -1,17 +1,18 @@
-AlignParameters:
+require:
+  - rubocop-rails
+  - rubocop-performance
+Layout/ParameterAlignment:
   Enabled: false
-ClassLength:
+Metrics/ClassLength:
   CountComments: false
   Max: 200
 Style/Documentation:
   Enabled: false
-Metrics/LineLength:
+Layout/LineLength:
   Max: 100
-MethodLength:
-  CountComments: false
+Metrics/MethodLength:
   Max: 15
-  Exclude:
-    - 'spec/**/*'
+  CountComments: false
 Metrics/AbcSize:
   Max: 25
   Exclude:
@@ -32,7 +33,7 @@ Metrics/ParameterLists:
   Exclude:
     - 'spec/features/**/*'
 AllCops:
-  TargetRubyVersion: 2.5.1
+  TargetRubyVersion: 2.7
   Exclude:
     - 'bin/*'
     - 'db/**/*'
@@ -43,6 +44,7 @@ AllCops:
     - 'Rakefile'
     - 'vendor/**/*'
     - 'node_modules/**/*'
+    - 'spec/**/*'
 Style/Lambda:
   EnforcedStyle: literal
 Layout/DotPosition:
@@ -56,8 +58,6 @@ Layout/MultilineOperationIndentation:
 Lint/AmbiguousBlockAssociation:
   Exclude:
     - 'spec/**/*'
-Style/Lambda:
-  EnforcedStyle: literal
 Style/StringLiterals:
   EnforcedStyle: single_quotes
 Style/TrailingCommaInArrayLiteral:

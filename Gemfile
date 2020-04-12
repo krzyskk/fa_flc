@@ -1,18 +1,22 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
+ruby '2.7.1'
 
 gem 'rails', '~> 6.0'
 
 gem 'devise'
 gem 'faker'
 gem 'font-awesome-sass'
+gem 'google-api-client'
+gem 'google_drive'
 gem 'i18n'
 gem 'jbuilder'
 gem 'json'
-gem 'omniauth-google-oauth2'
+gem 'omniauth-google-oauth2', '~> 0.5.3'
 gem 'pg'
 gem 'puma'
 gem 'ransack'
@@ -25,12 +29,14 @@ gem 'webpacker'
 
 group :development do
   gem 'better_errors'
-  gem "binding_of_caller"
+  gem 'binding_of_caller'
   gem 'letter_opener'
   gem 'listen'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rubocop', require: false
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
   gem 'spring'
   gem 'spring-watcher-listen'
   gem 'web-console'
@@ -41,7 +47,6 @@ group :test do
   gem 'factory_bot_rails'
   gem 'fuubar'
   gem 'rspec-rails'
-  gem 'rails-controller-testing'
   gem 'rubocop-rspec'
   gem 'shoulda-matchers'
 end
