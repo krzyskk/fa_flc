@@ -11,5 +11,7 @@ Devise.setup do |config|
   config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
   config.reset_password_within = 6.hours
   config.sign_out_via = :get
-  config.omniauth :google_oauth2, Rails.application.credentials.client_id, Rails.application.credentials.client_secret, {}
+  config.omniauth :google_oauth2, Rails.application.credentials.client_id, Rails.application.credentials.client_secret, {
+    scope: "contacts.readonly,userinfo.email"
+  }
 end
