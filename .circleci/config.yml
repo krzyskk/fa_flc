@@ -1,0 +1,162 @@
+version: 2.1
+ 
+executors:
+  ruby:
+    docker:
+      - image: circleci/ruby:2.6.3
+
+orbs:
+  aws-cli: circleci/aws-cli@0.1.16
+  aws-code-deploy: circleci/aws-code-deploy@1.0.1
+  tools: netguru/tools@dev:internal
+  slack: circleci/slack@3.4.2
+ 
+jobs:
+  checkout_code:
+    executor: ruby
+    resource_class: small
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - .
+ 
+  task_3_check:
+    executor: ruby
+    resource_class: small
+    steps:
+      - run:
+          name: test env var exist
+          command: |
+            if [ -z "${AWS_ACCESS_KEY_ID}" ] || [ -z "${AWS_SECRET_ACCESS_KEY}" ] || [ -z "${AWS_DEFAULT_REGION}" ]; then
+              echo "ENV variables are not set properly"
+              exit 1
+            fi
+ 
+  task_4_check:
+    executor: ruby
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: check if codedeploy scripts are present
+          command: |
+            if [ -f "codedeploy-scripts/install_dependencies" ] && [ -f "codedeploy-scripts/start_server" ] && [ -f "codedeploy-scripts/stop_server" ] && [ -f "codedeploy-scripts/validate_service" ]; then
+              echo "scripts exist"
+            else
+              echo "scripts are missing"
+              exit 1
+            fi
+ 
+  task_5_check:
+    executor: ruby
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: check if appspec.yml is present
+          command: |
+            if [ -f "./appspec.yml" ]; then
+              echo "appspec.yml present"
+            else
+              echo "appspec.yml is missing"
+              exit 1
+            fi
+ 
+ 
+  task_6_check:
+    executor: ruby
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: check if Dockerfile is present
+          command: |
+            if [ -f "./Dockerfile" ]; then
+              echo "Dockerfile present"
+            else
+              echo "Dockerfile is missing"
+              exit 1
+            fi
+ 
+  task_7_check:
+    executor: ruby
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: check if docker-compose-staging.yml is present
+          command: |
+            if [ -f "./docker-compose-staging.yml" ]; then
+              echo "docker-compose-staging.yml present"
+            else
+              echo "docker-compose-staging.yml is missing"
+              exit 1
+            fi
+
+  deploy_bundle:
+    executor: aws-cli/default
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - aws-cli/setup
+      - aws-code-deploy/push-bundle:
+          application-name: calluna-ci-kk4-sandbox-staging-main_app
+          bundle-bucket: calluna-bucket-ci-kk4-sandbox-staging
+          bundle-key: codedeploy/$CIRCLE_PROJECT_REPONAME-$CIRCLE_BUILD_NUM
+      - aws-code-deploy/deploy-bundle:
+          application-name: calluna-ci-kk4-sandbox-staging-main_app
+          bundle-bucket: calluna-bucket-ci-kk4-sandbox-staging
+          bundle-key: codedeploy/$CIRCLE_PROJECT_REPONAME-$CIRCLE_BUILD_NUM
+          deployment-group: calluna-ci-kk4-sandbox-staging-main_app-group
+      - tools/codedeploy-get-instance-status-on-fail:
+          application-name: calluna-ci-kk4-sandbox-staging-main_app
+          deployment-group: calluna-ci-kk4-sandbox-staging-main_app-group
+
+  notify_slack:
+    executor: slack/alpine
+    steps:
+      - slack/notify:
+          message: $MY_NAME finished ci-training
+
+workflows:
+  build_test_deploy:
+    jobs:
+      - checkout_code
+ 
+      - task_3_check:
+          requires:
+            - checkout_code
+ 
+      - task_4_check:
+          requires:
+            - task_3_check
+ 
+      - task_5_check:
+          requires:
+            - task_4_check
+ 
+      - task_6_check:
+          requires:
+            - task_5_check
+ 
+      - task_7_check:
+          requires:
+            - task_6_check
+
+      - deploy_bundle:
+          requires:
+            - task_7_check
+          filters:
+            branches:
+              only: master
+
+      - notify_slack:
+          context: ci-training
+          requires:
+            - deploy_bundle

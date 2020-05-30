@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  web: &base
+    environment:
+      - RAILS_MASTER_KEY
+      - PIDFILE=tmp/rails_server.pid
+    build:
+      context: .
+      args:
+        BUNDLER_OPTS: "--jobs=5 --retry=3 --without test"
+    command: bash -c "dumb-init bundle exec puma -C config/puma.rb"
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "80:3000"
+    restart: always

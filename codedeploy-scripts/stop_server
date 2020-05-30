@@ -1,0 +1,17 @@
+# Exit immediately if a pipeline [...] returns a non-zero status.
+set -e
+# Treat unset variables and parameters [...] as an error when performing parameter expansion (substituting).
+set -u
+# Print a trace of simple commands
+set -x
+
+INSTANCE_NAME="ci-kk4-sandbox"
+
+DIR=$(cat /opt/codedeploy-agent/deployment-root/deployment-instructions/${DEPLOYMENT_GROUP_ID}_most_recent_install)
+cd $DIR/deployment-archive
+COMPOSE="docker-compose -p ${INSTANCE_NAME} -f docker-compose-staging.yml"
+${COMPOSE} down | true
+
+# NOTE:
+#   ${COMPOSE} down | true
+#   should always return an RC zero in order to avoid the ApplicationStop Hook failures; it's fairly safe and very simple.

@@ -1,0 +1,29 @@
+# Fetch ruby Image
+FROM ruby:2.6.3
+
+# Setting default args
+ARG BUNDLER_OPTS
+ENV RAILS_ENV staging
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    dumb-init \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create and set application work directory
+WORKDIR /usr/src/app
+
+# Copy Gemfiles
+COPY Gemfile ./Gemfile
+COPY Gemfile.lock ./Gemfile.lock
+
+# Install gems
+RUN gem install bundler:1.17.2
+RUN bundle install ${BUNDLER_OPTS}
+
+# Copy project's files
+COPY . .
+
+# Expose port
+EXPOSE 3000
