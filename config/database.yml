@@ -1,7 +1,10 @@
 default: &default
   encoding: unicode
   pool: 5
-  tineout: 5000
+  timeout: 5000
+  host: db
+  port: 5432
+  username: postgres
 
 development:
   <<: *default
