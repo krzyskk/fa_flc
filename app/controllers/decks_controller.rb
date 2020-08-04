@@ -2,7 +2,7 @@
 
 class DecksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_deck, only: %i[show edit update destroy]
+  before_action :set_deck, only: %i[show edit update destroy import_cards]
 
   def index
     @decks = current_user.decks.all
@@ -25,6 +25,9 @@ class DecksController < ApplicationController
   end
 
   def update
+    CsvImporter.new.call(params[:file].path).each do |card|
+      @deck.cards.find_or_create_by(card)
+    end
     if @deck.update(deck_params)
       redirect_to decks_url, notice: 'Deck was successfully updated.'
     else
@@ -37,6 +40,10 @@ class DecksController < ApplicationController
     redirect_to decks_url, notice: 'Deck was successfully destroyed.'
   end
 
+  def import_cards
+   
+  end
+
   private
 
   def set_deck
@@ -44,6 +51,6 @@ class DecksController < ApplicationController
   end
 
   def deck_params
-    params.require(:deck).permit(:name, :description, :spreadsheet_name)
+    params.require(:deck).permit(:name, :description, :file)
   end
 end

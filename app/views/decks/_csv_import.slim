@@ -1,0 +1,4 @@
+.mt-3  
+  = form_tag({action: :import_cards}, multipart: true) do 
+    = file_field_tag :file
+    = submit_tag( "Import" )

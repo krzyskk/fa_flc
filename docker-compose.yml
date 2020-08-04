@@ -11,5 +11,6 @@ services:
       - .:/fa_flash
     ports:
       - "3000:3000"
-    depends_on:
-      - db
+    restart: always
+    tty: true
+    stdin_open: true

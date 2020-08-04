@@ -1,5 +1,5 @@
 .mt-3  
-  = simple_form_for(@deck) do |f|
+  = simple_form_for(@deck, html: { multipart: true }) do |f|
     = f.error_notification
 
     .form-inputs
@@ -9,7 +9,7 @@
       = f.input :description
 
     .form-inputs
-      = f.input :spreadsheet_name
+      = f.input :file, as: :file
 
     .form-actions
       = f.button :submit , class: 'btn btn-primary mr-2' 
