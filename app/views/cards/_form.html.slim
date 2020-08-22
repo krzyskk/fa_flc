@@ -1,0 +1,13 @@
+.mt-3  
+  = simple_form_for([@card.deck, @card], html: { multipart: true }) do |f|
+    = f.error_notification
+
+    .form-inputs
+      = f.input :front
+
+    .form-inputs
+      = f.input :back
+
+    .form-actions
+      = f.button :submit , class: 'btn btn-primary mr-2' 
+      = link_to "<i class='fas fa-trash'></i>  Cancel".html_safe, deck_cards_path(@card.deck), class: 'btn btn-danger'

@@ -1,0 +1,17 @@
+table
+  thead
+    tr
+      th
+      th
+      th
+      th
+
+  tbody
+    - @cards.each do |card|
+      tr
+        td = card.front
+        td = card.back
+        td = link_to 'Edit', edit_deck_card_path(card.deck, card)
+        td = link_to 'Destroy', [card.deck, card], data: { confirm: 'Are you sure?' }, method: :delete
+
+= link_to 'New Card', new_deck_card_path

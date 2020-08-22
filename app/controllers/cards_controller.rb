@@ -3,49 +3,50 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_card, only: %i[edit update destroy]
-  before_action :set_card_items, only: :create
 
-  def create
-    @card = @card_items.create(card_params)
-    respond_to do |format|
-      if @card.save
-        format.html { redirect_to deck_cards_url, notice: 'Card was successfully created.' }
-        format.js
-      end
-    end
+  def index
+    @cards = deck.cards.all
+  end
+
+  def new
+    @card = deck.cards.new
   end
 
   def edit
   end
 
+  def create
+    @card = deck.cards.new(card_params)
+      if @card.save
+        redirect_to deck_cards_path(deck), notice: 'Card was successfully created.' 
+      else
+        render :new 
+      end
+  end
+
   def update
-    @card.update_attributes!(card_params)
-    respond_to do |format|
-      format.js
-      format.html { redirect_to deck_cards_url, notice: 'Card was successfully updated.' }
+    if @card.update(card_params)
+      redirect_to deck_cards_path(deck), notice: 'Card was successfully updated.' 
+    else
+      render :edit 
     end
   end
 
   def destroy
     @card.destroy
-    respond_to do |format|
-      format.html { redirect_to deck_cards_url, notice: 'Card was successfully destroyed.' }
-      format.js
-    end
+    redirect_to deck_cards_path(deck), notice: 'Card was successfully destroyed.'
   end
 
   private
+    def set_card
+      @card = Card.find(params[:id])
+    end
 
-  def set_card_items
-    @card_items = Deck.find(params[:deck_id]).cards
-  end
+    def deck
+      Deck.find(params[:deck_id])
+    end
 
-  def set_card
-    @card = Card.find(params[:id]).decorate
-  end
-
-  def card_params
-    params.require(:card).permit(:front, :back, :showed, :correct, :last_showed_at,
-                                 :front_image, :word_class, :active)
-  end
+    def card_params
+      params.require(:card).permit(:front, :back)
+    end
 end
