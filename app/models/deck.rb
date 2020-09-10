@@ -7,7 +7,7 @@ class Deck < ApplicationRecord
 
   validates :name, :description, presence: true, format: /\w{2,}/
 
-  def sample_words
-    cards.first(15).pluck(:front).join(', ')
+  def sample_words(limit = 15)
+    cards.last(limit).pluck(:front).join(', ')
   end
 end

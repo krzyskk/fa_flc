@@ -1,3 +1,5 @@
+= flash_messages
+
 table
   thead
     tr
@@ -14,4 +16,6 @@ table
         td = link_to 'Edit', edit_deck_card_path(card.deck, card)
         td = link_to 'Destroy', [card.deck, card], data: { confirm: 'Are you sure?' }, method: :delete
 
-= link_to 'New Card', new_deck_card_path
+= paginate(@cards)
+
+= link_to('New Card', new_deck_card_path)

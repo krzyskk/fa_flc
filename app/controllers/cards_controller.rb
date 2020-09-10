@@ -5,7 +5,7 @@ class CardsController < ApplicationController
   before_action :set_card, only: %i[edit update destroy]
 
   def index
-    @cards = deck.cards.all
+    @cards = deck.cards.order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -18,7 +18,7 @@ class CardsController < ApplicationController
   def create
     @card = deck.cards.new(card_params)
       if @card.save
-        redirect_to deck_cards_path(deck), notice: 'Card was successfully created.' 
+        redirect_to deck_cards_path(deck), notice: "Card #{@card.front} was successfully created."
       else
         render :new 
       end
@@ -28,13 +28,13 @@ class CardsController < ApplicationController
     if @card.update(card_params)
       redirect_to deck_cards_path(deck), notice: 'Card was successfully updated.' 
     else
-      render :edit 
+      redirect_to deck_cards_path(deck), notice: "Card #{@card.front} was successfully updated."
     end
   end
 
   def destroy
     @card.destroy
-    redirect_to deck_cards_path(deck), notice: 'Card was successfully destroyed.'
+    redirect_to deck_cards_path(deck), notice: "Card #{@card.front} was successfully destroyed."
   end
 
   private

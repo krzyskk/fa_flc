@@ -18,7 +18,7 @@ class DecksController < ApplicationController
   def create
     @deck = current_user.decks.new(deck_params)
     if @deck.save
-      redirect_to decks_url, notice: 'Deck was successfully created.'
+      redirect_to decks_url, notice: "Deck #{@deck.name} was successfully created."
     else
       render :new
     end
@@ -29,7 +29,7 @@ class DecksController < ApplicationController
       @deck.cards.find_or_create_by(card)
     end
     if @deck.update(deck_params)
-      redirect_to decks_url, notice: 'Deck was successfully updated.'
+      redirect_to decks_url, notice: "Deck #{@deck.name} was successfully updated."
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class DecksController < ApplicationController
 
   def destroy
     @deck.destroy
-    redirect_to decks_url, notice: 'Deck was successfully destroyed.'
+    redirect_to decks_url, notice: "Deck #{@deck.name} was successfully destroyed."
   end
 
   def import_cards
