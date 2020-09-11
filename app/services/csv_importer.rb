@@ -4,6 +4,7 @@ class CsvImporter
   def call(file_path)
     require 'csv'
 
+    return unless file_path.present?
     data = []
     table = CSV.table(file_path)
     raise WrongColumnsError if (table.headers & [:front, :back]).count != 2

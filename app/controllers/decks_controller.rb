@@ -21,28 +21,29 @@ class DecksController < ApplicationController
     if @deck.save
       redirect_to decks_url, notice: "Deck #{@deck.name} was successfully created."
     else
-      render :new
+      redirect_to new_deck_path, alert: "Unable to create card"
     end
   end
 
   def update
-    CsvImporter.new.call(params[:file].path).each do |card|
-      @deck.cards.find_or_create_by(card)
-    end
-    if @deck.update(deck_params)
-      redirect_to decks_url, notice: "Deck #{@deck.name} was successfully updated."
-    else
-      render :edit
+    begin
+      cards = CsvImporter.new.call(params[:deck][:file]&.path) || []
+      cards.each do |card|
+        @deck.cards.find_or_create_by(card)
+      end
+      if @deck.update(deck_params)
+        redirect_to decks_url, notice: "Deck #{@deck.name} was successfully updated."
+      else
+        redirect_to edit_deck_path(@deck), alert: "Unable to update Deck #{@deck.name}"
+      end
+    rescue WrongColumnsError => e
+      redirect_to edit_deck_path(@deck), alert: "Wrong file: #{e.message}"
     end
   end
 
   def destroy
     @deck.destroy
     redirect_to decks_url, notice: "Deck #{@deck.name} was successfully destroyed."
-  end
-
-  def import_cards
-   
   end
 
   private
@@ -52,6 +53,6 @@ class DecksController < ApplicationController
   end
 
   def deck_params
-    params.require(:deck).permit(:name, :description, :file)
+    params.require(:deck).permit(:name, :description)
   end
 end

@@ -17,18 +17,18 @@ class CardsController < ApplicationController
 
   def create
     @card = deck.cards.new(card_params)
-      if @card.save
-        redirect_to deck_cards_path(deck), notice: "Card #{@card.front} was successfully created."
-      else
-        render :new 
-      end
+    if @card.save
+      redirect_to deck_cards_path(deck), notice: "Card #{@card.front} was successfully created."
+    else
+      redirect_to new_card_path, alert: "Unable to create card"
+    end
   end
 
   def update
     if @card.update(card_params)
-      redirect_to deck_cards_path(deck), notice: 'Card was successfully updated.' 
+      redirect_to deck_cards_path(deck), notice: "Card #{@card.front} was successfully updated." 
     else
-      redirect_to deck_cards_path(deck), notice: "Card #{@card.front} was successfully updated."
+      redirect_to edit_card_path(@card), alert: "Unable to update card"
     end
   end
 
