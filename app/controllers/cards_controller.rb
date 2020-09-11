@@ -38,15 +38,16 @@ class CardsController < ApplicationController
   end
 
   private
-    def set_card
-      @card = Card.find(params[:id])
-    end
 
-    def deck
-      Deck.find(params[:deck_id])
-    end
+  def set_card
+    @card = Card.find(params[:id])
+  end
 
-    def card_params
-      params.require(:card).permit(:front, :back)
-    end
+  def deck
+    Deck.find(params[:deck_id])
+  end
+
+  def card_params
+    params.require(:card).permit(:front, :back)
+  end
 end
