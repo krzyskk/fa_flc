@@ -5,8 +5,6 @@ class LessonsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :next_question
 
   def learn
-    SpreadsheetImporter.new(current_user).call(deck.cards)
-
     @lesson = lesson || deck.lessons.create!
     card_id = deck.cards.first.id || deck.cards.create!(front: 'sample', back: 'sample').id
     4.times do
