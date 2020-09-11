@@ -5,10 +5,11 @@ class DecksController < ApplicationController
   before_action :set_deck, only: %i[show edit update destroy import_cards]
 
   def index
-    @decks = current_user.decks.all
-    @number_of_memorized = @decks.joins(:cards)
+    decks = current_user.decks.all
+    @decks =  decks.order(created_at: :desc).page(params[:page]).per(4)
+    @number_of_memorized = decks.joins(:cards)
                                  .where(cards: { memorized: true }).group(:deck_id).count
-    @number_of_cards = @decks.joins(:cards).group(:deck_id).count
+    @number_of_cards = decks.joins(:cards).group(:deck_id).count
   end
 
   def new

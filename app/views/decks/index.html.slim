@@ -2,5 +2,6 @@
 
 ul.table
   = render(@decks)
+= paginate(@decks)
 .button-container
   = link_to "<i class='fas fa-plus-circle'></i> New Deck".html_safe, new_deck_path, class: 'btn btn-primary'
