@@ -25,10 +25,12 @@ class CardsController < ApplicationController
   end
 
   def update
-    if @card.update(card_params)
-      redirect_to deck_cards_path(deck), notice: "Card #{@card.front} was successfully updated." 
+    if @card.update(card_params) && params[:redirected_from_lesson] == "true"
+      redirect_to learn_path(deck), notice: "Card #{@card.front} was successfully updated." 
+    elsif @card.update(card_params) 
+      redirect_to deck_cards_path(deck), notice: "Card #{@card.front} was successfully updated."   
     else
-      redirect_to edit_card_path(@card), alert: "Unable to update card"
+      redirect_back(fallback_location: deck_cards_path(deck), alert: "Unable to update card")
     end
   end
 
