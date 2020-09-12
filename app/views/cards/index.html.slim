@@ -16,6 +16,6 @@ table
         td = link_to 'Edit', edit_deck_card_path(card.deck, card)
         td = link_to 'Destroy', [card.deck, card], data: { confirm: 'Are you sure?' }, method: :delete
 
-= paginate(@cards)
-
-= link_to('New Card', new_deck_card_path)
+.d-flex.justify-content-between.mb-5.mt-4.align-items-start
+  = paginate(@cards)
+  = link_to "<i class='fas fa-plus-circle'></i> New Card".html_safe, new_deck_card_path, class: 'btn btn-primary'

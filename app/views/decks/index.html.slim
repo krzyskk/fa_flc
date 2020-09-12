@@ -1,7 +1,7 @@
 = flash_messages
 
-ul.table
+.table
   = render(@decks)
-= paginate(@decks)
-.button-container
+.d-flex.justify-content-between.mb-5.mt-4.align-items-start
+  = paginate(@decks)
   = link_to "<i class='fas fa-plus-circle'></i> New Deck".html_safe, new_deck_path, class: 'btn btn-primary'
