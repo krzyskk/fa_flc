@@ -1,5 +1,5 @@
 Devise.setup do |config|
-  config.mailer_sender = 'team@dailysmarty.com'
+  config.mailer_sender = 'team@fa_fa.com'
   require 'devise/orm/active_record'
   config.case_insensitive_keys = [:email]
   config.strip_whitespace_keys = [:email]
@@ -11,7 +11,4 @@ Devise.setup do |config|
   config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
   config.reset_password_within = 6.hours
   config.sign_out_via = :get
-  config.omniauth :google_oauth2, Rails.application.credentials.client_id, Rails.application.credentials.client_secret, {
-    scope: "contacts.readonly,userinfo.email"
-  }
 end
