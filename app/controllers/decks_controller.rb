@@ -2,7 +2,8 @@
 
 class DecksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_deck, only: %i[show edit update destroy import_cards]
+  before_action :set_deck, only: %i[show edit update destroy import_cards learn next_question]
+  skip_before_action :verify_authenticity_token, only: :next_question
 
   def index
     decks = current_user.decks.all
@@ -46,6 +47,24 @@ class DecksController < ApplicationController
     redirect_to decks_url, notice: "Deck #{@deck.name} was successfully destroyed."
   end
 
+  def learn
+    @lesson = lesson || @deck.lessons.create!
+    card_id = @deck.cards.first.id || @deck.cards.create!(front: 'sample', back: 'sample').id
+    4.times do
+      @lesson.answers.create!(card_id: card_id)
+    end
+    @lesson.save!
+  end
+
+  def next_question
+    @lesson = lesson
+    @lesson.answers.last.update(answer: params[:answer])
+    @lesson.answers.create(card_id: @lesson.next_card_id)
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def set_deck
@@ -54,5 +73,9 @@ class DecksController < ApplicationController
 
   def deck_params
     params.require(:deck).permit(:name, :description)
+  end
+
+  def lesson
+    @deck.lessons.first
   end
 end

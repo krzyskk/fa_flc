@@ -18,7 +18,7 @@ ul.list-group
       = render 'question'
 
   li.list-group-item
-    = form_tag next_question_path(@lesson.deck), method: :put, remote: true do
+    = form_tag next_question_deck_path(@lesson.deck), method: :put, remote: true do
       .input-group
         = text_field_tag 'answer', nil, class: 'form-control', autocomplete: 'off'
         .input-group-append
