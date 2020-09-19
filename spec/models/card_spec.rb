@@ -14,7 +14,6 @@ RSpec.describe Card, type: :model do
   describe 'validations' do
     it { should validate_presence_of(:front) }
     it { should validate_presence_of(:back) }
-    it { should validate_presence_of(:word_class) }
 
     it 'front shouldn\'t be shorter than 2 chars' do
       card = Card.new(front: 'aa')

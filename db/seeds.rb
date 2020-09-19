@@ -13,10 +13,8 @@ csv.each do |row|
   deck.cards.create!(
     front: row['front'],
     back: row['back'],
-    word_class: row['word_class'],
     created_at: Date.today,
     updated_at: Date.today,
-    last_showed_at: Date.today
   )
   print '.'
 end
