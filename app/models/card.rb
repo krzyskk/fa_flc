@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Card < ApplicationRecord
-  enum status: { newly_created: 0, ongoing: 1,  memorized: 2, is_being_repetitive: 3 }
+  enum status: { newly_created: 0, not_memoized: 1,  memorized: 2, confirmed: 3, suspended: 4 }
 
   validates :front, :back, presence: true, format: /[a-zA-Z]{2,}/
 
