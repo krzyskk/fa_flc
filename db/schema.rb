@@ -46,46 +46,13 @@ ActiveRecord::Schema.define(version: 2020_09_11_210642) do
     t.index ["front", "back", "word_class", "deck_id"], name: "index_cards_on_front_and_back_and_word_class_and_deck_id", unique: true
   end
 
-  create_table "chores", force: :cascade do |t|
-    t.string "name"
-    t.string "type"
-    t.bigint "day_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["day_id"], name: "index_chores_on_day_id"
-  end
-
-  create_table "days", force: :cascade do |t|
-    t.datetime "date"
-    t.text "note"
-    t.string "resolution"
-    t.string "main_task"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_days_on_user_id"
-  end
-
   create_table "decks", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "description", default: "", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "spreadsheet_name"
     t.index ["user_id"], name: "index_decks_on_user_id"
-  end
-
-  create_table "habits", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.boolean "active"
-    t.integer "repeat_type"
-    t.string "repeat_pattern"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_habits_on_user_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -97,50 +64,6 @@ ActiveRecord::Schema.define(version: 2020_09_11_210642) do
     t.integer "wrong", default: 0
     t.integer "empty", default: 0
     t.index ["deck_id"], name: "index_lessons_on_deck_id"
-  end
-
-  create_table "notes", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.string "short_answer"
-    t.string "question"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "familiarity", default: 0, null: false
-    t.integer "completation", default: 0, null: false
-  end
-
-  create_table "results", force: :cascade do |t|
-    t.integer "day_id"
-    t.integer "habit_id"
-    t.integer "result"
-    t.boolean "success", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "short_questions", force: :cascade do |t|
-    t.string "question"
-    t.string "answer"
-    t.bigint "note_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["note_id"], name: "index_short_questions_on_note_id"
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.string "color"
-    t.integer "priority"
-    t.boolean "done"
-    t.bigint "day_id"
-    t.datetime "finished_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["day_id"], name: "index_tasks_on_day_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -163,11 +86,6 @@ ActiveRecord::Schema.define(version: 2020_09_11_210642) do
   add_foreign_key "answers", "cards"
   add_foreign_key "answers", "lessons"
   add_foreign_key "cards", "decks"
-  add_foreign_key "chores", "days"
-  add_foreign_key "days", "users"
   add_foreign_key "decks", "users"
-  add_foreign_key "habits", "users"
   add_foreign_key "lessons", "decks"
-  add_foreign_key "short_questions", "notes"
-  add_foreign_key "tasks", "days"
 end
