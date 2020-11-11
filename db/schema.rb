@@ -15,23 +15,11 @@ ActiveRecord::Schema.define(version: 2018_01_02_122112) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "answers", force: :cascade do |t|
-    t.bigint "lesson_id"
-    t.bigint "card_id"
-    t.string "answer", default: "", null: false
-    t.string "status", default: "", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["card_id"], name: "index_answers_on_card_id"
-    t.index ["lesson_id"], name: "index_answers_on_lesson_id"
-  end
-
   create_table "cards", force: :cascade do |t|
     t.bigint "deck_id"
     t.string "front", default: "", null: false
     t.string "back", default: "", null: false
     t.integer "status", default: 0, null: false
-    t.integer "correct_answers_in_a_row", default: 0, null: false
     t.datetime "marked_as_memorized_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -50,12 +38,23 @@ ActiveRecord::Schema.define(version: 2018_01_02_122112) do
 
   create_table "lessons", force: :cascade do |t|
     t.bigint "deck_id"
-    t.integer "initial_cards_package", default: [], array: true
-    t.integer "current_cards_package", default: [], array: true
-    t.boolean "ongoing", default: true, null: false
+    t.integer "number_of_correct", default: 0, null: false
+    t.integer "number_of_wrong", default: 0, null: false
+    t.integer "number_of_empty", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["deck_id"], name: "index_lessons_on_deck_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.bigint "lesson_id"
+    t.bigint "card_id"
+    t.string "last_answer", default: "", null: false
+    t.integer "correct_answers_in_a_row", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_questions_on_card_id"
+    t.index ["lesson_id"], name: "index_questions_on_lesson_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,9 +74,9 @@ ActiveRecord::Schema.define(version: 2018_01_02_122112) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "answers", "cards"
-  add_foreign_key "answers", "lessons"
   add_foreign_key "cards", "decks"
   add_foreign_key "decks", "users"
   add_foreign_key "lessons", "decks"
+  add_foreign_key "questions", "cards"
+  add_foreign_key "questions", "lessons"
 end

@@ -5,12 +5,12 @@ class Card < ApplicationRecord
 
   validates :front, :back, presence: true
 
-  has_many :answers, dependent: :destroy
+  has_many :questions
   belongs_to :deck
 
   def set_memorized
-    if answers.where(status: 'correct').count >= 3
-      self.memorized = true
+    if questions.last.correct_answers_in_a_row >= 3
+      # self.memorized = true
       self.marked_as_memorized = DateTime.now
       self.save!
       deck.lessons.first.increment!('memorized')

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class DecksController < ApplicationController
+  MININMAL_NUMBER_OF_QUESTIONS = Lesson::DISPLAY_ANSWERS + 2
+
   before_action :authenticate_user!
   before_action :set_deck, only: %i[show edit update destroy import_cards learn next_question]
   skip_before_action :verify_authenticity_token, only: :next_question
@@ -48,25 +50,22 @@ class DecksController < ApplicationController
   end
 
   def learn
-    if @deck.cards.count < 5
-      redirect_to deck_cards_path(@deck), alert: "Unable to start lesson with less than 5 cards"
+    if @deck.cards.count < MININMAL_NUMBER_OF_QUESTIONS
+      redirect_to deck_cards_path(@deck), alert: "Unable to start lesson with less than #{MININMAL_NUMBER_OF_QUESTIONS} cards"
     end
     if @deck.lessons.ongoing.present?
       @lesson = @deck.lessons.ongoing.last
     else
-      cards_for_lesson = @deck.cards.last(20).pluck(:id)
-      @lesson = @deck.lessons.create!(initial_cards_package: cards_for_lesson,
-                                      current_cards_package: cards_for_lesson)
-      cards_for_lesson.last(4).each do |card_id|
-        @lesson.answers.create!(card_id: card_id)
+      @lesson = @deck.lessons.create!
+      @deck.cards.last(20).pluck(:id).each do |card_id|
+        @lesson.questions.create!(card_id: card_id)
       end
     end
   end
 
   def next_question
     @lesson = lesson
-    @lesson.answers.last.update(answer: params[:answer])
-    @lesson.answers.create(card_id: @lesson.next_card_id)
+    @lesson.questions.last.update(last_answer: params[:answer])
     respond_to do |format|
       format.js
     end

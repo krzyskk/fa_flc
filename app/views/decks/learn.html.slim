@@ -11,7 +11,7 @@ ul.list-group
       .col-4 Your answer
   
   #previous-questions
-    = render(partial: 'answer', collection: @lesson.last_answers)
+    = render(partial: 'answer', collection: @lesson.recent_questions)
 
   li.list-group-item.list-group-item-dark
     #question-box
