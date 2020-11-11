@@ -9,7 +9,7 @@ class DecksController < ApplicationController
     decks = current_user.decks.all
     @decks =  decks.order(created_at: :desc).page(params[:page]).per(4)
     @number_of_memorized = decks.joins(:cards)
-                                 .where(cards: { status: 2 }).group(:deck_id).count
+                                 .where(cards: { memorized: true }).group(:deck_id).count
     @number_of_cards = decks.joins(:cards).group(:deck_id).count
   end
 

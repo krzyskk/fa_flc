@@ -2,7 +2,7 @@
 
 class Lesson < ApplicationRecord
   belongs_to :deck
-  has_many :answers, dependent: :destroy
+  has_many :answers, dependent: :destroy, after_add: :update_counters
 
   def last_answers
     answers.last(4).first 3
@@ -24,19 +24,11 @@ class Lesson < ApplicationRecord
     end
   end
 
-  def number_of_correct
-    answers.where(status: 'correct').count
-  end
+  private
 
-  def number_of_wrong
-    answers.where(status: 'wrong').count
-  end
-
-  def number_of_empty
-    answers.where(status: 'epmoty').count
-  end
-
-  def number_of_memorized
-    initial_cards_package.size - current_cards_package.size
+  def update_counters(_answer)
+    update_attribute(:correct, answers.where(status: 'correct').count)
+    update_attribute(:wrong, answers.where(status: 'wrong').count)
+    update_attribute(:empty, answers.where(status: 'empty').count)
   end
 end

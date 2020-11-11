@@ -1,13 +1,13 @@
 .d-flex.justify-content-between.mt-3
   .alert.alert-dark
     = "Correct answers: "
-    strong= @lesson.number_of_correct
+    strong= @lesson.correct
   .alert.alert-dark
     = "Empty answers: "
-    strong= @lesson.number_of_empty
+    strong= @lesson.empty
   .alert.alert-dark
     = "Wrong answers: "
-    strong= @lesson.number_of_wrong
+    strong= @lesson.wrong
   .alert.alert-dark
     = "Memorized: "
-    strong= @lesson.number_of_memorized
+    strong= @lesson.memorized
