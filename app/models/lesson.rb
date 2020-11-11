@@ -1,39 +1,44 @@
 # frozen_string_literal: true
 
 class Lesson < ApplicationRecord
-  NUMNBER_OF_QUESTIONS = 20
-  DISPLAY_ANSWERS = 3
-
   belongs_to :deck
-  has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
 
-  scope :ongoing, -> { joins(:questions) }
+  scope :ongoing, -> { where(ongoing: true).where.not( initial_cards_package: []) }
 
-  def recent_questions
-    questions.last(4).first(3)
+  def last_answers
+    answers.last(4).first(3)
   end
 
-  def recent_question
-    questions.last(2).first
-  end
-
-  def next_question
-    questions.where(card_id: next_card_id).first
+  def last_answer
+    answers.last(2).first
   end
 
   def next_card_id
     cards_package = deck.cards.where(active: true, memorized: false)
                         .order(last_showed_at: :asc).limit(10)
-    if recent_question.status == 'correct'
+    if last_answer.status == 'correct'
       srand
       number = rand(cards_package.count)
       cards_package[number].id
     else
-      recent_question.card_id
+      last_answer.card_id
     end
   end
 
+  def number_of_correct
+    answers.where(status: 'correct').count
+  end
+
+  def number_of_wrong
+    answers.where(status: 'wrong').count
+  end
+
+  def number_of_empty
+    answers.where(status: 'epmoty').count
+  end
+
   def number_of_memorized
-    questions.joins(:card).where(cards: { status: 2 } ).count
+    initial_cards_package.size - current_cards_package.size
   end
 end

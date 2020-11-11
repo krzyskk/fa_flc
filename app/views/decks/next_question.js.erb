@@ -12,11 +12,11 @@ function beep() {
 
 $('#progress-box').html('<%= j render 'progress' %>');
 $('#question-box').html('<%= j render 'question' %>');
-$('#previous-questions').html('<%= j render(partial: 'answer', collection: @lesson.recent_questions) %>');
+$('#previous-questions').html('<%= j render(partial: 'answer', collection: @lesson.last_answers) %>');
 $('#answer').first().val('');
 
-if ('<%= @lesson.recent_question.status %>' == 'correct') {
-  speak('<%= @lesson.recent_question.correct_answer %>');
+if ('<%= @lesson.last_answer.status %>' == 'correct') {
+  speak('<%= @lesson.last_answer.correct_answer %>');
 } else { 
   beep();
 }

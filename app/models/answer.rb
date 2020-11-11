@@ -1,14 +1,10 @@
 # frozen_string_literal: true
 
-class Question < ApplicationRecord
+class Answer < ApplicationRecord
   belongs_to :lesson
   belongs_to :card
 
   before_update :set_status, :update_card_counters
-
-  # delegate :status, to: :card
-
-  scope :unmemorized, -> { ijoins(:card).where(cards: { status: 0 } ) }
 
   def question
     card.front
@@ -29,25 +25,16 @@ class Question < ApplicationRecord
     end
   end
 
-  def status
-    if last_answer == correct_answer
-      return 'correct'
-    elsif last_answer == ''
-      return 'empty'
-    end
-    'wrong'
-  end
-
   private
 
   def set_status
-    # if answer == correct_answer
-    #   self.status = 'correct'
-    # elsif answer == ''
-    #   self.status = 'empty'
-    # else
-    #   self.status = 'wrong'
-    # end
+    if answer == correct_answer
+      self.status = 'correct'
+    elsif answer == ''
+      self.status = 'empty'
+    else
+      self.status = 'wrong'
+    end
   end
 
   def update_card_counters

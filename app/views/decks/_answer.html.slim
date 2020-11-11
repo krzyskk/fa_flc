@@ -2,4 +2,4 @@ li class = answer.ststus_view_class id="a#{answer.card.id}"
   .row
     .col-4 = link_to answer.question, edit_deck_card_path(answer.card.deck, answer.card, redirected_from_lesson: true)
     .col-4 = answer.correct_answer
-    .col-4 = answer.last_answer
+    .col-4 = answer.answer

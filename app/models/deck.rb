@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-
-
 class Deck < ApplicationRecord
   has_many :cards, dependent: :destroy
   has_many :lessons, dependent: :destroy
