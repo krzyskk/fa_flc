@@ -20,7 +20,7 @@ class CardsController < ApplicationController
     if @card.save
       redirect_to deck_cards_path(deck), notice: "Card #{@card.front} was successfully created."
     else
-      redirect_to new_deck_card_path(deck), alert: "Unable to create card"
+      redirect_to new_card_path, alert: "Unable to create card"
     end
   end
 

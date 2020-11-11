@@ -3,7 +3,7 @@
 class Card < ApplicationRecord
   enum status: { newly_created: 0, not_memoized: 1,  memorized: 2, confirmed: 3, suspended: 4 }
 
-  validates :front, :back, presence: true
+  validates :front, :back, presence: true, format: /[a-zA-Z]{2,}/
 
   has_many :answers, dependent: :destroy
   belongs_to :deck
