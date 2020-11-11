@@ -48,19 +48,12 @@ class DecksController < ApplicationController
   end
 
   def learn
-    if @deck.cards.count < 5
-      redirect_to deck_cards_path(@deck), alert: "Unable to start lesson with less than 5 cards"
+    @lesson = lesson || @deck.lessons.create!
+    card_id = @deck.cards.first.id || @deck.cards.create!(front: 'sample', back: 'sample').id
+    4.times do
+      @lesson.answers.create!(card_id: card_id)
     end
-    if @deck.lessons.ongoing.present?
-      @lesson = @deck.lessons.ongoing.last
-    else
-      cards_for_lesson = @deck.cards.last(20).pluck(:id)
-      @lesson = @deck.lessons.create!(initial_cards_package: cards_for_lesson,
-                                      current_cards_package: cards_for_lesson)
-      cards_for_lesson.last(4).each do |card_id|
-        @lesson.answers.create!(card_id: card_id)
-      end
-    end
+    @lesson.save!
   end
 
   def next_question
@@ -73,10 +66,6 @@ class DecksController < ApplicationController
   end
 
   private
-
-  def ensure_minimal_number_of_cards 
-
-  end
 
   def set_deck
     @deck = Deck.find(params[:id])

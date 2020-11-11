@@ -4,10 +4,8 @@ class Lesson < ApplicationRecord
   belongs_to :deck
   has_many :answers, dependent: :destroy
 
-  scope :ongoing, -> { where(ongoing: true).where.not( initial_cards_package: []) }
-
   def last_answers
-    answers.last(4).first(3)
+    answers.last(4).first 3
   end
 
   def last_answer
