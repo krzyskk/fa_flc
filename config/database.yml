@@ -1,10 +1,10 @@
 default: &default
   encoding: unicode
   pool: 5
-  # timeout: 5000
-  # host: db
-  # port: 5432
-  # username: postgres
+  timeout: 5000
+  host: db
+  port: 5432
+  username: postgres
 
 development:
   <<: *default
@@ -15,6 +15,11 @@ test:
   <<: *default
   adapter: postgresql
   database: fast_flashcards_test
+
+staging:
+  <<: *default
+  adapter: postgresql
+  database: fast_flashcards_staging
 
 production:
   <<: *default
